@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <!-- Begin Header Content -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Raymond James | Marketing | Web Services | Website Migration</title>
+    <!-- Begin Styles -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <link href="style2.css" rel="Stylesheet" />
+    <!-- End Styles -->
+    <!-- Begin Top JS Includes -->
+    <script src="/script/validate_phone.js" type="text/javascript"></script>
+    <script src="/script/validate_email.js" type="text/javascript"></script>
+    <script src="alt_spam.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/script/jquery.mask.js"></script>
+    <script src="custom2.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!-- End Top JS Includes -->
+</head>
+<!-- End Header Content -->
+<!-- Begin Body Content -->
+
+<body>
+    <!-- Begin Outer Div Block -->
+    <div id="grand" ng-init="RJsiteurl='https://www.raymondjames.com/rj-th1-blue'" class="container">
+        <!-- Begin Main Layout Table MAIN -->
+        <div id="main">
+            <div id="contentCell">
+                <!-- Begin Content Cell Area -->
+                <h1></h1>
+                <noscript><strong style="color: red;">You must have JavaScript enabled to use this form. If you are reading this YOU DO NOT have JavaScript enabled. Please enable JavaScript and refresh this page.</strong></noscript>
+                <div id="disclosure">
+                    <p><strong>Compliance Agreement</strong></p>
+                    <p>Since the Internet is readily accessible by clients from every state, holding yourself out as offering investment products and services over the Internet could be considered offering securities and advice to the residents of each state. As such, this could require that you be registered with every state. In order to avoid this costly measure, state regulators have established specific guidelines that, if followed, exempt you from state registration requirements as they relate to the use of the Internet. The design and approval process of these advisor Web sites already takes care of most of these requirements for you, but there are certain procedures that you must also understand and agree to follow.</p>
+                    <p>State regulations require that prior to having any subsequent direct follow-up with any member of the public that has visited your Web site, you must ensure that you are properly registered in that client's state. These advisor Web sites have been designed to require clients to enter their states when requesting information from you via email. When receiving any requests for information, you may only provide such if you are currently registered in the individual's state. Furthermore, if you receive any direct contact from any individual (whether by email, regular mail or phone) that did not come through the Web site's standard email form, and therefore, may not provide the individual's state, you must first determine the individual's state and ensure that you are currently registered in that state before providing any information on investment products or services.</p>
+                    <p>In short, you may not follow up with anyone in any state in which you are not registered. You should simply explain to them that you are only permitted to provide investment information to individuals in states where you are currently registered. Failure to do so could negate your exemption from state registration requirements, and you could be restricted from further use of the Internet and charged with offering securities in a state in which you are not registered.</p>
+                    <p>Effective January 31, 2006, all financial advisors who provide a comprehensive written financial plan must be registered as an investment advisor representative (IAR). This is pursuant to a specific provision in Rule 202(a)(11)-1 under the Advisor Act, which is commonly referred to as the &ldquo;Merrill Lynch Rule.&rdquo;</p>
+                    <p>Site owners are required to read and follow the Raymond James online Privacy Policy.</p>
+                    <p>Should you have any questions regarding these policies and procedures, please contact your appropriate Compliance department.</p>
+                    <p>By selecting &ldquo;Agree&rdquo; below and submitting information requested in the following form, you agree to be charged the applicable amount for the type of Web site requested. This includes the cost of the website creation, monthly hosting, and monthly support package.</p>
+                    <p><b>Note: Only the website owner can accept the compliance agreement. The website owner must select the following check box before the website can be submitted. </b></p>
+                    <p>
+                        <button name="acceptBtn" id="acceptBtn" style="width: 200px;" class="all" onclick="accept();">AGREE</button>
+                    </p>
+                </div>
+                <form name="frmName" id="frmName" method="post" action="process2.asp" onsubmit="return validateForm(this);">
+
+                    <!-- Start Marketing/Transitioning Consultant Information -->
+                    <div class="transitioning">
+                        <h2>Marketing/Transitioning Consultant:<br/><span style="font-weight: normal">If you are currently working with a Marketing or Transitioning consultant, please the list their name(s).</span></h2>
+                        <div class="pad parentdivborder">
+                            <div>
+                                <label>Marketing consultant</label>
+                                <input type="text" name="currentConsultant" class="textField form-control" />
+                            </div>
+                            <div>
+                                <label>Transitioning consultant</label>
+                                <input type="text" name="transitionConsultant" class="textField form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Marketing/Transitioning Consultant Information -->
+
+                    <!-- Start Transitioning Website Owner Information -->
+                    <div class="transitioning">
+                        <h2>Transitioning Website Owner Information: <span class="required"></span></h2>
+                        <div class="pad parentdivborder">
+                            <div>
+                                <label>Primary Advisor Name</label>
+                                <input type="text" name="PrimaryName" class="textField requiredField form-control" />
+                            </div>
+                            <div>
+                                <label>Primary Advisor Email</label>
+                                <input type="text" name="email" class="textField requiredField form-control" />
+                            </div>
+                            <div>
+                                <label>Address 1</label>
+                                <input type="text" name="mailingAddress1" class="textField requiredField form-control" placeholder="&nbsp Branch Address 1" />
+                            </div>
+                            <div>
+                                <label>Address 2</label>
+                                <input type="text" name="mailingAddress2" class="textField form-control" placeholder="&nbsp Branch Address 2" />
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <input type="text" name="city" class="textField requiredField form-control" placeholder="&nbsp Branch City" />
+                            </div>
+                            <div>
+                                <label>State</label>
+                                <input type="text" name="state" class="textField requiredField form-control" placeholder="&nbsp Branch State" />
+                            </div>
+                            <div>
+                                <label>Zip Code</label>
+                                <input type="text" name="zip" class="textField requiredField zip form-control" placeholder="&nbsp Branch Zip Code" />
+                            </div>
+                            <div>
+                                <label>Contact Phone Number 1</label>
+                                <input type="text" name="phone1" class="textField requiredField phone form-control" placeholder="&nbsp Branch Phone Number 1" />
+                            </div>
+                            <div>
+                                <label>Contact Phone Number 2</label>
+                                <input type="text" name="phone2" class="textField phone form-control" placeholder="&nbsp Branch Phone Number 2" />
+                            </div>
+                            <div>
+                                <label>Contact Fax Number</label>
+                                <input type="text" name="fax" class="textField phone form-control" placeholder="&nbsp Branch Fax Number" />
+                            </div>
+                            <div>
+                                <label>Broker/Dealer Affiliation</label>
+                                <select name="Affiliation" class="requiredField Affiliation form-control">
+                                    <option value=""></option>
+                                    <option value="RJA">RJA</option>
+                                    <option value="RJFS">RJFS</option>
+                                    <option value="RJFS-FID">RJFS-FID</option>
+                                    <option value="RJFS-IAD">RJFS-IAD</option>
+                                    <option value="RJFS-CORR">RJFS-CORR</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Start Date</label>
+                                <input type="text" name="newStartDt" id="newStartDate" class="textField requiredField form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Transitioning Website Owner Information -->
+
+                    <!-- Start Transitioning Website Information -->
+                    <div class="transitioning">
+                        <h2>Transitioning Website Information: </h2>
+                        <div class="pad parentdivborder">
+                            <div>
+                                <label>Approved DBA Name</label>
+                                <input type="text" name="ApprovedDBA" class="textField form-control" placeholder="&nbsp;example: Jane Doe Group" />
+                            </div>
+                            <div>
+                                <label>Requested Site Address</label>
+                                <input type="text" name="ExistingSite" class="textField form-control" placeholder="&nbsp;example: raymondjames.com/janedoe" />
+                            </div>
+                            <div>
+                                <label>Do you currently own a custom domain?</label>
+                                <label>
+                                    <input type="radio" name="domain" value="Yes" onchange="showHideElement(this,customDomainName)" />&nbsp Yes</label>
+                                <label>
+                                    <input type="radio" name="domain" value="No" onchange="showHideElement(this,customDomainName)" />&nbsp No</label>
+                            </div>
+                            <div class="hidden" id="customDomainName">
+                                <label>Provide custom domain here</label>
+                                <input type="text" name="domainName" class="textField form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Transitioning Website Owner Information -->
+
+                    <!-- Start Website Owner Information, current csfree cspaid premium -->
+                    <div class="current csfree cspaid premium">
+                        <h2>Website Owner Information: <span class="required"></span></h2>
+                        <div class="pad parentdivborder">
+                            <div>
+                                <label>Primary Advisor Name</label>
+                                <input type="text" name="PrimaryName" class="textField requireField form-control" />
+                            </div>
+                            <div>
+                                <label>Primary Advisor Email</label>
+                                <input type="text" name="email" class="textField requireField form-control" />
+
+                            </div>
+                            <div>
+                                <label>Primary Advisor FA Number</label>
+                                <input type="text" name="FaNum" value="" class="textField requireField form-control" />
+                            </div>
+                            <div>
+                                <label>Branch Number</label>
+                                <input type="text" name="Branch" class="textField requireField form-control" />
+                            </div>
+                            <div>
+                                <label>Broker/Dealer Affiliation</label>
+                                <select name="Affiliation" class="requiredField Affiliation form-control">
+                                    <option value=""></option>
+                                    <option value="RJA">RJA</option>
+                                    <option value="RJFS">RJFS</option>
+                                    <option value="RJFS-FID">RJFS-FID</option>
+                                    <option value="RJFS-IAD">RJFS-IAD</option>
+                                    <option value="RJFS-CORR">RJFS-CORR</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Website Owner Information, current csfree cspaid premium -->
+
+                    <!-- Start Site Information Section, current csfree cspaid premium -->
+                    <div class="current csfree cspaid premium">
+                        <h2>Site Information: </h2>
+                        <div class="pad parentdivborder">
+                            <div>
+                                <label>Existing Site Address</label>
+                                <input type="text" name="ExistingSite" class="textField form-control" placeholder="&nbsp;example: raymondjames.com/janedoe" />
+                            </div>
+                            <div>
+                                <label>Approved DBA Name</label>
+                                <input type="text" name="ApprovedDBA" class="textField form-control" placeholder="&nbsp;example: Jane Doe Group" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Site Information Section, current csfree cspaid premium -->
+
+                    <!-- Start Team Member Section -->
+                    <div class="all">
+                        <h2>Team Members: <br/><span style="font-weight: normal">Please list the team members would you like listed on the website and mark whether you would like them to have delegate access allowing them to make or approve changes to the website. <a href="#" onclick="addTeam(this,event)">Add additional team members</a></span></h2>
+                        <div class="teamparent parentdivborder">
+                            <div>
+                                <label>Team Member</label>
+                                <input type="text" name="TeamMember1" class="textField form-control" />
+                                <label>Approved Title</label>
+                                <input type="text" name="TeamMember1Title" class="textField form-control" />
+                                <label class="delegatelabel">Delegate?</label>
+                                <select name="TeamMember1Delegate" style="width:100px" class="form-control teamdelegate">
+                                    <option></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Team Member</label>
+                                <input type="text" name="TeamMember2" class="textField form-control" />
+                                <label>Approved Title</label>
+                                <input type="text" name="TeamMember2Title" class="textField form-control" />
+                                <label class="delegatelabel">Delegate?</label>
+                                <select name="TeamMember2Delegate" style="width:100px" class="form-control teamdelegate">
+                                    <option></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Team Member</label>
+                                <input type="text" name="TeamMember3" class="textField form-control" />
+                                <label>Approved Title</label>
+                                <input type="text" name="TeamMember3Title" class="textField form-control" />
+                                <label class="delegatelabel">Delegate?</label>
+                                <select name="TeamMember3Delegate" style="width:100px" class="form-control teamdelegate">
+                                    <option></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Team Member</label>
+                                <input type="text" name="TeamMember4" class="textField form-control" />
+                                <label>Approved Title</label>
+                                <input type="text" name="TeamMember4Title" class="textField form-control" />
+                                <label class="delegatelabel">Delegate?</label>
+                                <select name="TeamMember4Delegate" style="width:100px" class="form-control teamdelegate">
+                                    <option></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Team Member</label>
+                                <input type="text" name="TeamMember5" class="textField form-control" />
+                                <label>Approved Title</label>
+                                <input type="text" name="TeamMember5Title" class="textField form-control" />
+                                <label class="delegatelabel">Delegate?</label>
+                                <select name="TeamMember5Delegate" style="width:100px" class="form-control teamdelegate">
+                                    <option></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Team Member</label>
+                                <input type="text" name="TeamMember6" class="textField form-control" />
+                                <label>Approved Title</label>
+                                <input type="text" name="TeamMember6Title" class="textField form-control" />
+                                <label class="delegatelabel">Delegate?</label>
+                                <select name="TeamMember6Delegate" style="width:100px" class="form-control teamdelegate">
+                                    <option></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start Team Member Section -->
+
+                    <!-- Start Bill to Selection, transitioning -->
+                    <div class="all">
+                        <h2>Bill to:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight:normal;" class="csfreebillto"></span><span style="font-weight: normal;" class="SetUpFee"></span></h2>
+                        <div class="pad noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="billing" value="FA Blotter" />&nbsp; FA Blotter (Billed to Site Owner)</label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="billing" value="Split FA Blotter" />&nbsp; Split FA Blotter</label>
+                                <span class="spanSplitFaBlotterNumber"></span>
+                                <br />
+                                <label>
+                                    <input type="radio" name="billing" value="Branch Blotter" />&nbsp; Branch Blotter</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Bill to Selection, transitioning -->
+
+                    <!-- Start Support Package Selection -->
+                    <div class="all">
+                        <h2>Support Package:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> Select the desired maintenance package. <a target="_blank" href="https://myrjnet.rjf.com/ResourcesandSupport/CorporateServices/Marketing/Resources/WebMarketing/AdvisorWebsites/Maintenance-Support/Pages/Web-Support-Packages.aspx ">Click here</a> for more information on services provided and pricing. </span></h2>
+                        <div class="pad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="supportPackage" value="Gold" />&nbsp Gold &ndash; $90/month<span style="font-weight:normal"> &ndash; Gold provides Web Services coverage for advisors who foresee needing edits that are more complex, comprehensive or submitted frequently.</span></label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="supportPackage" value="Silver" />&nbsp Silver &ndash; $45/month<span style="font-weight:normal"> &ndash; Silver, <span style="text-decoration: underline;">our default plan</span>, is designed to serve the needs of most advisors and offers Web Services support for common, straightforward website requests.</span>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="supportPackage" value="Bronze" /><span class="csfreebronze">&nbsp Bronze &ndash; $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.</span></span></label><br />
+                                <span style="font-weight:normal" class="csfreesupportpackagetext"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start Support Package Selection -->
+
+                    <!-- Start Template and Color Selection, template 3 currently not ready to be used -->
+                    <div class="all">
+                        <h2>Template and Color:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> Below are the nine website color template and color combinations (three templates across three colors). To enlarge each template preview, please click on the corresponding image. Please select the template and color combination you would like applied to your website. </span></h2>
+                        <div class="templateparent parentdivborder">
+                            <div class="row templateparentthead">
+                                <div class="col-xs-4">
+                                    <label>Blue</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Burgundy</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Grey/Gold</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template1blue.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template1blue.jpg" alt="Template 1 - Blue" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 1 - Blue" />&nbsp;Template 1 - Blue</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template1burgundy.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template1burgundy.jpg" alt="Template 1 - Burgundy" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 1 - Burgundy" />&nbsp;Template 1 - Burgundy</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template1greygold.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template1greygold.jpg" alt="Template 1 - Grey/Gold" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 1 - Grey/Gold" />&nbsp;Template 1 - Grey/Gold</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template2blue.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template2blue.jpg" alt="Template 2 - Blue" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 2 - Blue" />&nbsp;Template 2 - Blue</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template2burgundy.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template2burgundy.jpg" alt="Template 2 - Burgundy" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 2 - Burgundy" />&nbsp;Template 2 - Burgundy</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template2greygold.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template2greygold.jpg" alt="Template 2 - Grey/Gold" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 2 - Grey/Gold" />&nbsp;Template 2 - Grey/Gold</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template3blue.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template3blue.jpg" alt="Template 3 - Blue" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 3 - Blue" />&nbsp;Template 3 - Blue</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template3burgundy.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template3burgundy.jpg" alt="Template 3 - Burgundy" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 3 - Burgundy" />&nbsp;Template 3 - Burgundy</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="images/new/Templates/Template3greygold.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template3greygold.jpg" alt="Template 3 - Grey/Gold" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" value="Template 3 - Grey/Gold" />&nbsp;Template 3 - Grey/Gold</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Template and Color Selection -->
+
+                    <!-- Start Image Theme -->
+                    <div class="all">
+                        <h2>Image Theme:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /> <br/><span style="font-weight:normal"> Below are samples representing the various image themes available. Please select the image theme that you would like applied to your website. </span></h2>
+                        <div class="themeparent parentdivborder">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <label>Image Theme:</label>
+                                    <select name="theme" class="requiredField theme form-control">
+                                        <option value="Nothing">Select an image theme</option>
+                                        <option value="Atlanta">Atlanta</option>
+                                        <option value="Baltimore">Baltimore</option>
+                                        <option value="Boston">Boston</option>
+                                        <option value="Business Setting">Business Settings</option>
+                                        <option value="California Coast">California Coast</option>
+                                        <option value="Chicago">Chicago</option>
+                                        <option value="Dallas">Dallas</option>
+                                        <option value="Denver">Denver</option>
+                                        <option value="Detroit">Detroit</option>
+                                        <option value="Financial">Financial</option>
+                                        <option value="Florida Coast">Florida Coast</option>
+                                        <option value="Golf">Golf</option>
+                                        <option value="Greenwich">Greenwich</option>
+                                        <option value="Houston">Houston</option>
+                                        <option value="Interpersonal">Interpersonal Interactions</option>
+                                        <option value="Jacksonville">Jacksonville</option>
+                                        <option value="Journey">Journey</option>
+                                        <option value="Los Angeles">Los Angeles</option>
+                                        <option value="Memphis">Memphis</option>
+                                        <option value="Miami">Miami</option>
+                                        <option value="Midwest">Midwest</option>
+                                        <option value="Nautical">Nautical</option>
+                                        <option value="New England">New England</option>
+                                        <option value="New York">New York</option>
+                                        <option value="Palm Beach">Palm Beach</option>
+                                        <option value="People">People</option>
+                                        <option value="Philadelphia">Philadelphia</option>
+                                        <option value="San Francisco">San Francisco</option>
+                                        <option value="Seattle">Seattle</option>
+                                        <option value="Smokies Appalachian">Smokies Appalachian</option>
+                                        <option value="Southwest">Southwest</option>
+                                        <option value="Tampa">Tampa</option>
+                                        <option value="Washington">Washington D.C.</option>
+                                        <option value="Winston Salem">Winston Salem</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-9">
+                                    <label>Preview:</label>
+                                    <div class="imagedisplay col-xs-12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Edd Image Theme -->
+
+                    <!-- Start Home Page Intro -->
+                    <div class="all">
+                        <h2>Homepage Intro:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> The headline and opening paragraph of the website are considered the "Homepage Intro". Below are the headlines that accompany each homepage intro option, please review the full homepage introduction options. </span></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_A certification of skill - a commitment to serve" /> A certification of skill - a commitment to serve
+                                </label>
+                                <button type="button" data-item="HP1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_A personalized approach to managing wealth" /> A personalized approach to managing wealth
+                                </label>
+                                <button type="button" data-item="HP2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_An elevated advisory experience" /> An elevated advisory experience
+                                </label>
+                                <button type="button" data-item="HP3" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Effective Strategies For Powerful Businesses And Institutions" /> Effective Strategies For Powerful Businesses And Institutions
+                                </label>
+                                <button type="button" data-item="HP4" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Experienced guidance - more confident investing" /> Experienced guidance - more confident investing
+                                </label>
+                                <button type="button" data-item="HP5" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Invest with experienced guidance" /> Invest with experienced guidance
+                                </label>
+                                <button type="button" data-item="HP6" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Next-level Strategies To Match Any Need" /> Next-level Strategies To Match Any Need
+                                </label>
+                                <button type="button" data-item="HP7" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Personalized planning for your financial goals" /> Personalized planning for your financial goals
+                                </label>
+                                <button type="button" data-item="HP8" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Pursuing your financial goals with experienced guidance" /> Pursuing your financial goals with experienced guidance
+                                </label>
+                                <button type="button" data-item="HP9" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Serving You Well" /> Serving You. Well
+                                </label>
+                                <button type="button" data-item="HP10" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Intro" value="Home_Sophisticated Wealth Management To Serve Your Individual Needs" /> Sophisticated Wealth Management To Serve Your Individual Needs
+                                </label>
+                                <button type="button" data-item="HP11" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Home Page Intro -->
+
+                    <!-- RJ Clients Start -->
+                    <div class="all">
+                        <h2>Client Groups Served:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="You may select multiple items." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> From the list provided, select the client groups that you serve and would like represented on your site. If selected, your website will include a page describing how you serve and understand the needs of that group. We recommend you only select groups you are specialized in working with. To the (prospective) client, a shorter, more intimate list can establish a stronger connection than an extensive list. <br/><a href="{{RJsiteurl}}/our-clients" target="_blank" class="RJSiteLink">Sample Site</a></span></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Business Owners" />&nbsp; Business Owners</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/business-owners" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Corporate Executives" />&nbsp; Corporate Executives</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/corporate-executives" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Corporate Retirement Plans" />&nbsp; Corporate Retirement Plans</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/corporate-retirement-plans" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Corporations" />&nbsp; Corporations</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/corporations" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Endowments & Foundations" />&nbsp; Endowments &amp; Foundations</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/endowments-and-foundations" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Families & Individuals" />&nbsp; Families &amp; Individuals</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/families-and-individuals" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Family Offices" />&nbsp; Family Offices</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/family-offices" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Healthcare Professionals" />&nbsp; Healthcare Professionals</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/healthcare-professionals" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Money Managers" />&nbsp; Money Managers</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/money-managers" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Non-Profits" />&nbsp; Non-Profits</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/nonprofits" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Retirees" />&nbsp; Retirees</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/retirees" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Sudden Wealth" />&nbsp; Sudden Wealth</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/sudden-wealth" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="clientType" value="Women Investors" />&nbsp; Women Investors</label>
+                                <a role="button" href="{{RJsiteurl}}/our-clients/women" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RJ Clients End -->
+
+                    <!-- RJ Services Start -->
+                    <div class="all">
+                        <h2>Services Provided:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="You may select multiple items." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> From the list provided, select the services that you provide your clients and would like represented on your site. We recommend you only select services you specialize in. To the (prospective) client, a shorter, more intimate list can establish a stronger connection than an extensive list. <br/><a href="{{RJsiteurl}}/services/services" target="_blank" class="RJSiteLink">Sample Site</a></span></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="services" value="Alternative Investments" />&nbsp; Alternative Investments</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/alternative-investments" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Banking & Lending Solutions" />&nbsp; Banking &amp; Lending Solutions</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/banking-and-lending-solutions" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Business Planning" />&nbsp; Business Planning</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/business-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Corporate Retirement Plan Consulting" />&nbsp; Corporate Retirement Plan Consulting</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/corporate-retirement-plan-consulting" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Education Planning" />&nbsp; Education Planning</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/education-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Estate Charitable Giving & Trust" />&nbsp; Estate, Charitable Giving &amp; Trust</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/estate-charitable-giving-and-trust" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Financial Planning" />&nbsp; Financial Planning</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/financial-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Fixed Income Services" />&nbsp; Fixed Income Services</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/fixed-income-services" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Institutional Consulting" />&nbsp; Institutional Consulting</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/institutional-consulting" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Investment Banking" />&nbsp; Investment Banking</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/investment-banking" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Investment Solutions" />&nbsp; Investment Solutions</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/investment-solutions" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="services" value="Longevity Planning" />&nbsp; Longevity Planning</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/longevity-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Monetization Services" />&nbsp; Monetization Services</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/monetization-services" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Portfolio Management" />&nbsp; Portfolio Management</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/portfolio-management" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Prime Brokerage & Custody Services" />&nbsp; Prime Brokerage &amp; Custody Services</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/prime-brokerage-and-custody-services" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br/>
+                                <label>
+                                    <input type="checkbox" name="services" value="Retirement Planning" />&nbsp; Retirement Planning</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/retirement-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Risk Management" />&nbsp; Risk Management</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/risk-management" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                                <label>
+                                    <input type="checkbox" name="services" value="Sustainable Investing" />&nbsp; Sustainable Investing</label>
+                                <a role="button" href="{{RJsiteurl}}/services/services/sustainable-investing" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RJ Services End -->
+
+                    <!-- RJ Our Approach Start -->
+                    <div class="all">
+                        <h2>Our Approach:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> This section describes how you work with clients and the process you generally implement to help achieve your clients&rsquo; goals. </span></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="OurApproach" value="OurApproach_Expertise for the big picture and finer details" /> Expertise for the big picture and finer details
+                                </label>
+                                <button type="button" data-item="OA1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="OurApproach" value="OurApproach_Streamlined solutions for a lifetime of needs" /> Streamlined solutions for a lifetime of needs
+                                </label>
+                                <button type="button" data-item="OA2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="OurApproach" value="OurApproach_Guidance for every stage and phase" /> Guidance for every stage and phase
+                                </label>
+                                <button type="button" data-item="OA3" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="OurApproach" value="OurApproach_A refined perspective on money management" /> A refined perspective on money management
+                                </label>
+                                <button type="button" data-item="OA4" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="OurApproach" value="OurApproach_Planning for an objective point of view" /> Planning for an objective point of view
+                                </label>
+                                <button type="button" data-item="OA5" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="OurApproach" value="OurApproach_Truly integrated wealth management" /> Truly integrated wealth management
+                                </label>
+                                <button type="button" data-item="OA6" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label style="font-weight:normal; display:none;" class="OurApproach_Migration">
+                                    <input type="radio" name="OurApproach" value="OurApproach - DO NOT INCLUDE - if applicable Web Services will migrate relevant existing custom content to the best of our abilities" /> DO NOT INCLUDE &ndash; if applicable Web Services will migrate relevant existing custom content to the best of our abilities
+                                </label>
+                                <label style="font-weight:normal; display:none;" class="OurApproach_New">
+                                    <input type="radio" name="OurApproach" value="OurApproach - DO NOT INCLUDE - if you plan on using your own custom content, please select this option and email webservices within 2 business days to confirm, otherwise the website build will proceed without the Our Approach section" /> DO NOT INCLUDE &ndash; if you plan on using your own custom content, please select this option and email <a href="mailto:webservices@raymondjames.com">webservices@raymondjames.com</a> within 2 business days to confirm, otherwise the website build will proceed without the Our Approach section
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RJ Our Approach End -->
+
+                    <!-- RJ What Makes Us Different Start -->
+                    <div class="all">
+                        <h2>What Makes Us Different:<span class="required"></span><img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> The purpose of this section is to describe your business&rsquo; unique value proposition and philosophy. </span></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_A collective of expertise dedicated to your financial success" /> A collective of expertise, dedicated to your financial success
+                                </label>
+                                <button type="button" data-item="Diff1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Global resources focused service tailored solutions" /> Global resources, focused service, tailored solutions
+                                </label>
+                                <button type="button" data-item="Diff2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Tailored service disciplined strategies committed guidance" /> Tailored service, disciplined strategies, committed guidance
+                                </label>
+                                <button type="button" data-item="Diff3" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Thoughtful service and tailored strategies with your needs at the center" /> Thoughtful service and tailored strategies, with your needs at the center
+                                </label>
+                                <button type="button" data-item="Diff4" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_An experienced team dedicated to your success" /> An experienced team, dedicated to your success
+                                </label>
+                                <button type="button" data-item="Diff5" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_An experienced team united behind your financial well-being" /> An experienced team, united behind your financial well-being
+                                </label>
+                                <button type="button" data-item="Diff6" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <label style="font-weight:normal; display:none;" class="WhatMakesUsDifferent_Migration">
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference - DO NOT INCLUDE - if applicable Web Services will migrate relevant existing custom content to the best of our abilities" /> DO NOT INCLUDE &ndash; if applicable Web Services will migrate relevant existing custom content to the best of our abilities
+                                </label>
+                                <label style="font-weight:normal; display:none;" class="WhatMakesUsDifferent_New">
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference - DO NOT INCLUDE - if you plan on using your own custom content, please select this option and email webservices within 2 business days to confirm, otherwise the website build will proceed without the What Makes Us Different section" /> DO NOT INCLUDE &ndash; if you plan on using your own custom content, please select this option and email <a href="mailto:webservices@raymondjames.com">webservices@raymondjames.com</a> within 2 business days to confirm, otherwise the website build will proceed without the What Makes Us Different section
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RJ What Makes Us Different End -->
+
+                    <!-- RJ About Raymond James Start -->
+                    <div class="all RJ">
+                        <h2>About Raymond James:<span class="required"></span><img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="about" value="About Raymond James_Conservative pragmatic and proud of the way we do business" />&nbsp Conservative, pragmatic and proud of the way we do business
+                                </label>
+                                <button type="button" data-item="AboutRJ1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label>
+                                    <input type="radio" name="about" value="About Raymond James_Raymond James: Our dedicated partner" />&nbsp Raymond James: Our dedicated partner
+                                </label>
+                                <button type="button" data-item="AboutRJ2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+                                <label style="font-weight:normal">
+                                    <input type="radio" name="about" value="Do Not Include - RJFS Only" />&nbsp Do Not Include - RJFS Only
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RJ About Raymond James End -->
+
+                    <!-- RJ About Alex Brown Start -->
+                    <div class="all AlexBrown">
+                        <h2>About Alex Brown:<span class="required"></span><img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /></h2>
+                        <div class="noleftpad parentdivborder">
+                            <div>
+                                <label>
+                                    <input type="radio" name="about" value="AboutAB1 - Alex Brown: a legacy of uncompromising service" checked/>&nbsp Alex. Brown: a legacy of uncompromising service
+                                </label>
+                                <button type="button" data-item="AboutAB1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RJ About Alex Brown End -->
+
+                    <p class="cspaid">By selecting "Submit" below and submitting information requested for the free of your website to the new system, you agree to be charged the applicable amount for the monthly support package selected. This charge will not take effect until your site migration is complete.</p>
+                    <p class="transitioning current" style="text-align:center">A member of our Marketing team will contact you to collect any necessary files such as photos or logos.</p>
+                    <div align="center" class="all">
+                        <div id="questionBox">
+                            <script type="text/javascript">
+                                //<![CDATA[
+
+                                InitFilter();
+
+                                //]]>
+                            </script>
+                        </div>
+                        <p>
+                            <button type="submit" name="submitBtn" id="submitBtn" value="Submit" class="btn btn-primary" />Submit</button>
+                        </p>
+
+                    </div>
+                </form>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+
+                        //theme display function    
+                        $(".theme").change(function () {
+                            selectedtheme = $(".theme").val();
+                            themename_friendly = $(".theme").val();
+                            selectedtheme = selectedtheme.replace(" ", "%20");
+
+                            //array of all themes
+                            var theme_array = ["Atlanta", "Baltimore", "Boston", "Business Setting", "California Coast", "Chicago", "Dallas"];
+                            var found = theme_array.indexOf(themename_friendly);
+                            var pdf_link = "";
+
+                            //if var found is in array it will display pdf link, this will be updated as more themes get launched. This should remain the method for displaying the pdf link to themes, as we may add more themes over time and shouldnt just add the link to every possible theme option unless the pdf exists
+
+                            if (found != -1) {
+                                pdf_link = '<p>Click <a href="pdf/imagethemes/' + selectedtheme + '.pdf" target="_blank">Here</a> to see a pdf with all images from the ' + themename_friendly + ' theme</p>';
+                            } else {
+                                pdf_link = '';
+                            }
+                            //error handling, if selectedtheme is nothing the else clause comes into effect
+                            if (selectedtheme !== "Nothing") {
+                                $(".imagedisplay").empty().css("height", "200px").append('<img src="images/New/' + selectedtheme + '/home.png" alt="' + selectedtheme + '" border="0" style="height:75%;margin:0 5px 0 0" /><img src="images/New/' + selectedtheme + '/services.png" alt="' + selectedtheme + '" border="0" style="height:75%;" /><br/>' + pdf_link);
+                            } else {
+                                $(".imagedisplay").empty().css("height", "200px").append('<label style="color:red">You will need to select a theme</label>');
+                            }
+                        });
+                    });
+                </script>
+
+                <p id="pContact">For questions or comments about this form please contact <a href="mailto:webservices@raymondjames.com?subject=Name of form" id="aContact">Web Services</a> at ext. 75423</p>
+
+                <!-- End Content Cell Area -->
+            </div>
+        </div>
+
+        <!-- End Main Layout Table MAIN -->
+
+        <!-- Begin NOT FOR CLIENT USE notification -->
+
+        <p id="notforclients">Not for client use</p>
+
+        <!-- End NOT FOR CLIENT USE notification -->
+        <!-- Modal template and script include -->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="modals.js" type="text/javascript"></script>
+    <!-- End Modal template and script include -->
+</body>
+
+<!-- Boostrap CDN Location -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</html>
