@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
 
 <head>
     <!-- Begin Header Content -->
@@ -21,7 +21,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/script/jquery.mask.js"></script>
     <script src="custom2.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <!-- End Top JS Includes -->
 </head>
 <!-- End Header Content -->
@@ -29,7 +28,7 @@
 
 <body>
     <!-- Begin Outer Div Block -->
-    <div id="grand" ng-init="RJsiteurl='https://www.raymondjames.com/rj-th1-blue'" class="container">
+    <div id="grand" class="container">
         <!-- Begin Main Layout Table MAIN -->
         <div id="main">
             <div id="contentCell">
@@ -117,7 +116,7 @@
                                 <select name="Affiliation" class="requiredField Affiliation form-control">
                                     <option value=""></option>
                                     <option value="RJA">RJA</option>
-                                    <option value="RJFS">RJFS</option>
+                                    <option value="RJFS-ICD">RJFS-ICD</option>
                                     <option value="RJFS-FID">RJFS-FID</option>
                                     <option value="RJFS-IAD">RJFS-IAD</option>
                                     <option value="RJFS-CORR">RJFS-CORR</option>
@@ -159,7 +158,7 @@
                     <!-- End Transitioning Website Owner Information -->
 
                     <!-- Start Website Owner Information, current csfree cspaid premium -->
-                    <div class="current csfree cspaid premium">
+                    <div class="current csfree cspaid premium sc7">
                         <h2>Website Owner Information: <span class="required"></span></h2>
                         <div class="pad parentdivborder">
                             <div>
@@ -184,7 +183,7 @@
                                 <select name="Affiliation" class="requiredField Affiliation form-control">
                                     <option value=""></option>
                                     <option value="RJA">RJA</option>
-                                    <option value="RJFS">RJFS</option>
+                                    <option value="RJFS-ICD">RJFS-ICD</option>
                                     <option value="RJFS-FID">RJFS-FID</option>
                                     <option value="RJFS-IAD">RJFS-IAD</option>
                                     <option value="RJFS-CORR">RJFS-CORR</option>
@@ -195,7 +194,7 @@
                     <!-- End Website Owner Information, current csfree cspaid premium -->
 
                     <!-- Start Site Information Section, current csfree cspaid premium -->
-                    <div class="current csfree cspaid premium">
+                    <div class="current csfree cspaid premium sc7">
                         <h2>Site Information: </h2>
                         <div class="pad parentdivborder">
                             <div>
@@ -213,87 +212,50 @@
                     <!-- Start Team Member Section -->
                     <div class="all">
                         <h2>Team Members: <br/><span style="font-weight: normal">Please list the team members would you like listed on the website and mark whether you would like them to have delegate access allowing them to make or approve changes to the website. <a href="#" onclick="addTeam(this,event)">Add additional team members</a></span></h2>
-                        <div class="teamparent parentdivborder">
+                        <div class="teamparent parentdivborder container">
+                            <div class="row">
+                                <div class="col-xs-4 col-xs-offset-1"><label>Team Member Name</label></div>
+                                <div class="col-xs-3"><label>Approved Title</label></div>
+                                <div class="col-xs-1"><label>Delegate?</label></div>
+                                <div class="col-xs-3" style="text-align: center;"><label>Primary Contact?</label></div>
+                            </div>
+                            <div class="TeamContainer"> 
                             <div>
-                                <label>Team Member</label>
-                                <input type="text" name="TeamMember1" class="textField form-control" />
-                                <label>Approved Title</label>
-                                <input type="text" name="TeamMember1Title" class="textField form-control" />
-                                <label class="delegatelabel">Delegate?</label>
-                                <select name="TeamMember1Delegate" style="width:100px" class="form-control teamdelegate">
-                                    <option></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <label style="padding-right:15px"> 1. </label>
+                                <input type="text" name="TeamMember1" style="width: 300px" class="textField form-control" />
+                                <input type="text" name="TeamMember1Title" style="width: 250px" class="textField form-control" />
+                                <select name="TeamMember1Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
+                                <input type="radio" name="TeamMember1Contact" value="Yes" class="TeamContact" />
                             </div>
                             <div>
-                                <label>Team Member</label>
-                                <input type="text" name="TeamMember2" class="textField form-control" />
-                                <label>Approved Title</label>
-                                <input type="text" name="TeamMember2Title" class="textField form-control" />
-                                <label class="delegatelabel">Delegate?</label>
-                                <select name="TeamMember2Delegate" style="width:100px" class="form-control teamdelegate">
-                                    <option></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <label style="padding-right:15px"> 2. </label>
+                                <input type="text" name="TeamMember2" style="width: 300px" class="textField form-control" />
+                                <input type="text" name="TeamMember2Title" style="width: 250px" class="textField form-control" />
+                                <select name="TeamMember2Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
+                                <input type="radio" name="TeamMember2Contact" value="Yes" class="TeamContact" />
                             </div>
                             <div>
-                                <label>Team Member</label>
-                                <input type="text" name="TeamMember3" class="textField form-control" />
-                                <label>Approved Title</label>
-                                <input type="text" name="TeamMember3Title" class="textField form-control" />
-                                <label class="delegatelabel">Delegate?</label>
-                                <select name="TeamMember3Delegate" style="width:100px" class="form-control teamdelegate">
-                                    <option></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
+                                <label style="padding-right:15px"> 3. </label>
+                                <input type="text" name="TeamMember3" style="width: 300px" class="textField form-control" />
+                                <input type="text" name="TeamMember3Title" style="width: 250px" class="textField form-control" />
+                                <select name="TeamMember3Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
+                                <input type="radio" name="TeamMember3Contact" value="Yes" class="TeamContact" /></div>
                             <div>
-                                <label>Team Member</label>
-                                <input type="text" name="TeamMember4" class="textField form-control" />
-                                <label>Approved Title</label>
-                                <input type="text" name="TeamMember4Title" class="textField form-control" />
-                                <label class="delegatelabel">Delegate?</label>
-                                <select name="TeamMember4Delegate" style="width:100px" class="form-control teamdelegate">
-                                    <option></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <label style="padding-right:15px"> 4. </label>
+                                <input type="text" name="TeamMember4" style="width: 300px" class="textField form-control" />
+                                <input type="text" name="TeamMember4Title" style="width: 250px" class="textField form-control" />
+                                <select name="TeamMember4Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
+                                <input type="radio" name="TeamMember4Contact" value="Yes" class="TeamContact" />
                             </div>
-                            <div>
-                                <label>Team Member</label>
-                                <input type="text" name="TeamMember5" class="textField form-control" />
-                                <label>Approved Title</label>
-                                <input type="text" name="TeamMember5Title" class="textField form-control" />
-                                <label class="delegatelabel">Delegate?</label>
-                                <select name="TeamMember5Delegate" style="width:100px" class="form-control teamdelegate">
-                                    <option></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Team Member</label>
-                                <input type="text" name="TeamMember6" class="textField form-control" />
-                                <label>Approved Title</label>
-                                <input type="text" name="TeamMember6Title" class="textField form-control" />
-                                <label class="delegatelabel">Delegate?</label>
-                                <select name="TeamMember6Delegate" style="width:100px" class="form-control teamdelegate">
-                                    <option></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
                             </div>
                         </div>
                     </div>
-                    <!-- Start Team Member Section -->
+                    <!-- End Team Member Section -->
 
                     <!-- Start Bill to Selection, transitioning -->
                     <div class="all">
                         <h2>Bill to:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight:normal;" class="csfreebillto"></span><span style="font-weight: normal;" class="SetUpFee"></span></h2>
-                        <div class="pad noleftpad parentdivborder">
+                        <div class="pad parentdivborder">
                             <div>
                                 <label>
                                     <input type="radio" name="billing" value="FA Blotter" />&nbsp; FA Blotter (Billed to Site Owner)</label>
@@ -321,8 +283,10 @@
                                     <input type="radio" name="supportPackage" value="Silver" />&nbsp Silver &ndash; $45/month<span style="font-weight:normal"> &ndash; Silver, <span style="text-decoration: underline;">our default plan</span>, is designed to serve the needs of most advisors and offers Web Services support for common, straightforward website requests.</span>
                                 </label>
                                 <br />
-                                <label>
-                                    <input type="radio" name="supportPackage" value="Bronze" /><span class="csfreebronze">&nbsp Bronze &ndash; $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.</span></span></label><br />
+                                <label class="csfreebronze">
+                                    <input type="radio" name="supportPackage" value="Bronze" />&nbsp Bronze &ndash; $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.</span>
+                                </label>
+                                <br />
                                 <span style="font-weight:normal" class="csfreesupportpackagetext"></span>
                             </div>
                         </div>
@@ -346,62 +310,71 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template1blue.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template1blue.jpg" alt="Template 1 - Blue" border="0" /></a>
+                                    <a href="https://www.raymondjames.com/rj-th1-blue" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template1blue.jpg" alt="Template 1 - Blue" border="0" /></a>
                                     <br />
                                     <label>
-                                        <input name="layout" type="radio" value="Template 1 - Blue" />&nbsp;Template 1 - Blue</label>
+                                        <input name="layout" class="layout" type="radio" value="Template 1 - Blue" data-sample="rj-th1-blue" />&nbsp;Template 1 - Blue</label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template1burgundy.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template1burgundy.jpg" alt="Template 1 - Burgundy" border="0" /></a>
+                                    <a href="https://www.raymondjames.com/rj-th1-burgundy" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template1burgundy.jpg" alt="Template 1 - Burgundy" border="0" /></a>
                                     <br />
                                     <label>
-                                        <input name="layout" type="radio" value="Template 1 - Burgundy" />&nbsp;Template 1 - Burgundy</label>
+                                        <input name="layout" type="radio" class="layout" value="Template 1 - Burgundy" />&nbsp;Template 1 - Burgundy</label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template1greygold.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template1greygold.jpg" alt="Template 1 - Grey/Gold" border="0" /></a>
+                                    <a href="https://www.raymondjames.com/rj-th1-greygold" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template1greygold.jpg" alt="Template 1 - Grey/Gold" border="0" /></a>
                                     <br />
                                     <label>
-                                        <input name="layout" type="radio" value="Template 1 - Grey/Gold" />&nbsp;Template 1 - Grey/Gold</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template2blue.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template2blue.jpg" alt="Template 2 - Blue" border="0" /></a>
-                                    <br />
-                                    <label>
-                                        <input name="layout" type="radio" value="Template 2 - Blue" />&nbsp;Template 2 - Blue</label>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template2burgundy.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template2burgundy.jpg" alt="Template 2 - Burgundy" border="0" /></a>
-                                    <br />
-                                    <label>
-                                        <input name="layout" type="radio" value="Template 2 - Burgundy" />&nbsp;Template 2 - Burgundy</label>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template2greygold.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template2greygold.jpg" alt="Template 2 - Grey/Gold" border="0" /></a>
-                                    <br />
-                                    <label>
-                                        <input name="layout" type="radio" value="Template 2 - Grey/Gold" />&nbsp;Template 2 - Grey/Gold</label>
+                                        <input name="layout" type="radio" class="layout" value="Template 1 - Grey/Gold" data-sample="rj-th1-greygold" />&nbsp;Template 1 - Grey/Gold</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template3blue.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template3blue.jpg" alt="Template 3 - Blue" border="0" /></a>
+                                    <a href="https://www.raymondjames.com/rj-th2-blue" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template2blue.jpg" alt="Template 2 - Blue" border="0" /></a>
                                     <br />
                                     <label>
-                                        <input name="layout" type="radio" value="Template 3 - Blue" />&nbsp;Template 3 - Blue</label>
+                                        <input name="layout" type="radio" class="layout" value="Template 2 - Blue" data-sample="rj-th2-blue" />&nbsp;Template 2 - Blue</label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template3burgundy.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template3burgundy.jpg" alt="Template 3 - Burgundy" border="0" /></a>
+                                    <a href="https://www.raymondjames.com/rj-th2-burgundy" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template2burgundy.jpg" alt="Template 2 - Burgundy" border="0" /></a>
                                     <br />
                                     <label>
-                                        <input name="layout" type="radio" value="Template 3 - Burgundy" />&nbsp;Template 3 - Burgundy</label>
+                                        <input name="layout" type="radio" class="layout" value="Template 2 - Burgundy" data-sample="rj-th2-burgundy"/>&nbsp;Template 2 - Burgundy</label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="images/new/Templates/Template3greygold.jpg" target="_blank"> <img src="images/new/Templates/thumb_Template3greygold.jpg" alt="Template 3 - Grey/Gold" border="0" /></a>
+                                    <a href="https://www.raymondjames.com/rj-th2-greygold" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template2greygold.jpg" alt="Template 2 - Grey/Gold" border="0" /></a>
                                     <br />
                                     <label>
-                                        <input name="layout" type="radio" value="Template 3 - Grey/Gold" />&nbsp;Template 3 - Grey/Gold</label>
+                                        <input name="layout" type="radio" class="layout" value="Template 2 - Grey/Gold" data-sample="rj-th2-greygold"/>&nbsp;Template 2 - Grey/Gold</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <a href="https://www.raymondjames.com/rj-th3-blue" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template3blue.jpg" alt="Template 3 - Blue" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" class="layout" value="Template 3 - Blue" data-sample="rj-th3-blue" />&nbsp;Template 3 - Blue</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="https://www.raymondjames.com/rj-th3-burgundy" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template3burgundy.jpg" alt="Template 3 - Burgundy" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" class="layout" value="Template 3 - Burgundy" data-sample="rj-th3-burgundy" />&nbsp;Template 3 - Burgundy</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="https://www.raymondjames.com/rj-th3-greygold" target="_blank" class="SampleSite">
+                                        <img src="images/new/Templates/thumb_Template3greygold.jpg" alt="Template 3 - Grey/Gold" border="0" /></a>
+                                    <br />
+                                    <label>
+                                        <input name="layout" type="radio" class="layout" value="Template 3 - Grey/Gold" data-sample="rj-th3-greygold"/>&nbsp;Template 3 - Grey/Gold</label>
                                 </div>
                             </div>
                         </div>
@@ -419,6 +392,7 @@
                                         <option value="Nothing">Select an image theme</option>
                                         <option value="Atlanta">Atlanta</option>
                                         <option value="Baltimore">Baltimore</option>
+                                        <option value="Birmingham">Birmingham</option>
                                         <option value="Boston">Boston</option>
                                         <option value="Business Setting">Business Settings</option>
                                         <option value="California Coast">California Coast</option>
@@ -426,6 +400,7 @@
                                         <option value="Dallas">Dallas</option>
                                         <option value="Denver">Denver</option>
                                         <option value="Detroit">Detroit</option>
+                                        <option value="Diverse People">Diverse People</option>
                                         <option value="Financial">Financial</option>
                                         <option value="Florida Coast">Florida Coast</option>
                                         <option value="Golf">Golf</option>
@@ -440,6 +415,7 @@
                                         <option value="Midwest">Midwest</option>
                                         <option value="Nautical">Nautical</option>
                                         <option value="New England">New England</option>
+                                        <option value="New Orleans">New Orleans</option>
                                         <option value="New York">New York</option>
                                         <option value="Palm Beach">Palm Beach</option>
                                         <option value="People">People</option>
@@ -447,8 +423,10 @@
                                         <option value="San Francisco">San Francisco</option>
                                         <option value="Seattle">Seattle</option>
                                         <option value="Smokies Appalachian">Smokies Appalachian</option>
+                                        <option value="St Louis">St Louis</option>
                                         <option value="Southwest">Southwest</option>
                                         <option value="Tampa">Tampa</option>
+                                        <option value="Tennessee">Tennessee</option>
                                         <option value="Washington">Washington D.C.</option>
                                         <option value="Winston Salem">Winston Salem</option>
                                     </select>
@@ -465,124 +443,324 @@
                     <!-- Start Home Page Intro -->
                     <div class="all">
                         <h2>Homepage Intro:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> The headline and opening paragraph of the website are considered the "Homepage Intro". Below are the headlines that accompany each homepage intro option, please review the full homepage introduction options. </span></h2>
-                        <div class="noleftpad parentdivborder">
+                        <div class="parentdivborder">
                             <div>
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_A certification of skill - a commitment to serve" /> A certification of skill - a commitment to serve
+                                    <input type="radio" name="HomePage_Intro" value="Home_A certification of skill - a commitment to serve" />
+                                    <a data-item="HP1" data-toggle="modal" data-target="#myModal"> A certification of skill - a commitment to serve</a>
                                 </label>
-                                <button type="button" data-item="HP1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_A personalized approach to managing wealth" /> A personalized approach to managing wealth
+                                    <input type="radio" name="HomePage_Intro" value="Home_A personalized approach to managing wealth" />
+                                    <a data-item="HP2" data-toggle="modal" data-target="#myModal"> A personalized approach to managing wealth</a>
                                 </label>
-                                <button type="button" data-item="HP2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_An elevated advisory experience" /> An elevated advisory experience
+                                    <input type="radio" name="HomePage_Intro" value="Home_An elevated advisory experience" />
+                                    <a data-item="HP3" data-toggle="modal" data-target="#myModal"> An elevated advisory experience</a>
                                 </label>
-                                <button type="button" data-item="HP3" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Effective Strategies For Powerful Businesses And Institutions" /> Effective Strategies For Powerful Businesses And Institutions
+                                    <input type="radio" name="HomePage_Intro" value="Home_Effective Strategies For Powerful Businesses And Institutions" />
+                                    <a data-item="HP4" data-toggle="modal" data-target="#myModal"> Effective Strategies For Powerful Businesses And Institutions</a>
                                 </label>
-                                <button type="button" data-item="HP4" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Experienced guidance - more confident investing" /> Experienced guidance - more confident investing
+                                    <input type="radio" name="HomePage_Intro" value="Home_Experienced guidance - more confident investing" />
+                                    <a data-item="HP5" data-toggle="modal" data-target="#myModal"> Experienced guidance - more confident investing</a>
                                 </label>
-                                <button type="button" data-item="HP5" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Invest with experienced guidance" /> Invest with experienced guidance
+                                    <input type="radio" name="HomePage_Intro" value="Home_Invest with experienced guidance" />
+                                    <a data-item="HP6" data-toggle="modal" data-target="#myModal"> Invest with experienced guidance</a>
                                 </label>
-                                <button type="button" data-item="HP6" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Next-level Strategies To Match Any Need" /> Next-level Strategies To Match Any Need
+                                    <input type="radio" name="HomePage_Intro" value="Home_Next-level Strategies To Match Any Need" />
+                                    <a data-item="HP7" data-toggle="modal" data-target="#myModal"> Next-level Strategies To Match Any Need</a>
                                 </label>
-                                <button type="button" data-item="HP7" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Personalized planning for your financial goals" /> Personalized planning for your financial goals
+                                    <input type="radio" name="HomePage_Intro" value="Home_Personalized planning for your financial goals" />
+                                    <a data-item="HP8" data-toggle="modal" data-target="#myModal"> Personalized planning for your financial goals</a>
                                 </label>
-                                <button type="button" data-item="HP8" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Pursuing your financial goals with experienced guidance" /> Pursuing your financial goals with experienced guidance
+                                    <input type="radio" name="HomePage_Intro" value="Home_Pursuing your financial goals with experienced guidance" />
+                                    <a data-item="HP9" data-toggle="modal" data-target="#myModal"> Pursuing your financial goals with experienced guidance</a>
                                 </label>
-                                <button type="button" data-item="HP9" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Serving You Well" /> Serving You. Well
+                                    <input type="radio" name="HomePage_Intro" value="Home_Serving You Well" />
+                                    <a  data-item="HP10" data-toggle="modal" data-target="#myModal"> Serving You. Well</a>
                                 </label>
-                                <button type="button" data-item="HP10" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="HomePage_Intro" value="Home_Sophisticated Wealth Management To Serve Your Individual Needs" /> Sophisticated Wealth Management To Serve Your Individual Needs
+                                    <input type="radio" name="HomePage_Intro" value="Home_Sophisticated Wealth Management To Serve Your Individual Needs" />
+                                    <a data-item="HP11" data-toggle="modal" data-target="#myModal"> Sophisticated Wealth Management To Serve Your Individual Needs</a>
                                 </label>
-                                <button type="button" data-item="HP11" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                             </div>
                         </div>
                     </div>
                     <!-- End Home Page Intro -->
 
-                    <!-- RJ Clients Start -->
-                    <div class="all">
-                        <h2>Client Groups Served:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="You may select multiple items." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> From the list provided, select the client groups that you serve and would like represented on your site. If selected, your website will include a page describing how you serve and understand the needs of that group. We recommend you only select groups you are specialized in working with. To the (prospective) client, a shorter, more intimate list can establish a stronger connection than an extensive list. <br/><a href="{{RJsiteurl}}/our-clients" target="_blank" class="RJSiteLink">Sample Site</a></span></h2>
-                        <div class="noleftpad parentdivborder">
+                    <div class="sc7">
+                        <h2>Home Page Quote:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> The homepage quote is an optional feature that should highlight a high-level thought process (i.e. ethics, motivation, etc.). Please select a quote from the list below.</span></h2>
+                        <div class="parentdivborder quotes">
                             <div>
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Business Owners" />&nbsp; Business Owners</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/business-owners" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="radio" name="HomePage_Quote" value="Agesilaus" />
+                                    <a data-item="Quote1" data-toggle="modal" data-target="#myModal">
+                                        <em>"By sowing frugality..."</em> - Agesilaus</a>
+                                </label>
                                 <br />
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Corporate Executives" />&nbsp; Corporate Executives</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/corporate-executives" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="radio" name="HomePage_Quote" value="Andrew Carnegie" />
+                                    <a data-item="Quote2" data-toggle="modal" data-target="#myModal">
+                                        <em>"If you want to be happy..."</em> - Andrew Carnegie</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Benjamin Franklin"/>
+                                   <a data-item="Quote3" data-toggle="modal" data-target="#myModal">
+                                       <em>"An investment in knowledge..."</em> - Benjamin Franklin</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Benjamin Graham"/>
+                                   <a data-item="Quote4" data-toggle="modal" data-target="#myModal">
+                                       <em>"The essence of investment management..."</em> - Benjamin Graham</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Denis Waitley"/>
+                                 <a data-item="Quote5" data-toggle="modal" data-target="#myModal">
+                                     <em>"Learn from the past..."</em> - Denis Waitley</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Franklin Roosevelt"/>
+                                  <a data-item="Quote6" data-toggle="modal" data-target="#myModal">
+                                      <em>"Happiness is not..."</em> - Franklin Roosevelt</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="George Bernard Shaw"/>
+                                   <a data-item="Quote7" data-toggle="modal" data-target="#myModal">
+                                       <em>"The real pleasure..."</em> - George Bernard Shaw</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="John Templeton"/>
+                                 <a data-item="Quote8" data-toggle="modal" data-target="#myModal">
+                                     <em>"The four most dangerous..."</em> - John Templeton</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="John Tyler"/>
+                                  <a data-item="Quote9" data-toggle="modal" data-target="#myModal">
+                                      <em>"Wealth can only..."</em> - John Tyler</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Miguel de Cervantes"/>
+                                  <a data-item="Quote10" data-toggle="modal" data-target="#myModal">
+                                      <em>"The gratification of wealth..."</em> - Miguel de Cervantes</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Napoleon Bonaparte"/>
+                                <a data-item="Quote11" data-toggle="modal" data-target="#myModal">
+                                    <em>"Riches do not consist..."</em> - Napoleon Bonaparte</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Pablo Picasso"/>
+                                <a data-item="Quote12" data-toggle="modal" data-target="#myModal">
+                                    <em>"Our goals can only..."</em> - Pablo Picasso</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Proverb"/>
+                                 <a data-item="Quote13" data-toggle="modal" data-target="#myModal">
+                                     <em>"The art is not..."</em> - Proverb</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Robert Kiyosaki"/>
+                                 <a data-item="Quote14" data-toggle="modal" data-target="#myModal">
+                                     <em>"It's not how much..."</em> - Robert Kiyosaki</a>
+                                </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Warren Buffett"/>
+                                <a data-item="Quote15" data-toggle="modal" data-target="#myModal">
+                                    <em>"Price is what you pay..."</em> - Warren Buffett</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RJ Clients -->
+                    <div class="all">
+                        <h2>Client Groups Served:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="You may select multiple items." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> From the list provided, select the client groups that you serve and would like represented on your site. If selected, your website will include a page describing how you serve and understand the needs of that group. We recommend you only select groups you are specialized in working with. To the (prospective) client, a shorter, more intimate list can establish a stronger connection than an extensive list. <br/><a href="{{RJsiteurl}}/our-clients" target="_blank" class="RJSiteLink">Sample Site</a></span></h2>
+                        <div class="noleftpad parentdivborder container clientgroups">
+                            <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType1" value="Business Owners" class="clientType" />
+                                    &nbsp;<a href="https://www.raymondjames.com/rj-th1-blue/our-clients/business-owners" target="_blank">Business Owners</a>
+                                </label>
                                 <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche1" value="Yes" class="NicheSelect" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Corporate Retirement Plans" />&nbsp; Corporate Retirement Plans</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/corporate-retirement-plans" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
-                                <label>
-                                    <input type="checkbox" name="clientType" value="Corporations" />&nbsp; Corporations</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/corporations" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
-                                <label>
-                                    <input type="checkbox" name="clientType" value="Endowments & Foundations" />&nbsp; Endowments &amp; Foundations</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/endowments-and-foundations" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
-                                <label>
-                                    <input type="checkbox" name="clientType" value="Families & Individuals" />&nbsp; Families &amp; Individuals</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/families-and-individuals" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
-                                <label>
-                                    <input type="checkbox" name="clientType" value="Family Offices" />&nbsp; Family Offices</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/family-offices" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="checkbox" name="clientType2" value="Corporate Executives" class="clientType"  />
+                                    &nbsp;<a href="https://www.raymondjames.com/rj-th1-blue/our-clients/corporate-executives" target="_blank">Corporate Executives</a>
+                                </label>
                                 <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche2" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Healthcare Professionals" />&nbsp; Healthcare Professionals</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/healthcare-professionals" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="checkbox" name="clientType3" value="Corporate Retirement Plans" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/corporate-retirement-plans" target="_blank">Corporate Retirement Plans</a>
+                                </label>
                                 <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche3" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Money Managers" />&nbsp; Money Managers</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/money-managers" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
-                                <label>
-                                    <input type="checkbox" name="clientType" value="Non-Profits" />&nbsp; Non-Profits</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/nonprofits" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="checkbox" name="clientType4" value="Corporations" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/corporations" target="_blank">Corporations</a>
+                                </label>
                                 <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche4" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Retirees" />&nbsp; Retirees</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/retirees" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="checkbox" name="clientType5" value="Endowments & Foundations" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/endowments-and-foundations" target="_blank">Endowments &amp; Foundations</a>
+                                </label>
                                 <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche5" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="clientType" value="Sudden Wealth" />&nbsp; Sudden Wealth</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/sudden-wealth" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
-                                <label>
-                                    <input type="checkbox" name="clientType" value="Women Investors" />&nbsp; Women Investors</label>
-                                <a role="button" href="{{RJsiteurl}}/our-clients/women" target="_blank" class="btn btn-primary btn-xs">Link</a>
+                                    <input type="checkbox" name="clientType6" value="Families & Individuals" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/families-and-individuals" target="_blank">Families &amp; Individuals</a>
+                                </label>
                                 <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche6" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType7" value="Family Offices" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/family-offices" target="_blank">Family Offices</a>
+                                </label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche7" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType8" value="Healthcare Professionals" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/healthcare-professionals" target="_blank">Healthcare Professionals</a>
+                                </label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche8" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType9" value="Money Managers" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/money-managers" target="_blank">Money Managers</a>
+                                </label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche9" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType10" value="Non-Profits" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/nonprofits" target="_blank">Non-Profits</a>
+                                </label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche10" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType11" value="Retirees" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/retirees" target="_blank">Retirees</a>
+                                </label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche11" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType12" value="Sudden Wealth" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/sudden-wealth" target="_blank">Sudden Wealth</a>
+                                </label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche12" value="Yes" class="NicheSelect" /></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" name="clientType13" value="Women Investors" class="clientType"  />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/our-clients/women-investors" target="_blank">Women Investors</a></label>
+                                <br/>
+                                <div class="nichebox" style="display:none;">
+                                    <span class="glyphicon glyphicon-menu-right"></span>
+                                    <label class="Nichelabel">Include on homepage tiles?</label>
+                                    <input type="checkbox" name="Niche13" value="Yes" class="NicheSelect" /></div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -591,80 +769,116 @@
                     <!-- RJ Services Start -->
                     <div class="all">
                         <h2>Services Provided:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="You may select multiple items." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> From the list provided, select the services that you provide your clients and would like represented on your site. We recommend you only select services you specialize in. To the (prospective) client, a shorter, more intimate list can establish a stronger connection than an extensive list. <br/><a href="{{RJsiteurl}}/services/services" target="_blank" class="RJSiteLink">Sample Site</a></span></h2>
-                        <div class="noleftpad parentdivborder">
-                            <div>
+                        <div class="noleftpad parentdivborder container services">
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Alternative Investments" />&nbsp; Alternative Investments</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/alternative-investments" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Alternative Investments" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/alternative-investments" target="_blank" >Alternative Investments</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Banking & Lending Solutions" />&nbsp; Banking &amp; Lending Solutions</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/banking-and-lending-solutions" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Banking & Lending Solutions" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/banking-and-lending-solutions" target="_blank" >Banking &amp; Lending Solutions</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Business Planning" />&nbsp; Business Planning</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/business-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Business Planning" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/business-planning" target="_blank" >Business Planning</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Corporate Retirement Plan Consulting" />&nbsp; Corporate Retirement Plan Consulting</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/corporate-retirement-plan-consulting" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Corporate Retirement Plan Consulting" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/corporate-retirement-plan-consulting" target="_blank" >Corporate Retirement Plan Consulting</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Education Planning" />&nbsp; Education Planning</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/education-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Education Planning" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/education-planning" target="_blank" >Education Planning</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Estate Charitable Giving & Trust" />&nbsp; Estate, Charitable Giving &amp; Trust</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/estate-charitable-giving-and-trust" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Estate Charitable Giving & Trust" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/estate-charitable-giving-and-trust" target="_blank" >Estate, Charitable Giving &amp; Trust</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Financial Planning" />&nbsp; Financial Planning</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/financial-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Financial Planning" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/financial-planning" target="_blank" >Financial Planning</a>
+                                </label>
+
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Fixed Income Services" />&nbsp; Fixed Income Services</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/fixed-income-services" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Fixed Income Services" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/fixed-income-services" target="_blank" >Fixed Income Services</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Institutional Consulting" />&nbsp; Institutional Consulting</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/institutional-consulting" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Institutional Consulting" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/institutional-consulting" target="_blank" >Institutional Consulting</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Investment Banking" />&nbsp; Investment Banking</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/investment-banking" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Investment Banking" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/investment-banking" target="_blank" >Investment Banking</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Investment Solutions" />&nbsp; Investment Solutions</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/investment-solutions" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br/>
+                                    <input type="checkbox" name="services" value="Investment Solutions" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/investment-solutions" target="_blank" >Investment Solutions</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Longevity Planning" />&nbsp; Longevity Planning</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/longevity-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Longevity Planning" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/longevity-planning" target="_blank" >Longevity Planning</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Monetization Services" />&nbsp; Monetization Services</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/monetization-services" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Monetization Services" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/monetization-services" target="_blank" >Monetization Services</a>
+                                </label>
+
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Portfolio Management" />&nbsp; Portfolio Management</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/portfolio-management" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Portfolio Management" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/portfolio-management" target="_blank" >Portfolio Management</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Prime Brokerage & Custody Services" />&nbsp; Prime Brokerage &amp; Custody Services</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/prime-brokerage-and-custody-services" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br/>
+                                    <input type="checkbox" name="services" value="Prime Brokerage & Custody Services" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/prime-brokerage-and-custody-services" target="_blank" >Prime Brokerage &amp; Custody Services</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Retirement Planning" />&nbsp; Retirement Planning</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/retirement-planning" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Retirement Planning" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/retirement-planning" target="_blank" >Retirement Planning</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Risk Management" />&nbsp; Risk Management</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/risk-management" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Risk Management" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/risk-management" target="_blank" >Risk Management</a>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>
-                                    <input type="checkbox" name="services" value="Sustainable Investing" />&nbsp; Sustainable Investing</label>
-                                <a role="button" href="{{RJsiteurl}}/services/services/sustainable-investing" target="_blank" class="btn btn-primary btn-xs">Link</a>
-                                <br />
+                                    <input type="checkbox" name="services" value="Sustainable Investing" />
+                                    &nbsp; <a href="https://www.raymondjames.com/rj-th1-blue/services/services/sustainable-investing" target="_blank" >Sustainable Investing</a>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -673,37 +887,38 @@
                     <!-- RJ Our Approach Start -->
                     <div class="all">
                         <h2>Our Approach:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> This section describes how you work with clients and the process you generally implement to help achieve your clients&rsquo; goals. </span></h2>
-                        <div class="noleftpad parentdivborder">
+                        <div class="parentdivborder">
                             <div>
                                 <label>
-                                    <input type="radio" name="OurApproach" value="OurApproach_Expertise for the big picture and finer details" /> Expertise for the big picture and finer details
+                                    <input type="radio" name="OurApproach" value="OurApproach_Expertise for the big picture and finer details" />
+                                    <a data-item="OA1" data-toggle="modal" data-target="#myModal"> Expertise for the big picture and finer details</a>
                                 </label>
-                                <button type="button" data-item="OA1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="OurApproach" value="OurApproach_Streamlined solutions for a lifetime of needs" /> Streamlined solutions for a lifetime of needs
+                                    <input type="radio" name="OurApproach" value="OurApproach_Streamlined solutions for a lifetime of needs" />
+                                    <a data-item="OA2" data-toggle="modal" data-target="#myModal">Streamlined solutions for a lifetime of needs</a>
                                 </label>
-                                <button type="button" data-item="OA2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <br />
                                 <label>
-                                    <input type="radio" name="OurApproach" value="OurApproach_Guidance for every stage and phase" /> Guidance for every stage and phase
+                                    <input type="radio" name="OurApproach" value="OurApproach_Guidance for every stage and phase" />
+                                    <a data-item="OA3" data-toggle="modal" data-target="#myModal">Guidance for every stage and phase</a>
                                 </label>
-                                <button type="button" data-item="OA3" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="OurApproach" value="OurApproach_A refined perspective on money management" /> A refined perspective on money management
+                                    <input type="radio" name="OurApproach" value="OurApproach_A refined perspective on money management" />
+                                    <a data-item="OA4" data-toggle="modal" data-target="#myModal">A refined perspective on money management</a>
                                 </label>
-                                <button type="button" data-item="OA4" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="OurApproach" value="OurApproach_Planning for an objective point of view" /> Planning for an objective point of view
+                                    <input type="radio" name="OurApproach" value="OurApproach_Planning for an objective point of view" />
+                                    <a data-item="OA5" data-toggle="modal" data-target="#myModal"> Planning for an objective point of view</a>
                                 </label>
-                                <button type="button" data-item="OA5" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="OurApproach" value="OurApproach_Truly integrated wealth management" /> Truly integrated wealth management
+                                    <input type="radio" name="OurApproach" value="OurApproach_Truly integrated wealth management" />
+                                    <a data-item="OA6" data-toggle="modal" data-target="#myModal"> Truly integrated wealth management</a>
                                 </label>
-                                <button type="button" data-item="OA6" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label style="font-weight:normal; display:none;" class="OurApproach_Migration">
                                     <input type="radio" name="OurApproach" value="OurApproach - DO NOT INCLUDE - if applicable Web Services will migrate relevant existing custom content to the best of our abilities" /> DO NOT INCLUDE &ndash; if applicable Web Services will migrate relevant existing custom content to the best of our abilities
@@ -719,37 +934,43 @@
                     <!-- RJ What Makes Us Different Start -->
                     <div class="all">
                         <h2>What Makes Us Different:<span class="required"></span><img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> The purpose of this section is to describe your business&rsquo; unique value proposition and philosophy. </span></h2>
-                        <div class="noleftpad parentdivborder">
+                        <div class="parentdivborder">
                             <div>
                                 <label>
-                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_A collective of expertise dedicated to your financial success" /> A collective of expertise, dedicated to your financial success
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_A collective of expertise dedicated to your financial success" />
+                                    <a data-item="Diff1" data-toggle="modal" data-target="#myModal"> A collective of expertise, dedicated to your financial success</a>
                                 </label>
-                                <button type="button" data-item="Diff1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <br />
                                 <label>
-                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Global resources focused service tailored solutions" /> Global resources, focused service, tailored solutions
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Global resources focused service tailored solutions" />
+                                   <a data-item="Diff2" data-toggle="modal" data-target="#myModal"> Global resources, focused service, tailored solutions</a>
                                 </label>
-                                <button type="button" data-item="Diff2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <br />
                                 <label>
-                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Tailored service disciplined strategies committed guidance" /> Tailored service, disciplined strategies, committed guidance
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Tailored service disciplined strategies committed guidance" />
+                                    <a data-item="Diff3" data-toggle="modal" data-target="#myModal"> Tailored service, disciplined strategies, committed guidance</a>
                                 </label>
-                                <button type="button" data-item="Diff3" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <br />
                                 <label>
-                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Thoughtful service and tailored strategies with your needs at the center" /> Thoughtful service and tailored strategies, with your needs at the center
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_Thoughtful service and tailored strategies with your needs at the center" />
+                                    <a data-item="Diff4" data-toggle="modal" data-target="#myModal"> Thoughtful service and tailored strategies, with your needs at the center</a>
                                 </label>
-                                <button type="button" data-item="Diff4" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <br />
                                 <label>
-                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_An experienced team dedicated to your success" /> An experienced team, dedicated to your success
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_An experienced team dedicated to your success" />
+                                    <a data-item="Diff5" data-toggle="modal" data-target="#myModal"> An experienced team, dedicated to your success</a>
                                 </label>
-                                <button type="button" data-item="Diff5" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <br />
                                 <label>
-                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_An experienced team united behind your financial well-being" /> An experienced team, united behind your financial well-being
+                                    <input type="radio" name="WhatMakesUsDifferent" value="Difference_An experienced team united behind your financial well-being" />
+                                   <a data-item="Diff6" data-toggle="modal" data-target="#myModal"> An experienced team, united behind your financial well-being</a>
                                 </label>
-                                <button type="button" data-item="Diff6" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
+
                                 <label style="font-weight:normal; display:none;" class="WhatMakesUsDifferent_Migration">
                                     <input type="radio" name="WhatMakesUsDifferent" value="Difference - DO NOT INCLUDE - if applicable Web Services will migrate relevant existing custom content to the best of our abilities" /> DO NOT INCLUDE &ndash; if applicable Web Services will migrate relevant existing custom content to the best of our abilities
                                 </label>
@@ -764,17 +985,17 @@
                     <!-- RJ About Raymond James Start -->
                     <div class="all RJ">
                         <h2>About Raymond James:<span class="required"></span><img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /></h2>
-                        <div class="noleftpad parentdivborder">
+                        <div class="parentdivborder">
                             <div>
                                 <label>
-                                    <input type="radio" name="about" value="About Raymond James_Conservative pragmatic and proud of the way we do business" />&nbsp Conservative, pragmatic and proud of the way we do business
+                                    <input type="radio" name="about" value="About Raymond James_Conservative pragmatic and proud of the way we do business" />
+                                    <a data-item="AboutRJ1" data-toggle="modal" data-target="#myModal"> Conservative, pragmatic and proud of the way we do business</a>
                                 </label>
-                                <button type="button" data-item="AboutRJ1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label>
-                                    <input type="radio" name="about" value="About Raymond James_Raymond James: Our dedicated partner" />&nbsp Raymond James: Our dedicated partner
+                                    <input type="radio" name="about" value="About Raymond James_Raymond James: Our dedicated partner" />
+                                    <a data-item="AboutRJ2" data-toggle="modal" data-target="#myModal"> Raymond James: Our dedicated partner</a>
                                 </label>
-                                <button type="button" data-item="AboutRJ2" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
                                 <label style="font-weight:normal">
                                     <input type="radio" name="about" value="Do Not Include - RJFS Only" />&nbsp Do Not Include - RJFS Only
@@ -787,12 +1008,12 @@
                     <!-- RJ About Alex Brown Start -->
                     <div class="all AlexBrown">
                         <h2>About Alex Brown:<span class="required"></span><img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /></h2>
-                        <div class="noleftpad parentdivborder">
+                        <div class="parentdivborder">
                             <div>
                                 <label>
-                                    <input type="radio" name="about" value="AboutAB1 - Alex Brown: a legacy of uncompromising service" checked/>&nbsp Alex. Brown: a legacy of uncompromising service
+                                    <input type="radio" name="about" value="AboutAB1 - Alex Brown: a legacy of uncompromising service" checked/>
+                                    <a data-item="AboutAB1" data-toggle="modal" data-target="#myModal"> Alex. Brown: a legacy of uncompromising service</a>
                                 </label>
-                                <button type="button" data-item="AboutAB1" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs">Full Text</button>
                                 <br />
 
                             </div>
@@ -810,6 +1031,7 @@
                                 InitFilter();
 
                                 //]]>
+
                             </script>
                         </div>
                         <p>
@@ -820,17 +1042,17 @@
                 </form>
 
                 <script type="text/javascript">
-                    $(document).ready(function () {
+                    $(document).ready(function() {
                         $('[data-toggle="tooltip"]').tooltip();
 
                         //theme display function    
-                        $(".theme").change(function () {
+                        $(".theme").change(function() {
                             selectedtheme = $(".theme").val();
                             themename_friendly = $(".theme").val();
                             selectedtheme = selectedtheme.replace(" ", "%20");
 
                             //array of all themes
-                            var theme_array = ["Atlanta", "Baltimore", "Boston", "Business Setting", "California Coast", "Chicago", "Dallas"];
+                            var theme_array = ["Atlanta", "Baltimore", "Birmingham", "Boston", "Business Setting", "California Coast", "Chicago", "Dallas", "Denver", "Detroit", "Diverse People", "Financial", "Florida Coast", "Golf", "Greenwich", "Houston", "Interpersonal", "Jacksonville", "Journey", "Los Angeles", "Memphis", "Miami", "MidWest", "Nautical", "New England", "New Orleans", "New York", "Palm Beach", "People", "Philadelphia", "San Francisco", "Seattle", "Smokies Appalachian", "St Louis", "Southwest", "Tampa", "Tennessee", "Washington", "Winston Salem"];
                             var found = theme_array.indexOf(themename_friendly);
                             var pdf_link = "";
 
@@ -848,7 +1070,10 @@
                                 $(".imagedisplay").empty().css("height", "200px").append('<label style="color:red">You will need to select a theme</label>');
                             }
                         });
+
+
                     });
+
                 </script>
 
                 <p id="pContact">For questions or comments about this form please contact <a href="mailto:webservices@raymondjames.com?subject=Name of form" id="aContact">Web Services</a> at ext. 75423</p>
