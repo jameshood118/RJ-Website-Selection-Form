@@ -1,17 +1,17 @@
 <%@  language="vbScript" %>
     <% Option Explicit %>
         <%
-Dim sMsg, CurrDateTime, dataEmail, i, cbLifeEvent, cbServices, cbAbout, siteType, group, homepage, intro, team, cbOurClientsCs, cbClientType, cityTheme, region, ServicesForm, ServicesArray, ClientsForm, ClientsArray, brand, AboutText
+Dim sMsg, CurrDateTime, dataEmail, i,x,v, cbLifeEvent, cbServices, cbAbout, siteType, group, homepage, intro, team, cbOurClientsCs, cbClientType, cityTheme, region, ServicesForm, ServicesArray, ClientsForm, ClientsArray, brand, AboutText, NicheShow, TeamContact
 
 siteType = CStr(Request("type"))
 group = CStr(Request("group"))
            
 if group = "AlexBrown" then
-brand = "Alex Brown"
-AboutText = "About Alex Brown: <br /><b>" & Request.Form("about") & "</b><br /><br />"
+           brand = "Alex Brown"
+           AboutText = "About Alex Brown: <br /><b>" & Request.Form("about") & "</b><br /><br />"
 else
-brand = "Raymond James"
-AboutText = "About Raymond James: <br /><b>" & Request.Form("about") & "</b><br /><br />"
+           brand = "Raymond James"
+           AboutText = "About Raymond James: <br /><b>" & Request.Form("about") & "</b><br /><br />"
 End If
 
 ServicesForm = Request.Form("services")
@@ -20,13 +20,15 @@ ServicesArray = split(ServicesForm,",")
 For i = LBound(ServicesArray) to UBound(ServicesArray)
     cbServices = cbServices + ServicesArray(i) + "<br />"
 Next
+        
+For i = 1 to 100
+           If Request.Form("clientType"&i) <> "" then
+            If Request.Form("Niche"&i) = "Yes" Then NicheShow = " - Show in Niche Tile? - <b>Yes</b>" else NicheShow = ""
+                cbClientType = cbClientType + "<b>" & Request.Form("clientType"&i) & "</b>" & NicheShow & "<br/>"
+        End If
+    Next
 
-ClientsForm = Request.Form("clientType")
-ClientsArray = split(ClientsForm,",")
-
-For i = LBound(ClientsArray) to UBound(ClientsArray)
-    cbClientType = cbClientType + ClientsArray(i) + "<br />"
-Next
+           
  
 Dim Number, NumberData
 Number = Replace(Request.Form("Number"), ",", "")
@@ -46,9 +48,10 @@ Dim Billing
     team = ""
         End If
                        
-    For i = 1 to 100
-        If Request.Form("TeamMember" & i) <> "" Then
-            team = team & "Team " &i & ": <b>" & Request.Form("TeamMember" & i) & "</b>, " & Request.Form("TeamMember"& i &"Title") & " - Delegate? - " & Request.Form("TeamMember"& i &"Delegate") & "<br/>"
+    For v = 1 to 100
+        If Request.Form("TeamMember" & v) <> "" Then
+        If Request.Form("TeamMember"& v &"Contact") = "Yes" Then TeamContact = " - Primary Contact? - <b>Yes</b>" else TeamContact = ""
+            team = team & "Team " &v & ": <b>" & Request.Form("TeamMember" & v) & "</b>, " & Request.Form("TeamMember"& v &"Title") & " - Delegate? - <b>" & Request.Form("TeamMember"& v &"Delegate") & "</b>" & TeamContact & "<br/>"
         Else 
             Exit For
         End If
@@ -58,7 +61,7 @@ Dim Billing
     
  CurrDateTime = Now()	
 	
-'Build E-mail message body
+'Build E-mail message bodies dataEmail is for data collection and is pipe delimited
 	If siteType = "new" And group = "transitioning" Then
 		'Secondary Email body for data archiving
          dataEmail = CurrDateTime & "|" &_
@@ -97,41 +100,104 @@ Dim Billing
          Request.Form("WhatMakesUsDifferent") & "|" &_ 
          Request.Form("about")
 
-sMsg =	"<p><html>" & vbCrLf &_
+        sMsg =	"<p><html>" & vbCrLf &_
+        "Domain: <b>" & brand &"</b><br/>" & vbCrLf &_       
+        "Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
+        "Requested Site Address: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
+        "Start Date: <b>" & Request.Form("newStartDt") & "</b><br />" & vbCrLf &_
+        "Do you currently own a custom domain: <b>" & Request.Form("domain") & "</b><br />" & vbCrLf &_
+        "Domain Name: <b>" & Request.Form("domainName") & "</b><br />" & vbCrLf &_
+        "Template and Color: <b>" & Request.Form("layout") & "</b><br />" & vbCrLf &_
+        "Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_
+        "Marketing consultant: <b>" & Request.Form("currentConsultant") & "</b><br />" & vbCrLf &_
+        "Transition consultant: <b>" & Request.Form("transitionConsultant") & "</b><br />" & vbCrLf &_
+        "Primary Advisor Name: <b>" & Request.Form("PrimaryName") & "</b><br />" & vbCrLf &_
+        "Primary Advisor Email: <b>" & Request.Form("email") & "</b><br />" & vbCrLf &_
+        "Address 1: <b>" & Request.Form("mailingAddress1") & "</b><br />" & vbCrLf &_
+        "Address 2: <b>" & Request.Form("mailingAddress2") & "</b><br />" & vbCrLf &_
+        "City: <b>" & Request.Form("city") & "</b><br />" & vbCrLf &_
+        "State: <b>" & Request.Form("state") & "</b><br />" & vbCrLf &_
+        "Zip code: <b>" & Request.Form("zip") & "</b><br />" & vbCrLf &_
+        "Phone 1: <b>" & Request.Form("phone1") & "</b><br />" & vbCrLf &_
+        "Phone 2: <b>" & Request.Form("phone2") & "</b><br />" & vbCrLf &_
+        "Fax: <b>" & Request.Form("fax") & "</b><br /><br />" & vbCrLf &_
+        Billing &_
+        "Support Package: <b>" & Request.Form("supportPackage") & "</b><br />" & vbCrLf &_
+        "Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
+        team & "<br />" & vbCrLf &_
+        "Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
+        "Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
+        "What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
+        AboutText &_
+        "Our Clients: <br />" & cbClientType & "<br />" & vbCrLf &_
+        "Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
+        "</p>" & vbCrLf &_
+        "</html>"
+    Else If siteType = "sc7" Then
+              
+     dataEmail = CurrDateTime & "|" &_
+     siteType & "|" &_ 
+     group & "|" &_
+     "|" &_
+     "|" &_ 
+     Request.Form("PrimaryName") & "|" &_ 
+     Request.Form("email") & "|" &_
+     "|" &_
+     "|" &_
+     "|" &_
+     "|" &_
+     "|" &_
+     "|" &_
+     "|" &_
+     "|" &_
+     Request.Form("FaNum") & "|" &_ 
+     Request.Form("Branch") & "|" &_ 
+     Request.Form("Affiliation") & "|" &_ 
+     Request.Form("ApprovedDBA") & "|" &_
+     "|" &_
+     "|" &_
+     "|" &_ 
+     Request.Form("ExistingSite") & "|" &_ 
+     team & "|" &_ 
+     Request.Form("billing") & "|" &_ 
+     NumberData & "|" &_ 
+     Request.Form("supportPackage") & "|" &_ 
+     Request.Form("layout") & "|" &_ 
+     Request.Form("theme") & "|" &_ 
+     Request.Form("HomePage_Intro") & "|" &_ 
+     Request.Form("HomePage_Quote") & "|" &_ 
+     cbClientType & "|" &_ 
+     cbServices & "|" &_ 
+     Request.Form("OurApproach") & "|" &_ 
+     Request.Form("WhatMakesUsDifferent") & "|" &_ 
+     Request.Form("about")
+     
+        sMsg =	"<html><p>" & vbCrLf &_
 "Domain: <b>" & brand &"</b><br/>" & vbCrLf &_       
 "Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
-"Requested Site Address: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
-"Start Date: <b>" & Request.Form("newStartDt") & "</b><br />" & vbCrLf &_
-"Do you currently own a custom domain: <b>" & Request.Form("domain") & "</b><br />" & vbCrLf &_
-"Domain Name: <b>" & Request.Form("domainName") & "</b><br />" & vbCrLf &_
+"Existing Site: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
 "Template and Color: <b>" & Request.Form("layout") & "</b><br />" & vbCrLf &_
-"Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_
-"Marketing consultant: <b>" & Request.Form("currentConsultant") & "</b><br />" & vbCrLf &_
-"Transition consultant: <b>" & Request.Form("transitionConsultant") & "</b><br />" & vbCrLf &_
+"Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_        
 "Primary Advisor Name: <b>" & Request.Form("PrimaryName") & "</b><br />" & vbCrLf &_
 "Primary Advisor Email: <b>" & Request.Form("email") & "</b><br />" & vbCrLf &_
-"Address 1: <b>" & Request.Form("mailingAddress1") & "</b><br />" & vbCrLf &_
-"Address 2: <b>" & Request.Form("mailingAddress2") & "</b><br />" & vbCrLf &_
-"City: <b>" & Request.Form("city") & "</b><br />" & vbCrLf &_
-"State: <b>" & Request.Form("state") & "</b><br />" & vbCrLf &_
-"Zip code: <b>" & Request.Form("zip") & "</b><br />" & vbCrLf &_
-"Phone 1: <b>" & Request.Form("phone1") & "</b><br />" & vbCrLf &_
-"Phone 2: <b>" & Request.Form("phone2") & "</b><br />" & vbCrLf &_
-"Fax: <b>" & Request.Form("fax") & "</b><br /><br />" & vbCrLf &_
+"Primary Advisor FA Number: <b>" & Request.Form("FaNum") & "</b><br />" & vbCrLf &_
 Billing &_
 "Support Package: <b>" & Request.Form("supportPackage") & "</b><br />" & vbCrLf &_
+"Branch Number: <b>" & Request.Form("Branch") & "</b><br />" & vbCrLf &_
 "Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
 team & "<br />" & vbCrLf &_
 "Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
+"Homepage Quote: <br /><b>" & Request.Form("HomePage_Quote") & "</b><br /><br />" & vbCrLf &_
 "Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
 "What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
 AboutText &_
-"Our Clients: <br /><b>" & cbClientType & "</b><br />" & vbCrLf &_
+"Our Clients:  <br />" & cbClientType & "<br />" & vbCrLf &_
 "Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
 "</p>" & vbCrLf &_
 "</html>"
-    Else
-              
+
+    Else 
+    
      dataEmail = CurrDateTime & "|" &_
      siteType & "|" &_ 
      group & "|" &_
@@ -186,13 +252,14 @@ team & "<br />" & vbCrLf &_
 "Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
 "What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
 AboutText &_
-"Our Clients:  <br /><b>" & cbClientType & "</b><br />" & vbCrLf &_
+"Our Clients:  <br />" & cbClientType & "<br />" & vbCrLf &_
 "Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
 "</p>" & vbCrLf &_
 "</html>"
 
-
 	End If
+    End If
+
 
 '**** EMAIL start *****
 
@@ -236,28 +303,47 @@ If Request.Form("submitBtn") = "Submit" Then
     'build subject line 
     If siteType = "new" And  group = "transitioning" Then
         subject = "New Website Form "& chr(45) &" Transitioning"
+        subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "new" And  group = "rjfs_rja" Then 
         subject = "New Website Form "& chr(45) &" RJA + RJFS"
+    subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "new" And  group = "iad_corr" Then 
         subject = "New Website Form "& chr(45) &" IAD + CORR"
+        subject2 = "Website Selection Form Data"
+        recipient(0) = "Web Services"
+        recipient(1) = "webservices@raymondjames.com"
+    ElseIf siteType = "new" Then 
+        subject = "New Website Form "
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "sc7" Then
-        subject = "Advisor Website Migration (SC7) Form "& chr(45) & " " & group 
+        subject = "Advisor Website Migration (SC7) Form "& chr(45) & " " & group
+        subject2 = "SC7 Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
+        subject4 = Request.Form("email")
+        recipient4(0) = "Trello Migrations Board"
+        recipient4(1) = "raymondjameswebservices+n5agttpfuirk3vulbghv@boards.trello.com"
     ElseIf siteType = "csfree" Then
-        subject = "Advisor Website Migration (CSFREE) Form "& chr(45) & " " & group 
+        subject = "Advisor Website Migration (CSFREE) Form "& chr(45) & " " & group
+        subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
+        subject4 = Request.Form("email")
+        recipient4(0) = "Trello Migrations Board"
+        recipient4(1) = "raymondjameswebservices+vymptokfhfgqikukorym@boards.trello.com"
     Else
-        subject = "Advisor Website Order Form "& chr(45) & " " & group 
+        subject = "Advisor Website Migration "& chr(45) & " " & group 
+        subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
+        subject4 = Request.Form("email")
+        recipient4(0) = "Trello Migrations Board"
+        recipient4(1) = "raymondjameswebservices+vymptokfhfgqikukorym@boards.trello.com"
 
 	End If
     'If boolDev Then
@@ -289,7 +375,7 @@ If Request.Form("submitBtn") = "Submit" Then
 	'Release the object to free up system resources.
 	Set objMailer = Nothing
 End If
-'**** Secondary EMAIL start *****            
+'**** Data EMAIL start *****            
 'Check To Make sure the Submit Button was used and not posting from different location
 If Request.Form("submitBtn") = "Submit" Then
     Set objMailer2 = CreateObject("MailRemote.Mailer")        
@@ -303,7 +389,6 @@ If Request.Form("submitBtn") = "Submit" Then
 		objMailer2.FromAddress = "websitemigration@raymondjames.com"
 	End If
 
-    subject2 = "Website Selection Form Data"
     recipient2(0) = "Raymond James Enhanced Advisor Websites"
     recipient2(1) = "websitemigration@raymondjames.com"
 
@@ -399,10 +484,6 @@ If Request.Form("submitBtn") = "Submit" Then
 		objMailer4.FromAddress = "webservices@raymondjames.com"
 	End If
 
-    subject4 = Request.Form("email")
-    recipient4(0) = "Trello Migrations Board"
-    recipient4(1) = "jameshood19+od2mxeirru3l61qjq0ij@boards.trello.com"
-
     objMailer4.AddRecipient CStr(recipient4(0)), CStr(recipient4(1))    
     objMailer4.Subject = subject4    
 
@@ -483,6 +564,7 @@ End If
                         width: 15px;
                         max-height: 100px;
                     }
+
                 </style>
                 <!-- top styles and scripts begin -->
                 <link href="style2.css" rel="Stylesheet" />
@@ -521,6 +603,7 @@ End If
                     tbody tr td {
                         padding: 10px;
                     }
+
                 </style>
 
                 <% 
@@ -529,35 +612,39 @@ End If
                     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
                     <script type="text/javascript" src="/js_beg07.js"></script>
                     <script type="text/javascript">
-                        window.onload = function () {
+                        window.onload = function() {
                             setValues();
                         }
 
                         //set values for the form based on group and type. 
                         function setValues() {
                             switch (type) {
-                            case "new":
-                                if (group == "transitioning") {
-                                    $("title").html("Raymond James Transitioning Advisor Website Order Form");
-                                    $("#mainTitle").html("Raymond James Transitioning Advisor Website Order Form");
-                                } else if (group == "rja_rjfs") {
-                                    $("title").html("Advisor Website Order Form");
-                                    $("#mainTitle").html("Advisor Website Order Form");
-                                } else {
-                                    $("title").html("Advisor Website Order Form");
-                                    $("#mainTitle").html("Advisor Website Order Form");
-                                }
-                                break;
+                                case "new":
+                                    if (group == "transitioning") {
+                                        $("title").html("Raymond James Transitioning Advisor Website Order Form");
+                                        $("#mainTitle").html("Raymond James Transitioning Advisor Website Order Form");
+                                    } else if (group == "rja_rjfs") {
+                                        $("title").html("Advisor Website Order Form");
+                                        $("#mainTitle").html("Advisor Website Order Form");
+                                    } else {
+                                        $("title").html("Advisor Website Order Form");
+                                        $("#mainTitle").html("Advisor Website Order Form");
+                                    }
+                                    break;
                                 case "SC7":
-                                $("title").html("Advisor Website Migration (SC7) Form");
-                                $("#mainTitle").html("Advisor Website Migration (SC7) Form");
-                                break;
-                            default:
-                                $("title").html("Advisor Website Order Form");
-                                $("#mainTitle").html("Advisor Website Order Form");
-                                break;
+                                    $("title").html("Advisor Website Migration (SC7) Form");
+                                    $("#mainTitle").html("Advisor Website Migration (SC7) Form");
+                                    break;
+                                default:
+                                    $("title").html("Advisor Website Order Form");
+                                    $("#mainTitle").html("Advisor Website Order Form");
+                                    break;
                             }
+                            var d = new Date();
+                            var CopyrightYear = d.getFullYear();
+                            $('#copyright').html('<span id="ratePageDis"><img src="/images/build07/clear.gif" id="text_size_lg" width="16" height="15" alt="" /></span><span id="textSizer"></span><br /> &copy; ' + CopyrightYear + ' Raymond James Financial, Inc. All rights reserved.');
                         }
+
                     </script>
                     <!-- top styles and scripts end -->
 
@@ -607,8 +694,7 @@ Else
                                                 <p>We apologize for this issue. Please use this link to e-mail us directly.</p>
                                                 <p><a href="mailto:webservices@raymondjames.com">webservices@raymondjames.com</a></p>
                                     </div>
-                                    <%
-End If
+                                    <% End If
 %>
 
 
@@ -631,16 +717,11 @@ End If
                         <tr id="footer_row">
                             <td colspan="3" valign="bottom" id="footer_cell">
 
-                                <div id="copyright">
-                                    <span id="ratePageDis">
-                            <img src="/images/build07/clear.gif" id="text_size_lg" width="16" height="15" alt="" /></span><span id="textSizer"></span>
-                                    <br /> &copy; 2015 Raymond James Financial, Inc. All rights reserved.
-                                </div>
+                                <div id="copyright"></div>
 
                             </td>
                         </tr>
                     </table>
-
                     <div id="bd_disc">Raymond James &amp; Associates, Inc. member <a href="http://www.nyse.com" target="_blank" style="">New York Stock Exchange</a> / <a href="http://www.sipc.org" target="_blank">SIPC</a> and Raymond James Financial Services, Inc. member <a href="http://www.finra.org" target="_blank">FINRA</a> / <a href="http://www.sipc.org" target="_blank">SIPC</a> are subsidiaries of Raymond James Financial, Inc.</div>
 
                     <!-- footer end -->
@@ -654,6 +735,7 @@ End If
                         var horiz_bkg = ""
 
                         -->
+
                     </script>
 
                     <!-- <script type="text/javascript" src="/js_end07.js"></script> -->
