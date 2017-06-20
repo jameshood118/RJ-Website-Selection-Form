@@ -2,11 +2,11 @@ var brand;
 var selectedtheme;
 var type;
 var group;
+
+
 $(function () {
-
-
+    //Set Initial value of delegates to no
     $(".teamdelegate").val("No");
-
 
     $("input:radio[name=billing]").click(function () {
         billingSelection();
@@ -15,6 +15,7 @@ $(function () {
     $("#newStartDate").datepicker();
     $('.phone').mask('000-000-0000');
     $('.zip').mask('00000-0000');
+
     //The classes drive what the user will see depending on the site type: transitioning, current, csfree, cspaid, premium
     //all: all site types will have elements with this class. 
 
@@ -34,70 +35,107 @@ $(function () {
     group = getQueryVar("group");
 
 
+    //Live Validation for Niche Tiles
+    if (type == "sc7") {
+        $('input.NicheSelect[type="checkbox"]').click(function (e) {
+            var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
+            if (num_checked > 6) {
+                return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
+                $(e.target).prop('checked', false);
+            }
+        });
+    }
+    //Group Validation, do not show form for anything but group 1, 2, 3 or 99 for SC7 form
+    if (type == "sc7") {
+        switch (group) {
+            case "group1":
+                break;
+            case "group2":
+                break;
+            case "group3":
+                break;
+            case "group99":
+                break;
+            default:
+                $("#frmName").empty();
+                break;
+        }
+
+        $(".clientType").change(function () {
+           $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
+        });
+
+    }
+
     $("#frmName").attr("action", "process2.asp?" + "type=" + type + "&group=" + group);
 
     //Remove all elements that do not have the relavent css class. 
     //Removing to assist with validation rather than having to determine which elements are relavent.
     switch (group) {
-    case "AlexBrown":
-        $(".RJ").remove();
-        brand = "Alex Brown";
-        break;
+        case "AlexBrown":
+            $(".RJ").remove();
+            brand = "Alex Brown";
+            break;
 
-    default:
-        $(".AlexBrown").remove();
-        brand = "Raymond James";
-        break;
+        default:
+            $(".AlexBrown").remove();
+            brand = "Raymond James";
+            break;
     }
-
+    //Do the thing! Show specific elements based on the group type, also hides specific things too
     switch (type) {
-    case "new":
-        if (group == "transitioning") {
-            $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
-            $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
-            $(".SetUpFee").empty().append("The cost to setup the website is $250.");
-        } else {
-            //removes everything except all and current. Current are RJA/RJFS and IAD/CORR
-            $("#frmName").find(":not(.current, .all)").remove().end().hide();
-            $("h1")[0].innerText = "New Website Setup Form";
-        }
-        $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-        $(".OurApproach_Migration").remove();
-        $(".OurApproach_New").show();
-        $(".WhatMakesUsDifferent_Migration").remove();
-        $(".WhatMakesUsDifferent_New").show();
-        break;
+        case "new":
+            if (group == "transitioning") {
+                $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
+                $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
+                document.title = "New Website Setup Form (Transitioning Advisors)";
+                $(".SetUpFee").empty().append("The cost to setup the website is $350.");
+            } else {
+                //removes everything except all and current. Current are RJA/RJFS and IAD/CORR
+                $("#frmName").find(":not(.current, .all)").remove().end().hide();
+                $("h1")[0].innerText = "New Website Setup Form";
+                document.title = "New Website Setup Form";
+            }
+            $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".OurApproach_Migration").remove();
+            $(".OurApproach_New").show();
+            $(".WhatMakesUsDifferent_Migration").remove();
+            $(".WhatMakesUsDifferent_New").show();
+            break;
         case "csfree":
-        $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
-        $("#disclosure").remove();
-        $("h1")[0].innerText = "Advisor Website Migration (SC7) Form";
-        $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Order Form";
+            document.title = "Advisor Website Order Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
             $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
-            $(".csfreebronze").empty().append('&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
+            $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
             $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
-        break;
+            break;
         case "sc7":
-        $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
-        $("#disclosure").remove();
-        $("h1")[0].innerText = "Advisor Website Migration (SC7) Form";
-        $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-        $(".csfreeHide").hide();
-        $(".OurApproach_Migration").show();
-        $(".OurApproach_New").remove();
-        $(".WhatMakesUsDifferent_Migration").show();
-        $(".WhatMakesUsDifferent_New").remove();
-        break;
-    default:
-        $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
-        $("#disclosure").remove();
-        $("h1")[0].innerText = "Advisor Website Order Form";
-        $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-        $(".csfreeHide").hide();
-        $(".OurApproach_Migration").show();
-        $(".OurApproach_New").remove();
-        $(".WhatMakesUsDifferent_Migration").show();
-        $(".WhatMakesUsDifferent_New").remove();
-        break;
+            $("#frmName").find(":not(.sc7, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Migration (SC7) Form";
+            document.title = "Advisor Website Migration (SC7) Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=SC7 Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreeHide").hide();
+            $(".OurApproach_Migration").show();
+            $(".OurApproach_New").remove();
+            $(".WhatMakesUsDifferent_Migration").show();
+            $(".WhatMakesUsDifferent_New").remove();
+            break;
+        default:
+            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Order Form";
+            document.title = "Advisor Website Order Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreeHide").hide();
+            $(".OurApproach_Migration").show();
+            $(".OurApproach_New").remove();
+            $(".WhatMakesUsDifferent_Migration").show();
+            $(".WhatMakesUsDifferent_New").remove();
+            break;
     }
 });
 
@@ -113,13 +151,13 @@ function billingSelection() {
 
     switch (selectedBilling.val()) {
 
-    case "Split FA Blotter":
-        $(".spanSplitFaBlotterNumber").empty().append(' - Split FA number <input type="text" name="Number" class="Number textField requiredField form-control"/>');
-        break;
+        case "Split FA Blotter":
+            $(".spanSplitFaBlotterNumber").empty().append(' - Split FA number <input type="text" name="Number" class="Number textField requiredField form-control"/>');
+            break;
 
-    default:
-        $(".spanSplitFaBlotterNumber").empty();
-        break;
+        default:
+            $(".spanSplitFaBlotterNumber").empty();
+            break;
 
     }
 
@@ -148,11 +186,11 @@ function addTeam(elem, e) {
     e.preventDefault();
 
     //get the number of textboxes that exist.
-    var cnt = $(".teamparent").children().length + 1;
+    var cnt = $(".TeamContainer").children().length + 1;
 
-    var html = "<div class='all'><label>Team Member</label> <input type='text' name='TeamMember" + cnt + "' class='textField form-control' /><label>Approved Title</label><input type='text' name='TeamMember" + cnt + "Title' class='textField form-control' /><label class='delegatelabel'>&nbsp;Delegate?</label> <select name='TeamMember" + cnt + "Delegate' style='width:100px' class='form-control teamdelegate'><option></option><option value='Yes'>Yes</option><option value='No' selected>No</option></select></div>";
+    var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select><input type='radio' name='TeamMember" + cnt + "Contact' value='1' class='TeamContact' /></div>";
 
-    $("div.teamparent div:last-child").after(html);
+    $("div.TeamContainer div:last-child").after(html);
 }
 
 
@@ -162,10 +200,9 @@ function validateForm(objFrm) {
         return setFild("Please select an image theme.", $(".theme"));
     } else {}
 
-    if ($("[name='.theme']").val() === "") {
-        return setFild("Please tell us where to bill to.", $("[name='.theme']"));
+    if ($(".Number").val() === "") {
+        return setFild("Please tell us what split billing number to use.", $(".Number"));
     } else {}
-
     //validates standalone radio button. 
     if (!validateRadio("[name='needConsultant']"))
         return setFild("Please tell us if you would like to discuss your site with a marketing consultant.", $("[name='needConsultant']"));
@@ -179,8 +216,19 @@ function validateForm(objFrm) {
     if (!validateRadio("[name='HomePage_Intro']"))
         return setFild("Please select the introduction you would like included in your site.", $("[name='HomePage_Intro']"));
 
-    if (!validateCheckbox("[name='clientType']"))
-        return setFild("Please select the client groups you would like included in your site.", $("[name='clientType']"));
+    if (type == "sc7") {
+        if (!validateRadio("[name='HomePage_Quote']"))
+            return setFild("Please select a home page quote", $("[name='HomePage_Quote']"));
+    } else {}
+
+    if (type == "sc7") {
+        if ($('input.NicheSelect[type="checkbox"]:checked').length <= "6") {} else {
+            return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
+        }
+    }
+
+    if (!validateCheckbox(".clientType"))
+        return setFild("Please select the client groups you would like included in your site.", $(".clientType"));
 
     if (!validateCheckbox("[name='services']"))
         return setFild("Please select the services you would like included in your site.", $("[name='services']"));
@@ -192,10 +240,10 @@ function validateForm(objFrm) {
         return setFild("Please select the pre-written message you would like included on the \"What makes us different\" landing page.", $("[name='WhatMakesUsDifferent']"));
 
     if (!validateRadio("[name='about']"))
-        return setFild("Please select the pre-written message you would like included on the 'About " + brand + "' landing page.",$("[name='about']"));
+        return setFild("Please select the pre-written message you would like included on the 'About " + brand + "' landing page.", $("[name='about']"));
 
     if (!validateRadio("[name='supportPackage']"))
-        return setFild("Please select a support package.",$("[name='supportPackage']"));
+        return setFild("Please select a support package.", $("[name='supportPackage']"));
 
 
     if (!validateEmail(objFrm.email.value)) {
@@ -267,40 +315,5 @@ function getQueryVar(variable) {
         if (pair[0] == variable) {
             return pair[1];
         }
-    }
-}
-
-function getGroupName(group) {
-    switch (group) {
-    case "group1":
-        return "Group 1";
-        break;
-    case "group2":
-        return "Group 2";
-        break;
-    case "group3":
-        return "Group 3";
-        break;
-    case "group4":
-        return "Group 4";
-        break;
-    case "group5":
-        return "Group 5";
-        break;
-    case "transitioning":
-        return "Transitioning";
-        break;
-    case "rja_rjfs":
-        return "RJA/RJFS";
-        break;
-    case "iad_corr":
-        return "IAD/CORR";
-        break;
-    case "AlexBrown":
-        return "Alex Brown";
-        break;
-    default:
-        return "";
-        break;
     }
 }
