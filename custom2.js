@@ -2,6 +2,9 @@ var brand;
 var selectedtheme;
 var type;
 var group;
+var url;
+var clients;
+
 
 
 $(function () {
@@ -26,6 +29,7 @@ $(function () {
     addCSSClassRecursively($(".transitioning"), "transitioning");
     addCSSClassRecursively($(".current"), "current");
     addCSSClassRecursively($(".csfree"), "csfree");
+    addCSSClassRecursively($(".rjfsfree"), "rjfsfree");
     addCSSClassRecursively($(".cspaid"), "cspaid");
     addCSSClassRecursively($(".premium"), "premium");
     addCSSClassRecursively($(".AlexBrown"), "AlexBrown");
@@ -35,42 +39,9 @@ $(function () {
     group = getQueryVar("group");
 
 
-    //Live Validation for Niche Tiles
-    if (type == "sc7") {
-        $('input.NicheSelect[type="checkbox"]').click(function (e) {
-            var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
-            if (num_checked > 6) {
-                return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
-                $(e.target).prop('checked', false);
-            }
-        });
-    }
-    //Group Validation, do not show form for anything but group 1, 2, 3 or 99 for SC7 form
-    if (type == "sc7") {
-        switch (group) {
-            case "group1":
-                break;
-            case "group2":
-                break;
-            case "group3":
-                break;
-            case "group99":
-                break;
-            default:
-                $("#frmName").empty();
-                break;
-        }
-
-        $(".clientType").change(function () {
-           $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
-        });
-
-    }
 
     $("#frmName").attr("action", "process2.asp?" + "type=" + type + "&group=" + group);
 
-    //Remove all elements that do not have the relavent css class. 
-    //Removing to assist with validation rather than having to determine which elements are relavent.
     switch (group) {
         case "AlexBrown":
             $(".RJ").remove();
@@ -82,6 +53,8 @@ $(function () {
             brand = "Raymond James";
             break;
     }
+    //Remove all elements that do not have the relavent css class. 
+    //Removing to assist with validation rather than having to determine which elements are relavent.
     //Do the thing! Show specific elements based on the group type, also hides specific things too
     switch (type) {
         case "new":
@@ -94,13 +67,14 @@ $(function () {
                 //removes everything except all and current. Current are RJA/RJFS and IAD/CORR
                 $("#frmName").find(":not(.current, .all)").remove().end().hide();
                 $("h1")[0].innerText = "New Website Setup Form";
-                document.title = "New Website Setup Form";
+                document.title = "New Website Setup Form";   
             }
             $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
             $(".OurApproach_Migration").remove();
             $(".OurApproach_New").show();
             $(".WhatMakesUsDifferent_Migration").remove();
             $(".WhatMakesUsDifferent_New").show();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
             break;
         case "csfree":
             $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
@@ -111,6 +85,7 @@ $(function () {
             $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
             $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
             $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
             break;
         case "sc7":
             $("#frmName").find(":not(.sc7, .all)").remove();
@@ -123,6 +98,15 @@ $(function () {
             $(".OurApproach_New").remove();
             $(".WhatMakesUsDifferent_Migration").show();
             $(".WhatMakesUsDifferent_New").remove();
+            $(".PrimContact").show();
+            $(".TeamContact").show();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            //Support for SC7 Free sites, this adds the same options as the CSfree options, but keeps it within the SC7 data set
+            if (group == "rjfsfree") {
+                $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
+                $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
+                $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
+            } else {}
             break;
         default:
             $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
@@ -135,7 +119,47 @@ $(function () {
             $(".OurApproach_New").remove();
             $(".WhatMakesUsDifferent_Migration").show();
             $(".WhatMakesUsDifferent_New").remove();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
             break;
+    }
+    
+        //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
+    if (type == "sc7") {
+        $('input.NicheSelect[type="checkbox"]').click(function (e) {
+            var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
+            if (num_checked > 6) {
+                return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
+                $(e.target).prop('checked', false);
+            }
+        });
+        //Group Validation, do not show form for anything but group 1, 2, 3 or 99 for SC7 form
+        switch (group) {
+            case "group1":
+                break;
+            case "group2":
+                break;
+            case "group3":
+                break;
+            case "group99":
+                break;
+            case "rjfsfree":
+                break;
+            default:
+                //Show an "Error" if they tried to go to anything except the preapproved SC7 groups, this validation only applies to SC7 forms
+                document.title = "This is an error page";
+                $("h1")[0].innerText = "This is an error page";
+                $("#frmName").empty();
+                $("#pContact").html("You have reached this page in error, please contact <a href='mailto:webservices@raymondjames.com' id='aContact'>Web Services</a> at ext. 75423");
+                break;
+        }
+        //Show the niche options for client types
+        $(".clientType").change(function () {
+            $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
+        });
+        //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
+        $('input.TeamContact[type="checkbox"]').click(function (e) {
+            $('.TeamContact').not(this).attr('checked', false);
+        });
     }
 });
 
@@ -150,11 +174,9 @@ function billingSelection() {
 
 
     switch (selectedBilling.val()) {
-
         case "Split FA Blotter":
             $(".spanSplitFaBlotterNumber").empty().append(' - Split FA number <input type="text" name="Number" class="Number textField requiredField form-control"/>');
             break;
-
         default:
             $(".spanSplitFaBlotterNumber").empty();
             break;
@@ -187,10 +209,21 @@ function addTeam(elem, e) {
 
     //get the number of textboxes that exist.
     var cnt = $(".TeamContainer").children().length + 1;
+    
+    //If form is SC7 adds primary contact, otherwise doesnt
+    if (type == "sc7") {
+        var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select><input type='checkbox' name='TeamMember" + cnt + "Contact' value='Yes' class='TeamContact' /></div>";
 
-    var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select><input type='radio' name='TeamMember" + cnt + "Contact' value='1' class='TeamContact' /></div>";
+        $("div.TeamContainer div:last-child").after(html);
 
-    $("div.TeamContainer div:last-child").after(html);
+        $('input.TeamContact[type="checkbox"]').click(function (e) {
+            $('.TeamContact').not(this).attr('checked', false);
+        });
+    } else {
+        var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select></div>";
+
+        $("div.TeamContainer div:last-child").after(html);
+    }
 }
 
 
