@@ -112,145 +112,243 @@ $('#myModal').on('show.bs.modal', function (event) {
     var OurApproach6_lead = "<p>Truly integrated wealth management</p>";
     var OurApproach6_description = "<p>The complexities that come with significant wealth call for far-reaching care that frees you from the burdensome day-to-day management of your investments. Working closely with a wealth manager experienced in serving distinctive individuals, families and businesses enables you to spend your time where it matters most.</p><p>We tailor our full range of wealth management services to wherever you are in life and your goals at each stage. Through a process that is detailed and time-tested, we go to great lengths to provide a holistic approach of custom financial planning, investment management, charitable giving and tax and estate planning strategies specifically for you.</p><p>As your personal chief financial officers, we coordinate with your other trusted advisors to get a detailed look at every aspect of your life to ensure a holistic approach to serving you.</p>";
     var OurApproach6_picture = "<img src='images/New/pages/OurApproach/OA6_picture.jpg' class='img-responsive'/>";
-    
+
     var AboutAB_title = "About Alex. Brown";
     var AboutAB1_lead = "<p>Alex. Brown: a legacy of uncompromising service</p>";
     var AboutAB1_description = "<p>Since its founding in 1800, Alex. Brown has embodied a signature approach to wealth management, leveraging our extensive experience, expertise and resources to steadfastly focus on each individual, family and institution we serve. That legacy empowers us to provide a higher degree of investment insight and an uncommon level of customized service as we address our clients&rsquo; diverse and unique needs. As the nation&rsquo;s first investment bank, we are proud of our strong heritage, but we prefer to raise the bar higher.</p><p>Our powerful partnership with Raymond James allows us to continue to provide the breadth and depth of sophisticated services that our distinguished clients demand and deserve, all with state-of-the-art information technology and multilayered account protection. We dedicate ourselves to a client-first approach, focusing on delivering exemplary service and careful counsel. Consistently striving for perfection, our advisors specialize in traditional and alternative investment planning, asset and risk management, investment banking and wealth management. Espousing the highest standards of service and guidance, we take a consultative, thoughtful approach to creating a client experience far beyond the ordinary.</p><h2>A heritage of trusted expertise, spanning two centuries</h2><ul><li>1800 &ndash; Irish-born Alexander Brown emigrates to Baltimore and founds the first investment bank in the United States</li><li>1808 &ndash; Alex. Brown organizes the first initial public offering in the United States, for the Baltimore Water Company</li><li>1824 &ndash; The investment bank issues the first letter of credit for an international traveler</li><li>1827 &ndash; Brown and his son George lead and sponsor the development of the first major American railroad, the Baltimore and Ohio Railroad </li><li>1933 &ndash; Alex. Brown purchases membership in the New York Stock Exchange</li><li>1983 &ndash; The company joins a syndicate group to take Raymond James public </li><li>1990s &ndash; Alex. Brown establishes itself as a leading underwriter, known for highprofile IPOs </li><li>1997 &ndash; At the time of acquisition by Bankers Trust, Alex. Brown is the nation&rsquo;s oldest investment bank, is the No. 6 stock underwriter<sup>1</sup> by total dollar amount of deals and serves 115,000 high-net-worth clients</li><li>1999 &ndash; Deutsche Bank acquires BT Alex. Brown to form Deutsche Bank Alex. Brown, which becomes Private Client Services </li><li>2015 &ndash; Private Client Services comprises 210 client advisors in 16 branches, managing $50 billion in assets </li><li>2016 &ndash; Alex. Brown partners with Raymond James, the nation&rsquo;s seventh largest wealth management firm by assets under management<sup>2</sup></li></ul><p><small><sup>1</sup>Source: Securities Data Corporation</small></p><p><small><sup>2</sup>Source: <em>On Wall Street</em> ranking</small></p>";
     var AboutAB1_picture = "<img src='images/New/pages/AboutAB/AboutAB1_picture.jpg' class='img-responsive'/>";
 
+    var Quote_Title = "Home Page Quote";
+    var Quote1 = '<em>"By sowing frugality we reap liberty, a golden harvest."</em> - Agesilaus';
+    var Quote2 = '<em>"If you want to be happy, set a goal that commands your thoughts, liberates your energy and inspires your hopes."</em> - Andrew Carnegie';
+    var Quote3 = '<em>"An investment in knowledge pays the best interest"</em> - Benjamin Franklin';
+    var Quote4 = '<em>"The essence of investment management is the management of risks, not the management of returns."</em> - Benjamin Graham';
+    var Quote5 = '<em>"Learn from the past, set vivid, detailed goals for the future, and live in the only moment of time over which you have any control: now."</em> - Denis Waitley';
+    var Quote6 = '<em>"Happiness is not in the mere possession of money; it lies in the joy of achievement, in the thrill of creative effort."</em> - Franklin Roosevelt';
+    var Quote7 = '<em>"The real pleasure of one&quot;s life is the devotion to a great objective of one&quot;s consideration."</em> - George Bernard Shaw';
+    var Quote8 = '<em>"The four most dangerous words in investing are &quot;This time it&quote;s different.&quot;"</em> - John Templeton';
+    var Quote9 = '<em>"Wealth can only be accumulated by the earnings of industry and the savings of frugality."</em> - John Tyler';
+    var Quote10 = '<em>"The gratification of wealth is not found in mere possession or in lavish expenditure, but in its wise application."</em> - Miguel de Cervantes';
+    var Quote11 = '<em>"Riches do not consist in the possession of treasures, but in the use made of them."</em> - Napoleon Bonaparte';
+    var Quote12 = '<em>"Our goals can only be reached through a vehicle of a plan, in which we must fervently believe, and upon which we must vigorously act."</em> - Pablo Picasso';
+    var Quote13 = '<em>"The art is not in making money, but in keeping it."</em> - Proverb';
+    var Quote14 = '<em>"It&quot;s not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for."</em> - Robert Kiyosaki';
+    var Quote15 = '<em>"Price is what you pay. Value is what you get."</em> - Warren Buffett';
+
 
     //this is the switch statement to determine what to print into the modal pop up
     switch (clicked_item) {
-    case "HP1":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP1_lead + "<br/><strong>Content:</strong> " + HP1_description + "<br/><br/>" + HP1_picture);
-        break;
-    case "HP2":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP2_lead + "<br/><strong>Content:</strong> " + HP2_description + "<br/><br/>" + HP2_picture);
-        break;
-    case "HP3":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP3_lead + "<br/><strong>Content:</strong> " + HP3_description + "<br/><br/>" + HP3_picture);
-        break;
-    case "HP4":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP4_lead + "<br/><strong>Content:</strong> " + HP4_description + "<br/><br/>" + HP4_picture);
-        break;
-    case "HP5":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP5_lead + "<br/><strong>Content:</strong> " + HP5_description + "<br/><br/>" + HP5_picture);
-        break;
-    case "HP6":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP6_lead + "<br/><strong>Content:</strong> " + HP6_description + "<br/><br/>" + HP6_picture);
-        break;
-    case "HP7":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP7_lead + "<br/><strong>Content:</strong> " + HP7_description + "<br/><br/>" + HP7_picture);
-        break;
-    case "HP8":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP8_lead + "<br/><strong>Content:</strong> " + HP8_description + "<br/><br/>" + HP8_picture);
-        break;
-    case "HP9":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP9_lead + "<br/><strong>Content:</strong> " + HP9_description + "<br/><br/>" + HP9_picture);
-        break;
-    case "HP10":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP10_lead + "<br/><strong>Content:</strong> " + HP10_description + "<br/><br/>" + HP10_picture);
-        break;
-    case "HP11":
-        var modal = $(this);
-        modal.find('.modal-title').text(HP_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + HP11_lead + "<br/><strong>Content:</strong> " + HP11_description + "<br/><br/>" + HP11_picture);
-        break;
-    case "Diff1":
-        var modal = $(this);
-        modal.find('.modal-title').text(Diff_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff1_lead + "<br/><strong>Content:</strong> " + Diff1_description + "<br/><br/>" + Diff1_picture);
-        break;
-    case "Diff2":
-        var modal = $(this);
-        modal.find('.modal-title').text(Diff_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff2_lead + "<br/><strong>Content:</strong> " + Diff2_description + "<br/><br/>" + Diff2_picture);
-        break;
-    case "Diff3":
-        var modal = $(this);
-        modal.find('.modal-title').text(Diff_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff3_lead + "<br/><strong>Content:</strong> " + Diff3_description + "<br/><br/>" + Diff3_picture);
-        break;
-    case "Diff4":
-        var modal = $(this);
-        modal.find('.modal-title').text(Diff_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff4_lead + "<br/><strong>Content:</strong> " + Diff4_description + "<br/><br/>" + Diff4_picture);
-        break;
-    case "Diff5":
-        var modal = $(this);
-        modal.find('.modal-title').text(Diff_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff5_lead + "<br/><strong>Content:</strong> " + Diff5_description + "<br/><br/>" + Diff5_picture);
-        break;
-    case "Diff6":
-        var modal = $(this);
-        modal.find('.modal-title').text(Diff_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff6_lead + "<br/><strong>Content:</strong> " + Diff6_description + "<br/><br/>" + Diff6_picture);
-        break;
-    case "AboutRJ1":
-        var modal = $(this);
-        modal.find('.modal-title').text(AboutRJ_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + AboutRJ1_lead + "<br/><strong>Content:</strong> " + AboutRJ1_description + "<br/><br/>" + AboutRJ1_picture);
-        break;
-    case "AboutRJ2":
-        var modal = $(this);
-        modal.find('.modal-title').text(AboutRJ_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + AboutRJ2_lead + "<br/><strong>Content:</strong> " + AboutRJ2_description + "<br/><br/>" + AboutRJ2_picture);
-        break;
-    case "AboutAB1":
-        var modal = $(this);
-        modal.find('.modal-title').text(AboutAB_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + AboutAB1_lead + "<br/><strong>Content:</strong> " + AboutAB1_description + "<br/><br/>" + AboutAB1_picture);
-        break;
-    case "OA1":
-        var modal = $(this);
-        modal.find('.modal-title').text(OurApproach_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach1_lead + "<br/><strong>Content:</strong> " + OurApproach1_description + "<br/>" + OurApproach_accordions + "<br/><br/>" + OurApproach1_picture);
-        break;
-    case "OA2":
-        var modal = $(this);
-        modal.find('.modal-title').text(OurApproach_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach2_lead + "<br/><strong>Content:</strong> " + OurApproach2_description + "<br/>" + OurApproach_accordions + "<br/><br/>" + OurApproach2_picture);
-        break;
-    case "OA3":
-        var modal = $(this);
-        modal.find('.modal-title').text(OurApproach_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach3_lead + "<br/><strong>Content:</strong> " + OurApproach3_description + "<br/>" + OurApproach_accordions + "<br/><br/>" + OurApproach3_picture);
-        break;
-    case "OA4":
-        var modal = $(this);
-        modal.find('.modal-title').text(OurApproach_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach4_lead + "<br/><strong>Content:</strong> " + OurApproach4_description + "<br/>" + OurApproach_accordions + "<br/><br/>" + OurApproach4_picture);
-        break;
-    case "OA5":
-        var modal = $(this);
-        modal.find('.modal-title').text(OurApproach_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach5_lead + "<br/><strong>Content:</strong> " + OurApproach5_description + "<br/>" + OurApproach_accordions + "<br/><br/>" + OurApproach5_picture);
-        break;
-    case "OA6":
-        var modal = $(this);
-        modal.find('.modal-title').text(OurApproach_title);
-        modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach6_lead + "<br/><strong>Content:</strong> " + OurApproach6_description + "<br/>" + OurApproach_accordions + "<br/><br/>" + OurApproach6_picture);
-        break;
+        case "HP1":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP1_lead + "<br/><strong>Content:</strong> " + HP1_description + "<br/><br/>");
+            break;
+        case "HP2":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP2_lead + "<br/><strong>Content:</strong> " + HP2_description + "<br/><br/>");
+            break;
+        case "HP3":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP3_lead + "<br/><strong>Content:</strong> " + HP3_description + "<br/><br/>");
+            break;
+        case "HP4":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP4_lead + "<br/><strong>Content:</strong> " + HP4_description + "<br/><br/>");
+            break;
+        case "HP5":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP5_lead + "<br/><strong>Content:</strong> " + HP5_description + "<br/><br/>");
+            break;
+        case "HP6":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP6_lead + "<br/><strong>Content:</strong> " + HP6_description + "<br/><br/>");
+            break;
+        case "HP7":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP7_lead + "<br/><strong>Content:</strong> " + HP7_description + "<br/><br/>");
+            break;
+        case "HP8":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP8_lead + "<br/><strong>Content:</strong> " + HP8_description + "<br/><br/>");
+            break;
+        case "HP9":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP9_lead + "<br/><strong>Content:</strong> " + HP9_description + "<br/><br/>");
+            break;
+        case "HP10":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP10_lead + "<br/><strong>Content:</strong> " + HP10_description + "<br/><br/>");
+            break;
+        case "HP11":
+            var modal = $(this);
+            modal.find('.modal-title').text(HP_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + HP11_lead + "<br/><strong>Content:</strong> " + HP11_description + "<br/><br/>");
+            break;
+        case "Diff1":
+            var modal = $(this);
+            modal.find('.modal-title').text(Diff_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff1_lead + "<br/><strong>Content:</strong> " + Diff1_description + "<br/><br/>");
+            break;
+        case "Diff2":
+            var modal = $(this);
+            modal.find('.modal-title').text(Diff_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff2_lead + "<br/><strong>Content:</strong> " + Diff2_description + "<br/><br/>");
+            break;
+        case "Diff3":
+            var modal = $(this);
+            modal.find('.modal-title').text(Diff_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff3_lead + "<br/><strong>Content:</strong> " + Diff3_description + "<br/><br/>");
+            break;
+        case "Diff4":
+            var modal = $(this);
+            modal.find('.modal-title').text(Diff_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff4_lead + "<br/><strong>Content:</strong> " + Diff4_description + "<br/><br/>");
+            break;
+        case "Diff5":
+            var modal = $(this);
+            modal.find('.modal-title').text(Diff_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff5_lead + "<br/><strong>Content:</strong> " + Diff5_description + "<br/><br/>");
+            break;
+        case "Diff6":
+            var modal = $(this);
+            modal.find('.modal-title').text(Diff_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + Diff6_lead + "<br/><strong>Content:</strong> " + Diff6_description + "<br/><br/>");
+            break;
+        case "AboutRJ1":
+            var modal = $(this);
+            modal.find('.modal-title').text(AboutRJ_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + AboutRJ1_lead + "<br/><strong>Content:</strong> " + AboutRJ1_description + "<br/><br/>");
+            break;
+        case "AboutRJ2":
+            var modal = $(this);
+            modal.find('.modal-title').text(AboutRJ_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + AboutRJ2_lead + "<br/><strong>Content:</strong> " + AboutRJ2_description + "<br/><br/>");
+            break;
+        case "AboutAB1":
+            var modal = $(this);
+            modal.find('.modal-title').text(AboutAB_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + AboutAB1_lead + "<br/><strong>Content:</strong> " + AboutAB1_description + "<br/><br/>");
+            break;
+        case "OA1":
+            var modal = $(this);
+            modal.find('.modal-title').text(OurApproach_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach1_lead + "<br/><strong>Content:</strong> " + OurApproach1_description + "<br/>" + OurApproach_accordions + "<br/><br/>");
+            break;
+        case "OA2":
+            var modal = $(this);
+            modal.find('.modal-title').text(OurApproach_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach2_lead + "<br/><strong>Content:</strong> " + OurApproach2_description + "<br/>" + OurApproach_accordions + "<br/><br/>");
+            break;
+        case "OA3":
+            var modal = $(this);
+            modal.find('.modal-title').text(OurApproach_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach3_lead + "<br/><strong>Content:</strong> " + OurApproach3_description + "<br/>" + OurApproach_accordions + "<br/><br/>");
+            break;
+        case "OA4":
+            var modal = $(this);
+            modal.find('.modal-title').text(OurApproach_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach4_lead + "<br/><strong>Content:</strong> " + OurApproach4_description + "<br/>" + OurApproach_accordions + "<br/><br/>");
+            break;
+        case "OA5":
+            var modal = $(this);
+            modal.find('.modal-title').text(OurApproach_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach5_lead + "<br/><strong>Content:</strong> " + OurApproach5_description + "<br/>" + OurApproach_accordions + "<br/><br/>");
+            break;
+        case "OA6":
+            var modal = $(this);
+            modal.find('.modal-title').text(OurApproach_title);
+            modal.find('.modal-body').html("<strong>Headline:</strong> " + OurApproach6_lead + "<br/><strong>Content:</strong> " + OurApproach6_description + "<br/>" + OurApproach_accordions + "<br/><br/>");
+            break;
+        case "Quote1":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote1);
+            break;
+        case "Quote2":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote2);
+            break;
+        case "Quote3":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote3);
+            break;
+        case "Quote4":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote4);
+            break;
+        case "Quote5":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote5);
+            break;
+        case "Quote6":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote6);
+            break;
+        case "Quote7":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote7);
+            break;
+        case "Quote8":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote8);
+            break;
+        case "Quote9":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote9);
+            break;
+        case "Quote10":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote10);
+            break;
+        case "Quote11":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote11);
+            break;
+        case "Quote12":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote12);
+            break;
+        case "Quote13":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote13);
+            break;
+        case "Quote14":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote14);
+            break;
+
+        case "Quote15":
+            var modal = $(this);
+            modal.find('.modal-title').text(Quote_Title);
+            modal.find('.modal-body').html(Quote15);
+            break;
+
+
+
     }
+
+
 
 })
