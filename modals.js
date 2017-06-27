@@ -338,17 +338,10 @@ $('#myModal').on('show.bs.modal', function (event) {
             modal.find('.modal-title').text(Quote_Title);
             modal.find('.modal-body').html(Quote14);
             break;
-
         case "Quote15":
             var modal = $(this);
             modal.find('.modal-title').text(Quote_Title);
             modal.find('.modal-body').html(Quote15);
             break;
-
-
-
     }
-
-
-
-})
+});
