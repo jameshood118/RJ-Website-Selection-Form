@@ -4,6 +4,7 @@ var type;
 var group;
 var url;
 var clients;
+var clientTypesChecked;
 
 
 
@@ -132,8 +133,10 @@ $(function () {
                 $(e.target).prop('checked', false);
             }
         });
-        //Group Validation, do not show form for anything but group 1, 2, 3 or 99 for SC7 form
+        //Group Validation, do not show form for anything but group 0, 1, 2, 3, 99 or rjfsfree for SC7 form
         switch (group) {
+            case "group0":
+                break;
             case "group1":
                 break;
             case "group2":
@@ -153,8 +156,15 @@ $(function () {
                 break;
         }
         //Show the niche options for client types
+        //additionally clicking on a client type will check the corresponding niche tile, up to 6 automatically.
         $(".clientType").change(function () {
-            $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
+            clientTypesChecked = $('input.clientType[type="checkbox"]:checked').length;
+            if (clientTypesChecked > 6) {
+               $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle(); 
+            } else {
+                $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle().find("input").prop("checked", true);
+            }
+            
         });
         //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
         $('input.TeamContact[type="checkbox"]').click(function (e) {
