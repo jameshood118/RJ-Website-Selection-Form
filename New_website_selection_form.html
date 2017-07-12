@@ -51,6 +51,7 @@
                     </p>
                 </div>
                 <form name="frmName" id="frmName" method="post" action="process2.asp" onsubmit="return validateForm(this);">
+
                     <div class="transitioning">
                         <!-- Start Marketing/Transitioning Consultant Information -->
                         <h2>Marketing/Transitioning Consultant:<br/><span style="font-weight: normal">If you are currently working with a Marketing or Transitioning consultant, please the list their name(s).</span></h2>
@@ -197,7 +198,7 @@
                         <h2>Site Information: </h2>
                         <div class="pad parentdivborder">
                             <div>
-                                <label>Existing Site Address</label>
+                                <label class="ExistingSite">Existing Site Address</label>
                                 <input type="text" name="ExistingSite" class="textField form-control" placeholder="&nbsp;example: raymondjames.com/janedoe" />
                             </div>
                             <div>
@@ -292,7 +293,7 @@
                         <!-- Start Support Package Selection -->
                     </div>
 
-                <div class="all">
+                    <div class="all">
                         <!-- Start Template and Color Selection -->
                         <h2>Template and Color:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> Below are the nine website color template and color combinations (three templates across three colors). To enlarge each template preview, please click on the corresponding image. Please select the template and color combination you would like applied to your website. </span></h2>
                         <div class="templateparent parentdivborder">
@@ -388,45 +389,48 @@
                                 <div class="col-xs-3">
                                     <label>Image Theme:</label>
                                     <select name="theme" class="requiredField theme form-control">
-                                        <option value="Atlanta">Atlanta</option>
-                                        <option value="Baltimore">Baltimore</option>
-                                        <option value="Birmingham">Birmingham</option>
-                                        <option value="Boston">Boston</option>
-                                        <option value="Business Setting">Business Settings</option>
-                                        <option value="California Coast">California Coast</option>
-                                        <option value="Chicago">Chicago</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Denver">Denver</option>
-                                        <option value="Detroit">Detroit</option>
-                                        <option value="Diverse People">Diverse People</option>
-                                        <option value="Financial">Financial</option>
-                                        <option value="Florida Coast">Florida Coast</option>
-                                        <option value="Golf">Golf</option>
-                                        <option value="Greenwich">Greenwich</option>
-                                        <option value="Houston">Houston</option>
-                                        <option value="Interpersonal">Interpersonal Interactions</option>
-                                        <option value="Jacksonville">Jacksonville</option>
-                                        <option value="Journey">Journey</option>
-                                        <option value="Los Angeles">Los Angeles</option>
-                                        <option value="Memphis">Memphis</option>
-                                        <option value="Miami">Miami</option>
-                                        <option value="Midwest">Midwest</option>
-                                        <option value="Nautical">Nautical</option>
-                                        <option value="New England">New England</option>
-                                        <option value="New Orleans">New Orleans</option>
-                                        <option value="New York">New York</option>
-                                        <option value="Palm Beach">Palm Beach</option>
-                                        <option value="People">People</option>
-                                        <option value="Philadelphia">Philadelphia</option>
-                                        <option value="San Francisco">San Francisco</option>
-                                        <option value="Seattle">Seattle</option>
-                                        <option value="Smokies Appalachian">Smokies Appalachian</option>
-                                        <option value="St Louis">St Louis</option>
-                                        <option value="Southwest">Southwest</option>
-                                        <option value="Tampa">Tampa</option>
-                                        <option value="Tennessee">Tennessee</option>
-                                        <option value="Washington">Washington D.C.</option>
-                                        <option value="Winston Salem">Winston Salem</option>
+                                        <optgroup label="Cities">
+                                            <option value="Atlanta">Atlanta</option>
+                                            <option value="Baltimore">Baltimore</option>
+                                            <option value="Birmingham">Birmingham</option>
+                                            <option value="Boston">Boston</option>
+                                            <option value="Chicago">Chicago</option>
+                                            <option value="Dallas">Dallas</option>
+                                            <option value="Denver">Denver</option>
+                                            <option value="Detroit">Detroit</option>
+                                            <option value="Greenwich">Greenwich</option>
+                                            <option value="Houston">Houston</option>
+                                            <option value="Jacksonville">Jacksonville</option>
+                                            <option value="Los Angeles">Los Angeles</option>
+                                            <option value="Memphis">Memphis</option>
+                                            <option value="Miami">Miami</option>
+                                            <option value="New England">New England</option>
+                                            <option value="New Orleans">New Orleans</option>
+                                            <option value="New York">New York</option>
+                                            <option value="Palm Beach">Palm Beach</option>
+                                            <option value="Philadelphia">Philadelphia</option>
+                                            <option value="San Francisco">San Francisco</option>
+                                            <option value="Seattle">Seattle</option>
+                                            <option value="St Louis">St Louis</option>
+                                            <option value="Tampa">Tampa</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Washington">Washington D.C.</option>
+                                            <option value="Winston Salem">Winston Salem</option>
+                                        <optgroup label="Regions">
+                                            <option value="California Coast">California Coast</option>
+                                            <option value="Florida Coast">Florida Coast</option>
+                                            <option value="Midwest">Midwest</option>
+                                            <option value="Smokies Appalachian">Smokies Appalachian</option>
+                                            <option value="Southwest">Southwest</option>
+                                        <optgroup label="General">
+                                            <option value="Business Setting">Business Settings</option>
+                                            <option value="Diverse People">Diverse People</option>
+                                            <option value="Financial">Financial</option>
+                                            <option value="Golf">Golf</option>
+                                            <option value="Interpersonal">Interpersonal Interactions</option>
+                                            <option value="Journey">Journey</option>
+                                            <option value="Nautical">Nautical</option>
+                                            <option value="People">People</option> 
                                     </select>
                                 </div>
                                 <div class="col-xs-9">
@@ -596,6 +600,12 @@
                                 <a data-item="Quote15" data-toggle="modal" data-target="#myModal">
                                     <em>"Price is what you pay..."</em> - Warren Buffett</a>
                                 </label>
+                                <br />
+                                <label>
+                                    <input type="radio" name="HomePage_Quote" value="Do not include a quote" />
+                                        &nbsp;Do not include a quote.
+                                </label>
+
                             </div>
                         </div>
                         <!-- End Home Page Quote -->
