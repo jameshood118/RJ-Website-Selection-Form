@@ -67,6 +67,7 @@ $(function () {
             } else {
                 //removes everything except all and current. Current are RJA/RJFS and IAD/CORR
                 $("#frmName").find(":not(.current, .all)").remove().end().hide();
+                $(".ExistingSite").html("Existing Site Address (if any)");
                 $("h1")[0].innerText = "New Website Setup Form";
                 document.title = "New Website Setup Form";   
             }
