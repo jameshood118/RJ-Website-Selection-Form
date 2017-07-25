@@ -36,6 +36,11 @@ $(function () {
     addCSSClassRecursively($(".AlexBrown"), "AlexBrown");
     addCSSClassRecursively($(".sc7"), "sc7");
 
+    //New Types added to streamline forms
+    addCSSClassRecursively($(".new"), "new");
+    addCSSClassRecursively($(".migration"), "migration");
+    addCSSClassRecursively($(".transition"), "transition");
+
     type = getQueryVar("type");
     group = getQueryVar("group");
 
@@ -57,6 +62,8 @@ $(function () {
     //Remove all elements that do not have the relavent css class. 
     //Removing to assist with validation rather than having to determine which elements are relavent.
     //Do the thing! Show specific elements based on the group type, also hides specific things too
+    // 7/18/2017 Adding 3 new form types for the future requirements of having streamlined forms, new, transition and migration
+    
     switch (type) {
         case "new":
             if (group == "transitioning") {
@@ -69,7 +76,7 @@ $(function () {
                 $("#frmName").find(":not(.current, .all)").remove().end().hide();
                 $(".ExistingSite").html("Existing Site Address (if any)");
                 $("h1")[0].innerText = "New Website Setup Form";
-                document.title = "New Website Setup Form";   
+                document.title = "New Website Setup Form";
             }
             $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
             $(".OurApproach_Migration").remove();
@@ -78,6 +85,28 @@ $(function () {
             $(".WhatMakesUsDifferent_New").show();
             $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
             break;
+            
+        case "transition":
+            $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
+            $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
+            document.title = "New Website Setup Form (Transitioning Advisors)";
+            $(".SetUpFee").empty().append("The cost to setup the website is $350.");
+            break;
+            
+        case "migration":
+            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Order Form";
+            document.title = "Advisor Website Order Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreeHide").hide();
+            $(".OurApproach_Migration").show();
+            $(".OurApproach_New").remove();
+            $(".WhatMakesUsDifferent_Migration").show();
+            $(".WhatMakesUsDifferent_New").remove();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
+            break;
+
         case "csfree":
             $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
             $("#disclosure").remove();
@@ -89,6 +118,7 @@ $(function () {
             $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
             $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
             break;
+            
         case "sc7":
             $("#frmName").find(":not(.sc7, .all)").remove();
             $("#disclosure").remove();
@@ -110,6 +140,7 @@ $(function () {
                 $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
             } else {}
             break;
+            
         default:
             $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
             $("#disclosure").remove();
@@ -124,8 +155,8 @@ $(function () {
             $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
             break;
     }
-    
-        //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
+
+    //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
     if (type == "sc7") {
         $('input.NicheSelect[type="checkbox"]').click(function (e) {
             var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
@@ -161,11 +192,11 @@ $(function () {
         $(".clientType").change(function () {
             clientTypesChecked = $('input.clientType[type="checkbox"]:checked').length;
             if (clientTypesChecked > 6) {
-               $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle(); 
+                $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
             } else {
                 $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle().find("input").prop("checked", true);
             }
-            
+
         });
         //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
         $('input.TeamContact[type="checkbox"]').click(function (e) {
@@ -220,7 +251,7 @@ function addTeam(elem, e) {
 
     //get the number of textboxes that exist.
     var cnt = $(".TeamContainer").children().length + 1;
-    
+
     //If form is SC7 adds primary contact, otherwise doesnt
     if (type == "sc7") {
         var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select><input type='checkbox' name='TeamMember" + cnt + "Contact' value='Yes' class='TeamContact' /></div>";
@@ -298,7 +329,7 @@ function validateForm(objFrm) {
     if (document.getElementById("question").value == "") {
         return setFild("Please answer the security question.", document.getElementById("question"));
     } else {
-        if (document.getElementById("question").value != answers[rand]) {
+        if (document.getElementById("question").value.toLowerCase() != answers[rand]) {
             InitFilter();
             return setFild("The answer to the security question is incorrect.", document.getElementById("question"));
         }
