@@ -1,7 +1,7 @@
 <%@  language="vbScript" %>
     <% Option Explicit %>
         <%
-Dim sMsg, CurrDateTime, dataEmail, i,x,v, cbLifeEvent, cbServices, cbAbout, siteType, group, homepage, intro, team, cbOurClientsCs, cbClientType, cityTheme, region, ServicesForm, ServicesArray, ClientsForm, ClientsArray, brand, AboutText, NicheShow, TeamContact
+Dim sMsg, CurrDateTime, dataEmail, i,x,v, cbLifeEvent, cbServices, cbAbout, siteType, group, homepage, intro, team, cbOurClientsCs, cbClientType, cityTheme, region, ServicesForm, ServicesArray, ClientsForm, ClientsArray, brand, AboutText, NicheShow, TeamContact, HomePageQuote
 
 siteType = CStr(Request("type"))
 group = CStr(Request("group"))
@@ -22,13 +22,17 @@ For i = LBound(ServicesArray) to UBound(ServicesArray)
 Next
         
 For i = 1 to 100
-           If Request.Form("clientType"&i) <> "" then
+           If Request.Form("clientType"&i) <> "" Then
             If Request.Form("Niche"&i) = "Yes" Then NicheShow = " - Show in Niche Tile? - <b>Yes</b>" else NicheShow = ""
                 cbClientType = cbClientType + "<b>" & Request.Form("clientType"&i) & "</b>" & NicheShow & "<br/>"
         End If
     Next
 
-           
+If Request.Form("HomePage_Quote") = "Custom Quote" Then
+    HomePageQuote = "Custom Quote - " & Request.Form("CustomQuote")
+        Else
+        HomePageQuote = Request.Form("HomePage_Quote")
+        End If
  
 Dim Number, NumberData
 Number = Replace(Request.Form("Number"), ",", "")
@@ -93,7 +97,8 @@ Dim Billing
          Request.Form("supportPackage") & "|" &_ 
          Request.Form("layout") & "|" &_ 
          Request.Form("theme") & "|" &_ 
-         Request.Form("HomePage_Intro") & "|" &_ 
+         Request.Form("HomePage_Intro") & "|" &_
+         HomePageQuote & "|" &_ 
          cbClientType & "|" &_ 
          cbServices & "|" &_ 
          Request.Form("OurApproach") & "|" &_ 
@@ -126,6 +131,7 @@ Dim Billing
         "Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
         team & "<br />" & vbCrLf &_
         "Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
+        "Homepage Quote: <br /><b>" & HomePageQuote & "</b><br /><br />" & vbCrLf &_
         "Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
         "What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
         AboutText &_
@@ -133,69 +139,6 @@ Dim Billing
         "Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
         "</p>" & vbCrLf &_
         "</html>"
-    Else If siteType = "sc7" Then
-              
-     dataEmail = CurrDateTime & "|" &_
-     siteType & "|" &_ 
-     group & "|" &_
-     "|" &_
-     "|" &_ 
-     Request.Form("PrimaryName") & "|" &_ 
-     Request.Form("email") & "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     Request.Form("FaNum") & "|" &_ 
-     Request.Form("Branch") & "|" &_ 
-     Request.Form("Affiliation") & "|" &_ 
-     Request.Form("ApprovedDBA") & "|" &_
-     "|" &_
-     "|" &_
-     "|" &_ 
-     Request.Form("ExistingSite") & "|" &_ 
-     team & "|" &_ 
-     Request.Form("billing") & "|" &_ 
-     NumberData & "|" &_ 
-     Request.Form("supportPackage") & "|" &_ 
-     Request.Form("layout") & "|" &_ 
-     Request.Form("theme") & "|" &_ 
-     Request.Form("HomePage_Intro") & "|" &_ 
-     Request.Form("HomePage_Quote") & "|" &_ 
-     cbClientType & "|" &_ 
-     cbServices & "|" &_ 
-     Request.Form("OurApproach") & "|" &_ 
-     Request.Form("WhatMakesUsDifferent") & "|" &_ 
-     Request.Form("about")
-     
-        sMsg =	"<html><p>" & vbCrLf &_
-"Domain: <b>" & brand &"</b><br/>" & vbCrLf &_       
-"Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
-"Existing Site: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
-"Template and Color: <b>" & Request.Form("layout") & "</b><br />" & vbCrLf &_
-"Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_        
-"Primary Advisor Name: <b>" & Request.Form("PrimaryName") & "</b><br />" & vbCrLf &_
-"Primary Advisor Email: <b>" & Request.Form("email") & "</b><br />" & vbCrLf &_
-"Primary Advisor FA Number: <b>" & Request.Form("FaNum") & "</b><br />" & vbCrLf &_
-Billing &_
-"Support Package: <b>" & Request.Form("supportPackage") & "</b><br />" & vbCrLf &_
-"Branch Number: <b>" & Request.Form("Branch") & "</b><br />" & vbCrLf &_
-"Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
-team & "<br />" & vbCrLf &_
-"Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
-"Homepage Quote: <br /><b>" & Request.Form("HomePage_Quote") & "</b><br /><br />" & vbCrLf &_
-"Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
-"What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
-AboutText &_
-"Our Clients:  <br />" & cbClientType & "<br />" & vbCrLf &_
-"Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
-"</p>" & vbCrLf &_
-"</html>"
-
     Else 
     
      dataEmail = CurrDateTime & "|" &_
@@ -228,6 +171,7 @@ AboutText &_
      Request.Form("layout") & "|" &_ 
      Request.Form("theme") & "|" &_ 
      Request.Form("HomePage_Intro") & "|" &_ 
+     HomePageQuote & "|" &_ 
      cbClientType & "|" &_ 
      cbServices & "|" &_ 
      Request.Form("OurApproach") & "|" &_ 
@@ -249,6 +193,7 @@ Billing &_
 "Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
 team & "<br />" & vbCrLf &_
 "Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
+"Homepage Quote: <br /><b>" & HomePageQuote & "</b><br /><br />" & vbCrLf &_
 "Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
 "What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
 AboutText &_
@@ -258,7 +203,6 @@ AboutText &_
 "</html>"
 
 	End If
-    End If
 
 
 '**** EMAIL start *****
@@ -308,7 +252,7 @@ If Request.Form("submitBtn") = "Submit" Then
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "new" And  group = "rjfs_rja" Then 
         subject = "New Website Form "& chr(45) &" RJA + RJFS"
-    subject2 = "Website Selection Form Data"
+        subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "new" And  group = "iad_corr" Then 
@@ -318,6 +262,7 @@ If Request.Form("submitBtn") = "Submit" Then
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "new" Then 
         subject = "New Website Form "
+        subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
     ElseIf siteType = "sc7" Then
@@ -512,16 +457,16 @@ End If
 %>
 
             <!DOCTYPE html>
-            <html>
+            <html lang="en">
 
             <head>
                 <!-- meta information begin -->
                 <title></title>
                 <meta name="keywords" content="raymond james website order form" />
                 <meta name="description" content="Raymond James Website Order Form" />
+                <meta http-equiv="x-ua-compatible" content="IE=Edge"/> 
                 <!-- meta information end -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
                 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
                 <style type="text/css">
                     /* On Page Styles */
@@ -669,7 +614,6 @@ End If
                         <tr id="content_area_row">
                             <td valign="top" id="body_content_cell">
                                 <div id="body_content_wide">
-
                                     <!-- content begin -->
 
                                     <h2 id="mainTitle">Raymond James Transitioning Advisor Website Order Form</h2>
@@ -696,53 +640,34 @@ Else
                                     </div>
                                     <% End If
 %>
-
-
                                         <!-- content end -->
-
                                         <div id="mcol_spacer"></div>
                             </td>
-
                             <!-- middle column end -->
-
-
                             <!-- right column begin -->
-
                         </tr>
-
                         <!-- right column end -->
-
                         <!-- footer begin -->
-
                         <tr id="footer_row">
                             <td colspan="3" valign="bottom" id="footer_cell">
-
                                 <div id="copyright"></div>
-
                             </td>
                         </tr>
                     </table>
                     <div id="bd_disc">Raymond James &amp; Associates, Inc. member <a href="http://www.nyse.com" target="_blank" style="">New York Stock Exchange</a> / <a href="http://www.sipc.org" target="_blank">SIPC</a> and Raymond James Financial Services, Inc. member <a href="http://www.finra.org" target="_blank">FINRA</a> / <a href="http://www.sipc.org" target="_blank">SIPC</a> are subsidiaries of Raymond James Financial, Inc.</div>
-
                     <!-- footer end -->
-
                     <!-- bottom scripts begin -->
-
                     <script type="text/javascript">
                         <!-- 
-
                         // set the nav background
                         var horiz_bkg = ""
-
                         -->
 
                     </script>
-
                     <!-- <script type="text/javascript" src="/js_end07.js"></script> -->
-
                     <!-- bottom scripts end -->
-
                     </div>
+                </div>
             </body>
 
             </html>
