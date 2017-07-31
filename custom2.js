@@ -16,14 +16,18 @@ $(function () {
         billingSelection();
     });
 
+    $("input:radio[name=HomePage_Quote]").click(function () {
+        quoteSelection();
+    });
+
     $("#newStartDate").datepicker();
     $('.phone').mask('000-000-0000');
     $('.zip').mask('00000-0000');
 
     //The classes drive what the user will see depending on the site type: transitioning, current, csfree, cspaid, premium
-    //all: all site types will have elements with this class. 
+    //all: all site types will have elements with this class.
 
-    //Finds explicitly defined classes and recursively adds to all descendants. 
+    //Finds explicitly defined classes and recursively adds to all descendants.
     //For productivity to avoid tagging every element on the page.
 
     addCSSClassRecursively($(".all"), "all");
@@ -59,113 +63,13 @@ $(function () {
             brand = "Raymond James";
             break;
     }
-    //Remove all elements that do not have the relavent css class. 
+    //Remove all elements that do not have the relavent css class.
     //Removing to assist with validation rather than having to determine which elements are relavent.
     //Do the thing! Show specific elements based on the group type, also hides specific things too
     // 7/18/2017 Adding 3 new form types for the future requirements of having streamlined forms, new, transition and migration
-    
-    switch (type) {
-        case "new":
-            if (group == "transitioning") {
-                $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
-                $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
-                document.title = "New Website Setup Form (Transitioning Advisors)";
-                $(".SetUpFee").empty().append("The cost to setup the website is $350.");
-            } else {
-                //removes everything except all and current. Current are RJA/RJFS and IAD/CORR
-                $("#frmName").find(":not(.current, .all)").remove().end().hide();
-                $(".ExistingSite").html("Existing Site Address (if any)");
-                $("h1")[0].innerText = "New Website Setup Form";
-                document.title = "New Website Setup Form";
-            }
-            $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-            $(".OurApproach_Migration").remove();
-            $(".OurApproach_New").show();
-            $(".WhatMakesUsDifferent_Migration").remove();
-            $(".WhatMakesUsDifferent_New").show();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
-            break;
-            
-        case "transition":
-            $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
-            $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
-            document.title = "New Website Setup Form (Transitioning Advisors)";
-            $(".SetUpFee").empty().append("The cost to setup the website is $350.");
-            break;
-            
-        case "migration":
-            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
-            $("#disclosure").remove();
-            $("h1")[0].innerText = "Advisor Website Order Form";
-            document.title = "Advisor Website Order Form";
-            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-            $(".csfreeHide").hide();
-            $(".OurApproach_Migration").show();
-            $(".OurApproach_New").remove();
-            $(".WhatMakesUsDifferent_Migration").show();
-            $(".WhatMakesUsDifferent_New").remove();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
-            break;
 
-        case "csfree":
-            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
-            $("#disclosure").remove();
-            $("h1")[0].innerText = "Advisor Website Order Form";
-            document.title = "Advisor Website Order Form";
-            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-            $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
-            $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
-            $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
-            break;
-            
-        case "sc7":
-            $("#frmName").find(":not(.sc7, .all)").remove();
-            $("#disclosure").remove();
-            $("h1")[0].innerText = "Advisor Website Migration (SC7) Form";
-            document.title = "Advisor Website Migration (SC7) Form";
-            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=SC7 Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-            $(".csfreeHide").hide();
-            $(".OurApproach_Migration").show();
-            $(".OurApproach_New").remove();
-            $(".WhatMakesUsDifferent_Migration").show();
-            $(".WhatMakesUsDifferent_New").remove();
-            $(".PrimContact").show();
-            $(".TeamContact").show();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
-            //Support for SC7 Free sites, this adds the same options as the CSfree options, but keeps it within the SC7 data set
-            if (group == "rjfsfree") {
-                $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
-                $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
-                $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
-            } else {}
-            break;
-            
-        default:
-            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
-            $("#disclosure").remove();
-            $("h1")[0].innerText = "Advisor Website Order Form";
-            document.title = "Advisor Website Order Form";
-            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
-            $(".csfreeHide").hide();
-            $(".OurApproach_Migration").show();
-            $(".OurApproach_New").remove();
-            $(".WhatMakesUsDifferent_Migration").show();
-            $(".WhatMakesUsDifferent_New").remove();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
-            break;
-    }
-
-    //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
+    //Group Validation, do not show form for anything but group 0, 1, 2, 3, 99 or rjfsfree for SC7 form
     if (type == "sc7") {
-        $('input.NicheSelect[type="checkbox"]').click(function (e) {
-            var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
-            if (num_checked > 6) {
-                return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
-                $(e.target).prop('checked', false);
-            }
-        });
-        //Group Validation, do not show form for anything but group 0, 1, 2, 3, 99 or rjfsfree for SC7 form
         switch (group) {
             case "group0":
                 break;
@@ -187,22 +91,126 @@ $(function () {
                 $("#pContact").html("You have reached this page in error, please contact <a href='mailto:webservices@raymondjames.com' id='aContact'>Web Services</a> at ext. 75423");
                 break;
         }
-        //Show the niche options for client types
-        //additionally clicking on a client type will check the corresponding niche tile, up to 6 automatically.
-        $(".clientType").change(function () {
-            clientTypesChecked = $('input.clientType[type="checkbox"]:checked').length;
-            if (clientTypesChecked > 6) {
-                $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
-            } else {
-                $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle().find("input").prop("checked", true);
-            }
-
-        });
-        //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
-        $('input.TeamContact[type="checkbox"]').click(function (e) {
-            $('.TeamContact').not(this).attr('checked', false);
-        });
     }
+
+    switch (type) {
+        case "new":
+            if (group == "transitioning") {
+                $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
+                $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
+                document.title = "New Website Setup Form (Transitioning Advisors)";
+                $(".SetUpFee").empty().append("The cost to setup the website is $350.");
+            } else {
+                //removes everything except all and current. Current are RJA/RJFS and IAD/CORR
+                $("#frmName").find(":not(.current, .all)").remove().end().hide();
+                $(".ExistingSite").html("Existing Site Address (if any)");
+                $("h1")[0].innerText = "New Website Setup Form";
+                document.title = "New Website Setup Form";
+            }
+            $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".OurApproach_Migration").remove();
+            $(".OurApproach_New").show();
+            $(".WhatMakesUsDifferent_Migration").remove();
+            $(".WhatMakesUsDifferent_New").show();
+            $(".CustomQuote").show();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
+            $(".spanCustomQuote").empty().append("<br/>");
+            break;
+
+        case "transition":
+            $("#frmName").find(":not(.transitioning, .all)").remove().end().hide();
+            $("h1")[0].innerText = "New Website Setup Form (Transitioning Advisors)";
+            document.title = "New Website Setup Form (Transitioning Advisors)";
+            $(".SetUpFee").empty().append("The cost to setup the website is $350.");
+            break;
+
+        case "migration":
+            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Order Form";
+            document.title = "Advisor Website Order Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreeHide").hide();
+            $(".OurApproach_Migration").show();
+            $(".OurApproach_New").remove();
+            $(".WhatMakesUsDifferent_Migration").show();
+            $(".WhatMakesUsDifferent_New").remove();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            break;
+
+        case "csfree":
+            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Order Form";
+            document.title = "Advisor Website Order Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
+            $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
+            $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            break;
+
+        case "sc7":
+            $("#frmName").find(":not(.sc7, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Migration (SC7) Form";
+            document.title = "Advisor Website Migration (SC7) Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=SC7 Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreeHide").hide();
+            $(".OurApproach_Migration").show();
+            $(".OurApproach_New").remove();
+            $(".WhatMakesUsDifferent_Migration").show();
+            $(".WhatMakesUsDifferent_New").remove();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            //Support for SC7 Free sites, this adds the same options as the CSfree options, but keeps it within the SC7 data set
+            if (group == "rjfsfree") {
+                $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
+                $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
+                $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
+            } else {}
+            break;
+
+        default:
+            $("#frmName").find(":not(.csfree, .all)").remove().find(":not(.cspaid, .all)").remove().find(":not(.premium, .all)").remove();
+            $("#disclosure").remove();
+            $("h1")[0].innerText = "Advisor Website Order Form";
+            document.title = "Advisor Website Order Form";
+            $("#pContact").html("For questions about this form email <a href=\"mailto:webservices@raymondjames.com?subject=Website Migration Form - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
+            $(".csfreeHide").hide();
+            $(".OurApproach_Migration").show();
+            $(".OurApproach_New").remove();
+            $(".WhatMakesUsDifferent_Migration").show();
+            $(".WhatMakesUsDifferent_New").remove();
+            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            break;
+    }
+
+    //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
+    $('input.NicheSelect[type="checkbox"]').click(function (e) {
+        var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
+        if (num_checked > 6) {
+            return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
+            $(e.target).prop('checked', false);
+        }
+    });
+
+    //Show the niche options for client types
+    //additionally clicking on a client type will check the corresponding niche tile, up to 6 automatically.
+    $(".clientType").change(function () {
+        clientTypesChecked = $('input.clientType[type="checkbox"]:checked').length;
+        if (clientTypesChecked > 6) {
+            $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
+        } else {
+            $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle().find("input").prop("checked", true);
+        }
+
+    });
+    //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
+    $('input.TeamContact[type="checkbox"]').click(function (e) {
+        $('.TeamContact').not(this).attr('checked', false);
+    });
+
 });
 
 function setFild(txtAlert, objField) {
@@ -222,9 +230,20 @@ function billingSelection() {
         default:
             $(".spanSplitFaBlotterNumber").empty();
             break;
-
     }
+}
 
+function quoteSelection() {
+    var selectedQuote = $("input[type='radio'][name='HomePage_Quote']:checked");
+    
+    switch (selectedQuote.val()) {
+        case "Custom Quote":
+            $(".spanCustomQuote").empty().append('<input type="text" name="CustomQuote" class="textField requiredField form-control" style="margin-bottom:5px;"/><br/>');
+            break;
+        default:
+            $(".spanCustomQuote").empty().append("<br/>");
+            break;
+    }
 }
 
 function accept() {
@@ -253,19 +272,13 @@ function addTeam(elem, e) {
     var cnt = $(".TeamContainer").children().length + 1;
 
     //If form is SC7 adds primary contact, otherwise doesnt
-    if (type == "sc7") {
-        var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select><input type='checkbox' name='TeamMember" + cnt + "Contact' value='Yes' class='TeamContact' /></div>";
+    var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select><input type='checkbox' name='TeamMember" + cnt + "Contact' value='Yes' class='TeamContact' /></div>";
 
-        $("div.TeamContainer div:last-child").after(html);
+    $("div.TeamContainer div:last-child").after(html);
 
-        $('input.TeamContact[type="checkbox"]').click(function (e) {
-            $('.TeamContact').not(this).attr('checked', false);
-        });
-    } else {
-        var html = "<div><label style='padding-right:15px'> " + cnt + ". </label><input type='text' name='TeamMember" + cnt + "' style='width: 300px' class='textField form-control' />&nbsp;&nbsp;<input type='text' name='TeamMember" + cnt + "Title' style='width: 250px' class='textField form-control' /> <select name='TeamMember" + cnt + "Delegate' class='form-control teamdelegate'><option value='Yes'>Yes</option><option value='No' selected>No</option></select></div>";
-
-        $("div.TeamContainer div:last-child").after(html);
-    }
+    $('input.TeamContact[type="checkbox"]').click(function (e) {
+        $('.TeamContact').not(this).attr('checked', false);
+    });
 }
 
 
@@ -278,7 +291,7 @@ function validateForm(objFrm) {
     if ($(".Number").val() === "") {
         return setFild("Please tell us what split billing number to use.", $(".Number"));
     } else {}
-    //validates standalone radio button. 
+    //validates standalone radio button.
     if (!validateRadio("[name='needConsultant']"))
         return setFild("Please tell us if you would like to discuss your site with a marketing consultant.", $("[name='needConsultant']"));
 
@@ -291,15 +304,11 @@ function validateForm(objFrm) {
     if (!validateRadio("[name='HomePage_Intro']"))
         return setFild("Please select the introduction you would like included in your site.", $("[name='HomePage_Intro']"));
 
-    if (type == "sc7") {
-        if (!validateRadio("[name='HomePage_Quote']"))
-            return setFild("Please select a home page quote", $("[name='HomePage_Quote']"));
-    } else {}
+    if (!validateRadio("[name='HomePage_Quote']"))
+        return setFild("Please select a home page quote", $("[name='HomePage_Quote']"));
 
-    if (type == "sc7") {
-        if ($('input.NicheSelect[type="checkbox"]:checked').length <= "6") {} else {
-            return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
-        }
+    if ($('input.NicheSelect[type="checkbox"]:checked').length <= "6") {} else {
+        return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
     }
 
     if (!validateCheckbox(".clientType"))
