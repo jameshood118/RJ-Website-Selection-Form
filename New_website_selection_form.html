@@ -217,7 +217,7 @@
                                 <div class="col-xs-4 col-xs-offset-1"><label>Team Member Name</label></div>
                                 <div class="col-xs-3"><label>Approved Title</label></div>
                                 <div class="col-xs-1"><label>Delegate?</label></div>
-                                <div class="col-xs-3 PrimContact" style="text-align: center;display:none;"><label>Primary Contact?</label></div>
+                                <div class="col-xs-3 PrimContact" style="text-align: center;"><label>Primary Contact?</label></div>
                             </div>
                             <div class="TeamContainer">
                                 <div>
@@ -225,27 +225,27 @@
                                     <input type="text" name="TeamMember1" style="width: 300px" class="textField form-control" />
                                     <input type="text" name="TeamMember1Title" style="width: 250px" class="textField form-control" />
                                     <select name="TeamMember1Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
-                                    <input type="checkbox" name="TeamMember1Contact" value="Yes" class="TeamContact" style="display:none;" />
+                                    <input type="checkbox" name="TeamMember1Contact" value="Yes" class="TeamContact" />
                                 </div>
                                 <div>
                                     <label style="padding-right:15px"> 2. </label>
                                     <input type="text" name="TeamMember2" style="width: 300px" class="textField form-control" />
                                     <input type="text" name="TeamMember2Title" style="width: 250px" class="textField form-control" />
                                     <select name="TeamMember2Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
-                                    <input type="checkbox" name="TeamMember2Contact" value="Yes" class="TeamContact" style="display:none;" />
+                                    <input type="checkbox" name="TeamMember2Contact" value="Yes" class="TeamContact" />
                                 </div>
                                 <div>
                                     <label style="padding-right:15px"> 3. </label>
                                     <input type="text" name="TeamMember3" style="width: 300px" class="textField form-control" />
                                     <input type="text" name="TeamMember3Title" style="width: 250px" class="textField form-control" />
                                     <select name="TeamMember3Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
-                                    <input type="checkbox" name="TeamMember3Contact" value="Yes" class="TeamContact" style="display:none;" /></div>
+                                    <input type="checkbox" name="TeamMember3Contact" value="Yes" class="TeamContact" /></div>
                                 <div>
                                     <label style="padding-right:15px"> 4. </label>
                                     <input type="text" name="TeamMember4" style="width: 300px" class="textField form-control" />
                                     <input type="text" name="TeamMember4Title" style="width: 250px" class="textField form-control" />
                                     <select name="TeamMember4Delegate" class="form-control teamdelegate"><option value="Yes">Yes</option><option value="No">No</option></select>
-                                    <input type="checkbox" name="TeamMember4Contact" value="Yes" class="TeamContact" style="display:none;" />
+                                    <input type="checkbox" name="TeamMember4Contact" value="Yes" class="TeamContact" />
                                 </div>
                             </div>
                         </div>
@@ -429,8 +429,9 @@
                                             <option value="Golf">Golf</option>
                                             <option value="Interpersonal">Interpersonal Interactions</option>
                                             <option value="Journey">Journey</option>
+                                            <option value="LGBT">LBGT</option>
                                             <option value="Nautical">Nautical</option>
-                                            <option value="People">People</option> 
+                                            <option value="People">People</option>
                                     </select>
                                 </div>
                                 <div class="col-xs-9">
@@ -506,7 +507,7 @@
                         <!-- End Home Page Intro -->
                     </div>
 
-                    <div class="sc7">
+                    <div class="all">
                         <!-- Start Home Page Quote -->
                         <h2>Home Page Quote:<span class="required"></span> <img src="/branches/library/images/info_icon_sm.png" alt="Tooltip" data-toggle="tooltip" title="Select 1 (one)." style="padding-bottom: 5px;" /><br/><span style="font-weight: normal"> The homepage quote is an optional feature that should highlight a high-level thought process (i.e. ethics, motivation, etc.). Please select a quote from the list below.</span></h2>
                         <div class="parentdivborder quotes">
@@ -601,6 +602,9 @@
                                     <em>"Price is what you pay..."</em> - Warren Buffett</a>
                                 </label>
                                 <br />
+                                <label style="display:none" class="CustomQuote">
+                                    <input type="radio" name="HomePage_Quote" value="Custom Quote" />&nbsp;Custom Quote.</label>
+                                <span class="spanCustomQuote"></span>
                                 <label>
                                     <input type="radio" name="HomePage_Quote" value="Do not include a quote" />
                                         &nbsp;Do not include a quote.
@@ -1055,7 +1059,7 @@
                     $(document).ready(function() {
                         $('[data-toggle="tooltip"]').tooltip();
 
-                        //theme display function    
+                        //theme display function
                         $(".theme").change(function() {
                             selectedtheme = $(".theme").val();
                             themename_friendly = $(".theme").val();
