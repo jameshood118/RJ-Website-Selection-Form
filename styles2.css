@@ -21,6 +21,8 @@ label {padding: 0 15px 0 15px; font-size: 1.4rem;}
 .noleftpad label.Nichelabel {padding:0 15px 0 5px; font-size: 1.2rem; vertical-align: top;}
 .nichebox {padding-left:15px;}
 .ClientsSlide {height:50px;}
+.PreviewsSlide {height: 50px;}
+label.PreviewSelected {padding-left:40px;}
 
 
 .parentdivborder {border: 1px solid #DDD9D5;width:100%}
@@ -62,5 +64,5 @@ p#notforclients {font-size: 1rem; font-weight: bold; color: #FFFFFF; text-align:
 
 .glyphicon-menu-right:before {
     font-size:1.4rem;
-    
+
 }
