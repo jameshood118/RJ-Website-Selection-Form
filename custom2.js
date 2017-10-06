@@ -5,6 +5,7 @@ var group;
 var url;
 var clients;
 var clientTypesChecked;
+var NicheTilesChecked;
 
 
 
@@ -41,7 +42,6 @@ $(function () {
     addCSSClassRecursively($(".sc7"), "sc7");
 
     //New Types added to streamline forms
-    addCSSClassRecursively($(".new"), "new");
     addCSSClassRecursively($(".migration"), "migration");
     addCSSClassRecursively($(".transition"), "transition");
 
@@ -52,17 +52,6 @@ $(function () {
 
     $("#frmName").attr("action", "process2.asp?" + "type=" + type + "&group=" + group);
 
-    switch (group) {
-        case "AlexBrown":
-            $(".RJ").remove();
-            brand = "Alex Brown";
-            break;
-
-        default:
-            $(".AlexBrown").remove();
-            brand = "Raymond James";
-            break;
-    }
     //Remove all elements that do not have the relavent css class.
     //Removing to assist with validation rather than having to determine which elements are relavent.
     //Do the thing! Show specific elements based on the group type, also hides specific things too
@@ -76,12 +65,16 @@ $(function () {
             case "group1":
                 break;
             case "group2":
+                $(".RequestedPreview").show();
                 break;
             case "group3":
+                $(".RequestedPreview").show();
                 break;
             case "group99":
+                $(".RequestedPreview").show();
                 break;
             case "rjfsfree":
+                $(".RequestedPreview").show();
                 break;
             default:
                 //Show an "Error" if they tried to go to anything except the preapproved SC7 groups, this validation only applies to SC7 forms
@@ -107,6 +100,11 @@ $(function () {
                 $("h1")[0].innerText = "New Website Setup Form";
                 document.title = "New Website Setup Form";
             }
+
+            if (group == "iad_corr") {
+              $(".AboutRJ").hide();
+            }
+
             $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
             $(".OurApproach_Migration").remove();
             $(".OurApproach_New").show();
@@ -187,25 +185,38 @@ $(function () {
     }
 
     //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
-    $('input.NicheSelect[type="checkbox"]').click(function (e) {
+    $('input.NicheSelect[type="checkbox"]').change(function (e) {
         var num_checked = $('input.NicheSelect[type="checkbox"]:checked').length;
         if (num_checked > 6) {
-            return setFild("You may select no more than 6 Client Groups to appear in the Niche Tile", $("[name='clientType']"));
-            $(e.target).prop('checked', false);
+            alert("You may select no more than 6 Client Groups to appear in the Niche Tile");
+            $("[name='clientType']").focus();
+            $(e.target).prop("checked", false);
         }
     });
 
     //Show the niche options for client types
     //additionally clicking on a client type will check the corresponding niche tile, up to 6 automatically.
     $(".clientType").change(function () {
-        clientTypesChecked = $('input.clientType[type="checkbox"]:checked').length;
-        if (clientTypesChecked > 6) {
-            $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
-        } else {
+        if ($('input.NicheSelect[type="checkbox"]:checked').length < 6) {
             $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle().find("input").prop("checked", true);
+        } else {
+            $(this).parent().parent().toggleClass("ClientsSlide").find("div.nichebox").slideToggle();
         }
+        if ($(this).prop("checked") == false) {
+            $(this).parent().parent().removeClass("ClientsSlide").find("div.nichebox").slideUp().find("input").prop("checked", false);
+        } else {}
 
     });
+
+    $("input[name=preview]").click(function () {
+        if ($(".PreviewSelected").val() == "Yes" && $(".PreviewSelected").is(':checked')) {
+            $(".previewselected").toggleClass("PreviewsSlide").slideToggle();
+        } else {
+			$(".previewselected").removeClass("PreviewsSlide").slideUp().find("input").prop("checked", false);
+
+        }
+    });
+
     //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
     $('input.TeamContact[type="checkbox"]').click(function (e) {
         $('.TeamContact').not(this).attr('checked', false);
@@ -235,7 +246,7 @@ function billingSelection() {
 
 function quoteSelection() {
     var selectedQuote = $("input[type='radio'][name='HomePage_Quote']:checked");
-    
+
     switch (selectedQuote.val()) {
         case "Custom Quote":
             $(".spanCustomQuote").empty().append('<input type="text" name="CustomQuote" class="textField requiredField form-control" style="margin-bottom:5px;"/><br/>');
@@ -284,6 +295,12 @@ function addTeam(elem, e) {
 
 function validateForm(objFrm) {
 
+    if ($(".PreviewSelected").val() == "Yes" && $(".PreviewSelected").is(':checked')) {
+        if (!validateCheckbox(".previewbox")) {
+            return setFild("Please agree to the terms of receiving a preview of your site.", $(".previewbox"))
+        }
+    } else {}
+
     if ($(".theme").val() === "Nothing") {
         return setFild("Please select an image theme.", $(".theme"));
     } else {}
@@ -323,7 +340,7 @@ function validateForm(objFrm) {
     if (!validateRadio("[name='WhatMakesUsDifferent']"))
         return setFild("Please select the pre-written message you would like included on the \"What makes us different\" landing page.", $("[name='WhatMakesUsDifferent']"));
 
-    if (!validateRadio("[name='about']"))
+    if (!validateRadio("[name='about']") && group != "iad_corr")
         return setFild("Please select the pre-written message you would like included on the 'About " + brand + "' landing page.", $("[name='about']"));
 
     if (!validateRadio("[name='supportPackage']"))
