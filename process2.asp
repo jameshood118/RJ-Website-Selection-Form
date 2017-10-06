@@ -1,11 +1,11 @@
 <%@  language="vbScript" %>
     <% Option Explicit %>
         <%
-Dim sMsg, CurrDateTime, dataEmail, i,x,v, cbLifeEvent, cbServices, cbAbout, siteType, group, homepage, intro, team, cbOurClientsCs, cbClientType, cityTheme, region, ServicesForm, ServicesArray, ClientsForm, ClientsArray, brand, AboutText, NicheShow, TeamContact, HomePageQuote
+Dim sMsg, CurrDateTime, dataEmail, i,x,v, cbLifeEvent, cbServices, cbAbout, siteType, group, homepage, intro, team, cbOurClientsCs, cbClientType, cityTheme, region, ServicesForm, ServicesArray, ClientsForm, ClientsArray, brand, AboutText, NicheShow, TeamContact, HomePageQuote, RequestedPreviewLabel
 
 siteType = CStr(Request("type"))
 group = CStr(Request("group"))
-           
+
 if group = "AlexBrown" then
            brand = "Alex Brown"
            AboutText = "About Alex Brown: <br /><b>" & Request.Form("about") & "</b><br /><br />"
@@ -20,7 +20,7 @@ ServicesArray = split(ServicesForm,",")
 For i = LBound(ServicesArray) to UBound(ServicesArray)
     cbServices = cbServices + ServicesArray(i) + "<br />"
 Next
-        
+
 For i = 1 to 100
            If Request.Form("clientType"&i) <> "" Then
             If Request.Form("Niche"&i) = "Yes" Then NicheShow = " - Show in Niche Tile? - <b>Yes</b>" else NicheShow = ""
@@ -33,80 +33,79 @@ If Request.Form("HomePage_Quote") = "Custom Quote" Then
         Else
         HomePageQuote = Request.Form("HomePage_Quote")
         End If
- 
+
 Dim Number, NumberData
 Number = Replace(Request.Form("Number"), ",", "")
 NumberData = Replace(Request.Form("Number"), ",", "")
-
 
 Dim Billing
 	if Request.Form("billing") = "Split FA Blotter" Then
 	Billing = "<br/>Billing Information: <b>" & Request.Form("billing") & "</b> - Bill to: " & Number & "<br />"
 	Else
 	Billing = "<br/>Billing Information: <b>" & Request.Form("billing") & "</b><br />"
-	End If                            
+	End If
 
     If Request.Form("TeamMember1") = "" Then
     team = "<em>No Team Members were entered</em><br/>"
         Else
     team = ""
         End If
-                       
+
     For v = 1 to 100
         If Request.Form("TeamMember" & v) <> "" Then
         If Request.Form("TeamMember"& v &"Contact") = "Yes" Then TeamContact = " - Primary Contact? - <b>Yes</b>" else TeamContact = ""
             team = team & "Team " &v & ": <b>" & Request.Form("TeamMember" & v) & "</b>, " & Request.Form("TeamMember"& v &"Title") & " - Delegate? - <b>" & Request.Form("TeamMember"& v &"Delegate") & "</b>" & TeamContact & "<br/>"
-        Else 
+        Else
             Exit For
         End If
 
     Next
-        
-    
- CurrDateTime = Now()	
-	
+
+
+ CurrDateTime = Now()
+
 'Build E-mail message bodies dataEmail is for data collection and is pipe delimited
-	If siteType = "new" And group = "transitioning" Then
+	If siteType = "new" Then
 		'Secondary Email body for data archiving
          dataEmail = CurrDateTime & "|" &_
-         siteType & "|" &_ 
-         group & "|" &_ 
-         Request.Form("currentConsultant") & "|" &_ 
-         Request.Form("transitionConsultant") & "|" &_ 
-         Request.Form("PrimaryName") & "|" &_ 
-         Request.Form("email") & "|" &_ 
-         Request.Form("mailingAddress1") & "|" &_ 
-         Request.Form("mailingAddress2") & "|" &_ 
-         Request.Form("city") & "|" &_ 
-         Request.Form("state") & "|" &_ 
-         Request.Form("zip") & "|" &_ 
-         Request.Form("phone1") & "|" &_ 
-         Request.Form("phone2") & "|" &_ 
+         siteType & "|" &_
+         group & "|" &_
+         Request.Form("currentConsultant") & "|" &_
+         Request.Form("transitionConsultant") & "|" &_
+         Request.Form("PrimaryName") & "|" &_
+         Request.Form("email") & "|" &_
+         Request.Form("mailingAddress1") & "|" &_
+         Request.Form("mailingAddress2") & "|" &_
+         Request.Form("city") & "|" &_
+         Request.Form("state") & "|" &_
+         Request.Form("zip") & "|" &_
+         Request.Form("phone1") & "|" &_
+         Request.Form("phone2") & "|" &_
          Request.Form("fax") & "|" &_
          "|" &_
-         "|" &_ 
-         Request.Form("Affiliation") & "|" &_ 
-         Request.Form("ApprovedDBA") & "|" &_ 
-         Request.Form("newStartDt") & "|" &_ 
-         Request.Form("domain") & "|" &_ 
-         Request.Form("domainName") & "|" &_ 
-         Request.Form("ExistingSite") & "|" &_ 
-         team & "|" &_ 
-         Request.Form("billing") & "|" &_ 
-         NumberData & "|" &_ 
-         Request.Form("supportPackage") & "|" &_ 
-         Request.Form("layout") & "|" &_ 
-         Request.Form("theme") & "|" &_ 
+         "|" &_
+         Request.Form("Affiliation") & "|" &_
+         Request.Form("ApprovedDBA") & "|" &_
+         Request.Form("newStartDt") & "|" &_
+         Request.Form("domain") & "|" &_
+         Request.Form("domainName") & "|" &_
+         Request.Form("ExistingSite") & "|" &_
+         team & "|" &_
+         Request.Form("billing") & "|" &_
+         NumberData & "|" &_
+         Request.Form("supportPackage") & "|" &_
+         Request.Form("layout") & "|" &_
+         Request.Form("theme") & "|" &_
          Request.Form("HomePage_Intro") & "|" &_
-         HomePageQuote & "|" &_ 
-         cbClientType & "|" &_ 
-         cbServices & "|" &_ 
-         Request.Form("OurApproach") & "|" &_ 
-         Request.Form("WhatMakesUsDifferent") & "|" &_ 
+         HomePageQuote & "|" &_
+         cbClientType & "|" &_
+         cbServices & "|" &_
+         Request.Form("OurApproach") & "|" &_
+         Request.Form("WhatMakesUsDifferent") & "|" &_
          Request.Form("about")
 
         sMsg =	"<p><html>" & vbCrLf &_
-        "Domain: <b>" & brand &"</b><br/>" & vbCrLf &_       
+        "Domain: <b>" & brand &"</b><br/>" & vbCrLf &_
         "Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
         "Requested Site Address: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
         "Start Date: <b>" & Request.Form("newStartDt") & "</b><br />" & vbCrLf &_
@@ -139,14 +138,15 @@ Dim Billing
         "Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
         "</p>" & vbCrLf &_
         "</html>"
-    Else 
-    
+    Else
+
      dataEmail = CurrDateTime & "|" &_
-     siteType & "|" &_ 
+     siteType & "|" &_
      group & "|" &_
+     Request.Form("preview") & "|" &_
      "|" &_
-     "|" &_ 
-     Request.Form("PrimaryName") & "|" &_ 
+     "|" &_
+     Request.Form("PrimaryName") & "|" &_
      Request.Form("email") & "|" &_
      "|" &_
      "|" &_
@@ -156,34 +156,35 @@ Dim Billing
      "|" &_
      "|" &_
      "|" &_
-     Request.Form("FaNum") & "|" &_ 
-     Request.Form("Branch") & "|" &_ 
-     Request.Form("Affiliation") & "|" &_ 
+     Request.Form("FaNum") & "|" &_
+     Request.Form("Branch") & "|" &_
+     Request.Form("Affiliation") & "|" &_
      Request.Form("ApprovedDBA") & "|" &_
      "|" &_
      "|" &_
-     "|" &_ 
-     Request.Form("ExistingSite") & "|" &_ 
-     team & "|" &_ 
-     Request.Form("billing") & "|" &_ 
-     NumberData & "|" &_ 
-     Request.Form("supportPackage") & "|" &_ 
-     Request.Form("layout") & "|" &_ 
-     Request.Form("theme") & "|" &_ 
-     Request.Form("HomePage_Intro") & "|" &_ 
-     HomePageQuote & "|" &_ 
-     cbClientType & "|" &_ 
-     cbServices & "|" &_ 
-     Request.Form("OurApproach") & "|" &_ 
-     Request.Form("WhatMakesUsDifferent") & "|" &_ 
+     "|" &_
+     Request.Form("ExistingSite") & "|" &_
+     team & "|" &_
+     Request.Form("billing") & "|" &_
+     NumberData & "|" &_
+     Request.Form("supportPackage") & "|" &_
+     Request.Form("layout") & "|" &_
+     Request.Form("theme") & "|" &_
+     Request.Form("HomePage_Intro") & "|" &_
+     HomePageQuote & "|" &_
+     cbClientType & "|" &_
+     cbServices & "|" &_
+     Request.Form("OurApproach") & "|" &_
+     Request.Form("WhatMakesUsDifferent") & "|" &_
      Request.Form("about")
-     
+
         sMsg =	"<html><p>" & vbCrLf &_
-"Domain: <b>" & brand &"</b><br/>" & vbCrLf &_       
+"Requested Preview: <b>" & Request.Form("preview") & "</b><br />" & vbCrLf &_
+"Domain: <b>" & brand &"</b><br/>" & vbCrLf &_
 "Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
 "Existing Site: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
 "Template and Color: <b>" & Request.Form("layout") & "</b><br />" & vbCrLf &_
-"Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_        
+"Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_
 "Primary Advisor Name: <b>" & Request.Form("PrimaryName") & "</b><br />" & vbCrLf &_
 "Primary Advisor Email: <b>" & Request.Form("email") & "</b><br />" & vbCrLf &_
 "Primary Advisor FA Number: <b>" & Request.Form("FaNum") & "</b><br />" & vbCrLf &_
@@ -212,18 +213,18 @@ Dim errMsg, boolStamp, errMsg2, boolStamp2, errMsg3, boolStamp3, errMsg4, boolSt
 boolStamp = Null
 errMsg = ""
 FullErrorMessage = ""
-        
+
 
 boolStamp2 = Null
 errMsg2 = ""
 FullErrorMessageFromData = ""
-     
+
 boolStamp3 = Null
 errMsg3 = ""
 
 boolStamp4 = Null
-errMsg4 = ""  
-        
+errMsg4 = ""
+
 Dim boolDev, domain
 domain = Request.ServerVariables("SERVER_NAME")
 If InStr(domain, "apwxa") > 0 Then
@@ -243,24 +244,30 @@ If Request.Form("submitBtn") = "Submit" Then
 	Else
 		objMailer.FromAddress = CStr(Request.Form("email"))
 	End If
+    
+    If Request.Form("preview") = "Yes" Then
+    RequestedPreviewLabel = "#Requested_Preview"
+    Else
+    RequestedPreviewLabel = ""
+    End If
 
-    'build subject line 
+    'build subject line
     If siteType = "new" And  group = "transitioning" Then
         subject = "New Website Form "& chr(45) &" Transitioning"
         subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
-    ElseIf siteType = "new" And  group = "rjfs_rja" Then 
+    ElseIf siteType = "new" And  group = "rjfs_rja" Then
         subject = "New Website Form "& chr(45) &" RJA + RJFS"
         subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
-    ElseIf siteType = "new" And  group = "iad_corr" Then 
+    ElseIf siteType = "new" And  group = "iad_corr" Then
         subject = "New Website Form "& chr(45) &" IAD + CORR"
         subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
-    ElseIf siteType = "new" Then 
+    ElseIf siteType = "new" Then
         subject = "New Website Form "
         subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
@@ -270,7 +277,7 @@ If Request.Form("submitBtn") = "Submit" Then
         subject2 = "SC7 Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
-        subject4 = Request.Form("email")
+        subject4 = Request.Form("email") &" "& RequestedPreviewLabel
         recipient4(0) = "Trello Migrations Board"
         recipient4(1) = "raymondjameswebservices+n5agttpfuirk3vulbghv@boards.trello.com"
     ElseIf siteType = "csfree" Then
@@ -282,7 +289,7 @@ If Request.Form("submitBtn") = "Submit" Then
         recipient4(0) = "Trello Migrations Board"
         recipient4(1) = "raymondjameswebservices+vymptokfhfgqikukorym@boards.trello.com"
     Else
-        subject = "Advisor Website Migration "& chr(45) & " " & group 
+        subject = "Advisor Website Migration "& chr(45) & " " & group
         subject2 = "Website Selection Form Data"
         recipient(0) = "Web Services"
         recipient(1) = "webservices@raymondjames.com"
@@ -298,13 +305,13 @@ If Request.Form("submitBtn") = "Submit" Then
 	    'Set the name and e-mail address of who will receive the email. You can also use AddCC and AddBCC or additional AddRecipient to send the e-mail to multiple people.
         objMailer.AddRecipient CStr(recipient(0)), CStr(recipient(1))
         objMailer.Subject = subject
-    'End If  
-            
+    'End If
+
 	'Set the subject line. Best practice is to include the name of the website or main domain name. This way Recipients are aware where the form originated.
-	
+
 	'Set the body message to what was built above.
 	objMailer.BodyText = sMsg
-	
+
 	'Check to see if the e-mail was passed to the Mail Mover program. This DO NOT check to see if the e-mail was actually sent.
 	If Not objMailer.SendMail Then
 		'If the email was NOT passed to the Mail Mover program then set boolStamp to false and errMsg to error message for later.
@@ -320,12 +327,12 @@ If Request.Form("submitBtn") = "Submit" Then
 	'Release the object to free up system resources.
 	Set objMailer = Nothing
 End If
-'**** Data EMAIL start *****            
+'**** Data EMAIL start *****
 'Check To Make sure the Submit Button was used and not posting from different location
 If Request.Form("submitBtn") = "Submit" Then
-    Set objMailer2 = CreateObject("MailRemote.Mailer")        
+    Set objMailer2 = CreateObject("MailRemote.Mailer")
     objMailer2.FromName = CStr(Request.Form("fname")) & " " & CStr(Request.Form("lname"))
-	
+
 
 	'Check to make sure that the e-mail field was passed and is not EMPTY. If it is EMPTY set from address as unknown@raymondjames.com
 	If Request.Form("email") = "" Then
@@ -337,16 +344,16 @@ If Request.Form("submitBtn") = "Submit" Then
     recipient2(0) = "Raymond James Enhanced Advisor Websites"
     recipient2(1) = "websitemigration@raymondjames.com"
 
-    objMailer2.AddRecipient CStr(recipient2(0)), CStr(recipient2(1))    
-    objMailer2.Subject = subject2    
+    objMailer2.AddRecipient CStr(recipient2(0)), CStr(recipient2(1))
+    objMailer2.Subject = subject2
 
-            
+
 	'Set the subject line. Best practice is to include the name of the website or main domain name. This way Recipients are aware where the form originated.
-	
+
 	'Set the body message to what was built above.
 
-    objMailer2.BodyText = dataEmail        
-	
+    objMailer2.BodyText = dataEmail
+
 
 	'Check to see if the e-mail was passed to the Mail Mover program. This DO NOT check to see if the e-mail was actually sent.
 	If Not objMailer2.SendMail Then
@@ -359,24 +366,24 @@ If Request.Form("submitBtn") = "Submit" Then
 		boolStamp2 = True
 		errMsg2 = ""
 	End if
-	
+
 	'Release the object to free up system resources.
 	Set objMailer2 = Nothing
 End If
-'**** Error EMAIL start *****            
+'**** Error EMAIL start *****
 
 If FullErrorMessageFromData <> "" OR FullErrorMessage <> "" Then
-    
+
     ErrorMessageBody = "<html>" & vbCrLf &_
         "<p>Whos Form was it?: <b>" & Request.Form("PrimaryName") & "</b></p><br />" & vbCrLf &_
         "<p>Whos Form was it?: <b>" & Request.Form("email") & "</b></p><br />" & vbCrLf &_
         "<p>Website Selection Form Email Errors: <b>" & FullErrorMessage & "</b></p><br /><br />" & vbCrLf &_
         "<p>Website Selection Form Data Email Errors: <b>" & FullErrorMessageFromData & "</b></p><br /><br />" & vbCrLf &_
-		"</html>"    
-        
-    Set objMailer3 = CreateObject("MailRemote.Mailer")        
+		"</html>"
+
+    Set objMailer3 = CreateObject("MailRemote.Mailer")
     objMailer3.FromName = CStr(Request.Form("fname")) & " " & CStr(Request.Form("lname"))
-	
+
 
 	'Check to make sure that the e-mail field was passed and is not EMPTY. If it is EMPTY set from address as unknown@raymondjames.com
 	If Request.Form("email") = "" Then
@@ -389,16 +396,16 @@ If FullErrorMessageFromData <> "" OR FullErrorMessage <> "" Then
     recipient2(0) = "James Hood"
     recipient2(1) = "james.hood@raymondjames.com"
 
-    objMailer3.AddRecipient CStr(recipient3(0)), CStr(recipient3(1))    
-    objMailer3.Subject = subject3    
+    objMailer3.AddRecipient CStr(recipient3(0)), CStr(recipient3(1))
+    objMailer3.Subject = subject3
 
-            
+
 	'Set the subject line. Best practice is to include the name of the website or main domain name. This way Recipients are aware where the form originated.
-	
+
 	'Set the body message to what was built above.
 
-    objMailer3.BodyText = ErrorMessageBody     
-	
+    objMailer3.BodyText = ErrorMessageBody
+
 
 	'Check to see if the e-mail was passed to the Mail Mover program. This DO NOT check to see if the e-mail was actually sent.
 	If Not objMailer3.SendMail Then
@@ -410,17 +417,17 @@ If FullErrorMessageFromData <> "" OR FullErrorMessage <> "" Then
 		boolStamp3 = True
 		errMsg3 = ""
 	End if
-	
+
 	'Release the object to free up system resources.
 	Set objMailer3 = Nothing
 End If
 
-'**** Trello Email Start ****    
-If siteType <> "new" Then    
+'**** Trello Email Start ****
+If siteType <> "new" Then
 If Request.Form("submitBtn") = "Submit" Then
-    Set objMailer4 = CreateObject("MailRemote.Mailer")        
+    Set objMailer4 = CreateObject("MailRemote.Mailer")
     objMailer4.FromName = CStr(Request.Form("fname")) & " " & CStr(Request.Form("lname"))
-	
+
 
 	'Check to make sure that the e-mail field was passed and is not EMPTY. If it is EMPTY set from address as unknown@raymondjames.com
 	If Request.Form("email") = "" Then
@@ -429,16 +436,16 @@ If Request.Form("submitBtn") = "Submit" Then
 		objMailer4.FromAddress = "webservices@raymondjames.com"
 	End If
 
-    objMailer4.AddRecipient CStr(recipient4(0)), CStr(recipient4(1))    
-    objMailer4.Subject = subject4    
+    objMailer4.AddRecipient CStr(recipient4(0)), CStr(recipient4(1))
+    objMailer4.Subject = subject4
 
-            
+
 	'Set the subject line. Best practice is to include the name of the website or main domain name. This way Recipients are aware where the form originated.
-	
+
 	'Set the body message to what was built above.
 
-    objMailer4.BodyText = sMsg        
-	
+    objMailer4.BodyText = sMsg
+
 
 	'Check to see if the e-mail was passed to the Mail Mover program. This DO NOT check to see if the e-mail was actually sent.
 	If Not objMailer4.SendMail Then
@@ -449,11 +456,11 @@ If Request.Form("submitBtn") = "Submit" Then
 		boolStamp4 = True
 		errMsg4 = ""
 	End if
-	
+
 	'Release the object to free up system resources.
 	Set objMailer4 = Nothing
 End If
-End If    
+End If
 %>
 
             <!DOCTYPE html>
@@ -464,46 +471,46 @@ End If
                 <title></title>
                 <meta name="keywords" content="raymond james website order form" />
                 <meta name="description" content="Raymond James Website Order Form" />
-                <meta http-equiv="x-ua-compatible" content="IE=Edge"/> 
+                <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
                 <!-- meta information end -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
                 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
                 <style type="text/css">
                     /* On Page Styles */
-                    
+
                     .cluetip-default h3.cluetip-title {
                         color: #ffffff;
                         font-weight: bold;
                         background-color: #cccccc;
                         padding: 3px;
                     }
-                    
+
                     .cluetip-outer {
                         background-color: #eeeeee;
                         font-family: Arial;
                     }
-                    
+
                     .cluetip-inner {
                         padding: 5px;
                     }
-                    
+
                     .hidden {
                         display: none;
                     }
-                    
+
                     textarea {
                         width: 920px;
                         overflow: auto;
                         height: 100px;
                     }
-                    
+
                     #tblColorTheme.regTbl td,
                     #tblLayout.regTbl td,
                     #tblImage.regTbl td {
                         text-align: center;
                         vertical-align: top;
                     }
-                    
+
                     #tblImage.regTbl td img {
                         vertical-align: top;
                         width: 15px;
@@ -520,38 +527,38 @@ End If
                         margin-left: 50px;
                         text-indent: -48px;
                     }
-                    
+
                     p.pr a:link,
                     p.pr a:visited {
                         font-weight: bold !important;
                     }
-                    
+
                     #largePic {
                         position: fixed;
                         left: 95px;
                         top: 5px;
                         z-index: 5;
                     }
-                    
+
                     #copyright {
                         font-size: 1rem;
                     }
-                    
+
                     #bd_disc {
                         font-size: 1rem;
                     }
-                    
+
                     #logo {
                         text-align: center;
                     }
-                    
+
                     tbody tr td {
                         padding: 10px;
                     }
 
                 </style>
 
-                <% 
+                <%
         Response.Write("<script type='text/javascript' >var group =  '"+ group +"'; var type = '"+ siteType +"';</script>")
     %>
                     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
@@ -561,7 +568,7 @@ End If
                             setValues();
                         }
 
-                        //set values for the form based on group and type. 
+                        //set values for the form based on group and type.
                         function setValues() {
                             switch (type) {
                                 case "new":
@@ -658,7 +665,7 @@ Else
                     <!-- footer end -->
                     <!-- bottom scripts begin -->
                     <script type="text/javascript">
-                        <!-- 
+                        <!--
                         // set the nav background
                         var horiz_bkg = ""
                         -->
