@@ -38,7 +38,7 @@ select.Affiliation {width: 70%;margin-right: 5px;}
 .templateparent img {height:400px;}
 .templateparent .row {margin-right: 0;margin-left: 0;}
 .templateparent .row:not(:last-child) {border-bottom: 1px solid #DDD9D5;}
-.templateparent div.templateparentthead {center; color: white; background: #002D62;}
+.templateparent div.templateparentthead {text-align:center; color: white; background: #002D62;}
 .themeparent select.theme {margin-left: 10px;margin-bottom: 10px;}
 
 .teamparent label {padding: 0 0 0 0; }
