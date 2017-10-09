@@ -1,13 +1,7 @@
 var brand;
-var selectedtheme;
 var type;
 var group;
-var url;
 var clients;
-var clientTypesChecked;
-var NicheTilesChecked;
-
-
 
 $(function () {
     //Set Initial value of delegates to no
