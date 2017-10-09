@@ -10,7 +10,6 @@ select.theme.form-control {width:auto}
 a {font-weight: bold; color: #236FDC; text-decoration: none; cursor: pointer;}
 a:hover {color: #002D62; text-decoration: underline;}
 
-
 #grand {position: relative; margin: auto; width: 990px;}
 #main {border: 1px solid #002D62; background: #FFFFFF; margin-bottom: 30px;}
 #main #contentCell {padding: 25px;}
@@ -23,7 +22,6 @@ label {padding: 0 15px 0 15px; font-size: 1.4rem;}
 .ClientsSlide {height:50px;}
 .PreviewsSlide {height: 50px;}
 label.PreviewSelected {padding-left:40px;}
-
 
 .parentdivborder {border: 1px solid #DDD9D5;width:100%}
 .parentdivborder a {font-size:1.3rem}
@@ -50,7 +48,6 @@ select.Affiliation {width: 70%;margin-right: 5px;}
 [name|="Number"] {width: 25%; display:inline-block}
 [role|="button"], button[type|="button"] {margin-left:15px;vertical-align: initial;}
 
-
 p#notforclients {font-size: 1rem; font-weight: bold; color: #FFFFFF; text-align: center; margin-bottom: 30px;}
 
 .required {color: red; font-size: 1.8rem;}
@@ -62,7 +59,4 @@ p#notforclients {font-size: 1rem; font-weight: bold; color: #FFFFFF; text-align:
 #ui-datepicker-div {width:auto}
 .form-control {display: inline-block;}
 
-.glyphicon-menu-right:before {
-    font-size:1.4rem;
-
-}
+.glyphicon-menu-right:before {font-size:1.4rem;}
