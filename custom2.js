@@ -42,8 +42,6 @@ $(function () {
     type = getQueryVar("type");
     group = getQueryVar("group");
 
-
-
     $("#frmName").attr("action", "process2.asp?" + "type=" + type + "&group=" + group);
 
     //Remove all elements that do not have the relavent css class.
