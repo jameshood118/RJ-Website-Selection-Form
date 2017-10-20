@@ -16,8 +16,8 @@ $(function () {
     });
 
     $("#newStartDate").datepicker();
-    $('.phone').mask('000-000-0000');
-    $('.zip').mask('00000-0000');
+    $(".phone").mask("000-000-0000");
+    $(".zip").mask("00000-0000");
 
     //The classes drive what the user will see depending on the site type: transitioning, current, csfree, cspaid, premium
     //all: all site types will have elements with this class.
@@ -74,7 +74,6 @@ $(function () {
                 $("h1")[0].innerText = "This is an error page";
                 $("#frmName").empty();
                 $("#pContact").html("You have reached this page in error, please contact <a href='mailto:webservices@raymondjames.com' id='aContact'>Web Services</a> at ext. 75423");
-                break;
         }
     }
 
@@ -103,7 +102,7 @@ $(function () {
             $(".WhatMakesUsDifferent_Migration").remove();
             $(".WhatMakesUsDifferent_New").show();
             $(".CustomQuote").show();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
+            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option>");
             $(".spanCustomQuote").empty().append("<br/>");
             break;
 
@@ -125,7 +124,7 @@ $(function () {
             $(".OurApproach_New").remove();
             $(".WhatMakesUsDifferent_Migration").show();
             $(".WhatMakesUsDifferent_New").remove();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option><option value='Use_Current'>Use My Current Theme</option>");
             break;
 
         case "csfree":
@@ -137,8 +136,8 @@ $(function () {
             $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
             $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
             $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option>');
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option>");
+            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option><option value='Use_Current'>Use My Current Theme</option>");
             break;
 
         case "sc7":
@@ -152,13 +151,13 @@ $(function () {
             $(".OurApproach_New").remove();
             $(".WhatMakesUsDifferent_Migration").show();
             $(".WhatMakesUsDifferent_New").remove();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
+            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option><option value='Use_Current'>Use My Current Theme</option>");
             //Support for SC7 Free sites, this adds the same options as the CSfree options, but keeps it within the SC7 data set
             if (group == "rjfsfree") {
                 $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
                 $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
                 $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
-            } else {}
+            }
             break;
 
         default:
@@ -172,8 +171,8 @@ $(function () {
             $(".OurApproach_New").remove();
             $(".WhatMakesUsDifferent_Migration").show();
             $(".WhatMakesUsDifferent_New").remove();
-            $('.theme').prepend('<option value="Nothing" selected>Select an image theme</option><option value="Use_Current">Use My Current Theme</option>');
-            break;
+            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option><option value='Use_Current'>Use My Current Theme</option>");
+
     }
 
     //SC7 Validation: Group numbers, Live Validation for Niche Tiles, Team Member primary contact, done this way because they can only select one, but a radio button will not work correctly with the ASP processor
@@ -196,7 +195,7 @@ $(function () {
         }
         if ($(this).prop("checked") == false) {
             $(this).parent().parent().removeClass("ClientsSlide").find("div.nichebox").slideUp().find("input").prop("checked", false);
-        } else {}
+        }
 
     });
 
@@ -211,7 +210,7 @@ $(function () {
 
     //Validation for Primary contact on team members, only allowing for 1 single primary contact to be selected
     $('input.TeamContact[type="checkbox"]').click(function (e) {
-        $('.TeamContact').not(this).attr('checked', false);
+        $(".TeamContact").not(this).attr("checked", false);
     });
 
 });
@@ -284,22 +283,21 @@ function addTeam(elem, e) {
     });
 }
 
-
 function validateForm(objFrm) {
 
-    if ($(".PreviewSelected").val() == "Yes" && $(".PreviewSelected").is(':checked')) {
+    if ($(".PreviewSelected").val() == "Yes" && $(".PreviewSelected").is(":checked")) {
         if (!validateCheckbox(".previewbox")) {
             return setFild("Please agree to the terms of receiving a preview of your site.", $(".previewbox"))
         }
-    } else {}
+    }
 
     if ($(".theme").val() === "Nothing") {
         return setFild("Please select an image theme.", $(".theme"));
-    } else {}
+    }
 
     if ($(".Number").val() === "") {
         return setFild("Please tell us what split billing number to use.", $(".Number"));
-    } else {}
+    } 
     //validates standalone radio button.
     if (!validateRadio("[name='needConsultant']"))
         return setFild("Please tell us if you would like to discuss your site with a marketing consultant.", $("[name='needConsultant']"));
