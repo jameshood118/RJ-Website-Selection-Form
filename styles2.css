@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
-body {padding: 0px; margin: 0px; background: #CECECE;font-family: 'Lato', sans-serif; font-size: 62.5%;}
+body {padding: 0; margin: 0; background: #CECECE;font-family: 'Lato', sans-serif; font-size: 62.5%;}
 h1 {color: #236FDC; font-size: 2.4rem; border-bottom: 1px solid #236FDC;}
-h2 {color: #002D62; font-size: 1.8rem; padding-bottom: 0px; margin-bottom: 0px;}
+h2 {color: #002D62; font-size: 1.8rem; padding-bottom: 0; margin-bottom: 0;}
 h2 span {font-size: 1.4rem; font-weight: normal}
 p {color: #002D62; font-size: 1.2rem; line-height: 20px;}
 
@@ -30,7 +30,7 @@ label.PreviewSelected {padding-left:40px;}
 .pad div:last-child, .teamparent div:last-child{margin-bottom:10px}
 .teamparent div {margin-top: 10px;}
 .pad input:not([type="radio"]),.pad input[type="text"], .pad select{float:right;clear:both;padding-bottom:5px}
-.pad .Number {float:none!important;}
+
 select.Affiliation {width: 70%;margin-right: 5px;}
 .templateparent {text-align:center;}
 .templateparent img {height:400px;}
