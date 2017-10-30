@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body {padding: 0; margin: 0; background: #CECECE;font-family: 'Lato', sans-serif; font-size: 62.5%;}
+h1 {color: #236FDC; font-size: 2.4rem; border-bottom: 1px solid #236FDC;}
+h2 {color: #002D62; font-size: 1.8rem; padding-bottom: 0; margin-bottom: 0; span {font-size: 1.4rem; font-weight: normal}}
+
+p {color: #002D62; font-size: 1.2rem; line-height: 20px;}
+
+select.theme.form-control {width:auto}
+a {font-weight: bold; color: #236FDC; text-decoration: none; cursor: pointer; &:hover {color: #002D62; text-decoration: underline;}}
+
+
+#grand {position: relative; margin: auto; width: 990px;}
+#main {border: 1px solid #002D62; background: #FFFFFF; margin-bottom: 30px; #contentCell {padding: 25px;}}
+
+label {padding: 0 15px 0 15px; font-size: 1.4rem; &.delegatelabel {padding-left: 5px;}&.PreviewSelected {padding-left:40px;}}
+.noleftpad label{padding: 0 0 0 0;&.Nichelabel {padding:0 15px 0 5px; font-size: 1.2rem; vertical-align: top;}}
+.nichebox {padding-left:15px;}
+.ClientsSlide {height:50px;}
+.PreviewsSlide {height: 50px;}
+
+.parentdivborder {border: 1px solid #DDD9D5;width:100%; a {font-size:1.3rem}}
+.pad span {font-size: 1.3rem;}
+.pad div{padding-bottom: 15px;padding-top: 15px; &:last-child {margin-bottom:10px}}
+.pad input:not([type="radio"]),.pad input[type="text"], .pad select{float:right;clear:both;padding-bottom:5px}
+
+.teamparent div {margin-top: 10px;&:last-child{margin-bottom:10px}}
+
+select.Affiliation {width: 70%;margin-right: 5px;}
+.templateparent {text-align:center; div.templateparentthead {text-align:center; color: white; background: #002D62;} & img {height:400px;} .row {margin-right: 0;margin-left: 0;}.row:not(:last-child) {border-bottom: 1px solid #DDD9D5;}}
+
+.themeparent select.theme {margin-left: 10px;margin-bottom: 10px;}
+
+.teamparent {label {padding: 0 0 0 0; }.textField {width: 25%; display:inline-block;margin-right: 5px;}.TeamContact {margin-left:75px;}.teamdelegate {width:75px;margin-left:15px}}
+
+.textField {width: 70%; display:inline-block;margin-right: 5px;}
+#question {width:25%}
+[name|="Number"] {width: 25%; display:inline-block}
+[role|="button"], button[type|="button"] {margin-left:15px;vertical-align: initial;}
+
+p#notforclients {font-size: 1rem; font-weight: bold; color: #FFFFFF; text-align: center; margin-bottom: 30px;}
+
+.required {color: red; font-size: 1.8rem;}
+.required:after { content: "*"}
+
+.modal-body, .modal-body p {font-size: 1.3rem;}
+
+.ui-datepicker table {font-size: 1.5em;}
+#ui-datepicker-div {width:auto}
+.form-control {display: inline-block;}
+
+.glyphicon-menu-right:before {font-size:1.4rem;}
