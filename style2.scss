@@ -1,17 +1,20 @@
+$RJLightblue: #236FDC;
+$RJDarkBlue: #002D62;
+
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {padding: 0; margin: 0; background: #CECECE;font-family: 'Lato', sans-serif; font-size: 62.5%;}
-h1 {color: #236FDC; font-size: 2.4rem; border-bottom: 1px solid #236FDC;}
-h2 {color: #002D62; font-size: 1.8rem; padding-bottom: 0; margin-bottom: 0; span {font-size: 1.4rem; font-weight: normal}}
+h1 {color: $RJLightblue; font-size: 2.4rem; border-bottom: 1px solid $RJLightblue;}
+h2 {color: $RJDarkBlue; font-size: 1.8rem; padding-bottom: 0; margin-bottom: 0; span {font-size: 1.4rem; font-weight: normal}}
 
-p {color: #002D62; font-size: 1.2rem; line-height: 20px;}
+p {color: $RJDarkBlue; font-size: 1.2rem; line-height: 20px;}
 
 select.theme.form-control {width:auto}
-a {font-weight: bold; color: #236FDC; text-decoration: none; cursor: pointer; &:hover {color: #002D62; text-decoration: underline;}}
+a {font-weight: bold; color: $RJLightblue; text-decoration: none; cursor: pointer; &:hover {color: $RJDarkBlue; text-decoration: underline;}}
 
 
 #grand {position: relative; margin: auto; width: 990px;}
-#main {border: 1px solid #002D62; background: #FFFFFF; margin-bottom: 30px; #contentCell {padding: 25px;}}
+#main {border: 1px solid $RJDarkBlue; background: #FFFFFF; margin-bottom: 30px; #contentCell {padding: 25px;}}
 
 label {padding: 0 15px 0 15px; font-size: 1.4rem; &.delegatelabel {padding-left: 5px;}&.PreviewSelected {padding-left:40px;}}
 .noleftpad label{padding: 0 0 0 0;&.Nichelabel {padding:0 15px 0 5px; font-size: 1.2rem; vertical-align: top;}}
@@ -27,7 +30,7 @@ label {padding: 0 15px 0 15px; font-size: 1.4rem; &.delegatelabel {padding-left:
 .teamparent div {margin-top: 10px;&:last-child{margin-bottom:10px}}
 
 select.Affiliation {width: 70%;margin-right: 5px;}
-.templateparent {text-align:center; div.templateparentthead {text-align:center; color: white; background: #002D62;} & img {height:400px;} .row {margin-right: 0;margin-left: 0;}.row:not(:last-child) {border-bottom: 1px solid #DDD9D5;}}
+.templateparent {text-align:center; div.templateparentthead {text-align:center; color: white; background: $RJDarkBlue;} & img {height:400px;} .row {margin-right: 0;margin-left: 0;}.row:not(:last-child) {border-bottom: 1px solid #DDD9D5;}}
 
 .themeparent select.theme {margin-left: 10px;margin-bottom: 10px;}
 
