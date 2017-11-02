@@ -140,68 +140,68 @@ Dim Billing
         "</html>"
     Else
 
-     dataEmail = CurrDateTime & "|" &_
-     siteType & "|" &_
-     group & "|" &_
-     Request.Form("preview") & "|" &_
-     "|" &_
-     "|" &_
-     Request.Form("PrimaryName") & "|" &_
-     Request.Form("email") & "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     Request.Form("FaNum") & "|" &_
-     Request.Form("Branch") & "|" &_
-     Request.Form("Affiliation") & "|" &_
-     Request.Form("ApprovedDBA") & "|" &_
-     "|" &_
-     "|" &_
-     "|" &_
-     Request.Form("ExistingSite") & "|" &_
-     team & "|" &_
-     Request.Form("billing") & "|" &_
-     NumberData & "|" &_
-     Request.Form("supportPackage") & "|" &_
-     Request.Form("layout") & "|" &_
-     Request.Form("theme") & "|" &_
-     Request.Form("HomePage_Intro") & "|" &_
-     HomePageQuote & "|" &_
-     cbClientType & "|" &_
-     cbServices & "|" &_
-     Request.Form("OurApproach") & "|" &_
-     Request.Form("WhatMakesUsDifferent") & "|" &_
-     Request.Form("about")
+        dataEmail = CurrDateTime & "|" &_
+        siteType & "|" &_
+        group & "|" &_
+        Request.Form("preview") & "|" &_
+        "|" &_
+        "|" &_
+        Request.Form("PrimaryName") & "|" &_
+        Request.Form("email") & "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        Request.Form("FaNum") & "|" &_
+        Request.Form("Branch") & "|" &_
+        Request.Form("Affiliation") & "|" &_
+        Request.Form("ApprovedDBA") & "|" &_
+        "|" &_
+        "|" &_
+        "|" &_
+        Request.Form("ExistingSite") & "|" &_
+        team & "|" &_
+        Request.Form("billing") & "|" &_
+        NumberData & "|" &_
+        Request.Form("supportPackage") & "|" &_
+        Request.Form("layout") & "|" &_
+        Request.Form("theme") & "|" &_
+        Request.Form("HomePage_Intro") & "|" &_
+        HomePageQuote & "|" &_
+        cbClientType & "|" &_
+        cbServices & "|" &_
+        Request.Form("OurApproach") & "|" &_
+        Request.Form("WhatMakesUsDifferent") & "|" &_
+        Request.Form("about")
 
         sMsg =	"<html><p>" & vbCrLf &_
-"Requested Preview: <b>" & Request.Form("preview") & "</b><br />" & vbCrLf &_
-"Domain: <b>" & brand &"</b><br/>" & vbCrLf &_
-"Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
-"Existing Site: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
-"Template and Color: <b>" & Request.Form("layout") & "</b><br />" & vbCrLf &_
-"Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_
-"Primary Advisor Name: <b>" & Request.Form("PrimaryName") & "</b><br />" & vbCrLf &_
-"Primary Advisor Email: <b>" & Request.Form("email") & "</b><br />" & vbCrLf &_
-"Primary Advisor FA Number: <b>" & Request.Form("FaNum") & "</b><br />" & vbCrLf &_
-Billing &_
-"Support Package: <b>" & Request.Form("supportPackage") & "</b><br />" & vbCrLf &_
-"Branch Number: <b>" & Request.Form("Branch") & "</b><br />" & vbCrLf &_
-"Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
-team & "<br />" & vbCrLf &_
-"Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
-"Homepage Quote: <br /><b>" & HomePageQuote & "</b><br /><br />" & vbCrLf &_
-"Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
-"What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
-AboutText &_
-"Our Clients:  <br />" & cbClientType & "<br />" & vbCrLf &_
-"Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
-"</p>" & vbCrLf &_
-"</html>"
+        "Requested Preview: <b>" & Request.Form("preview") & "</b><br />" & vbCrLf &_
+        "Domain: <b>" & brand &"</b><br/>" & vbCrLf &_
+        "Approved DBA: <b>" & Request.Form("ApprovedDBA") & "</b><br />" & vbCrLf &_
+        "Existing Site: <b>" & Request.Form("ExistingSite") & "</b><br />" & vbCrLf &_
+        "Template and Color: <b>" & Request.Form("layout") & "</b><br />" & vbCrLf &_
+        "Image Theme: <b>" & Request.Form("theme") & "</b><br /><br />" & vbCrLf &_
+        "Primary Advisor Name: <b>" & Request.Form("PrimaryName") & "</b><br />" & vbCrLf &_
+        "Primary Advisor Email: <b>" & Request.Form("email") & "</b><br />" & vbCrLf &_
+        "Primary Advisor FA Number: <b>" & Request.Form("FaNum") & "</b><br />" & vbCrLf &_
+        Billing &_
+        "Support Package: <b>" & Request.Form("supportPackage") & "</b><br />" & vbCrLf &_
+        "Branch Number: <b>" & Request.Form("Branch") & "</b><br />" & vbCrLf &_
+        "Broker/Dealer Affiliation: <b>" & Request.Form("Affiliation") & "</b><br /><br />" & vbCrLf &_
+        team & "<br />" & vbCrLf &_
+        "Homepage Intro: <br /><b>" & Request.Form("HomePage_Intro") & "</b><br /><br />" & vbCrLf &_
+        "Homepage Quote: <br /><b>" & HomePageQuote & "</b><br /><br />" & vbCrLf &_
+        "Our Approach: <br /><b>" & Request.Form("OurApproach") & "</b><br /><br />" & vbCrLf &_
+        "What Makes Us Different: <br /><b>" & Request.Form("WhatMakesUsDifferent") & "</b><br /><br />" & vbCrLf &_
+        AboutText &_
+        "Our Clients:  <br />" & cbClientType & "<br />" & vbCrLf &_
+        "Services: <br /><b>" & cbServices & "</b><br />" & vbCrLf &_
+        "</p>" & vbCrLf &_
+        "</html>"
 
 	End If
 
