@@ -55,6 +55,7 @@ $(function () {
             case "group0":
                 break;
             case "group1":
+                $(".RequestedPreview").show();
                 break;
             case "group2":
                 $(".RequestedPreview").show();
@@ -93,7 +94,7 @@ $(function () {
             }
 
             if (group == "iad_corr") {
-              $(".AboutRJ").hide();
+                $(".AboutRJ").hide();
             }
 
             $("#pContact").html(" For questions or comments about this form please contact <a href=\"mailto:webservices@raymondjames.com?subject=New Website - " + group + "\">webservices@raymondjames.com</a> or call extension 75423.");
@@ -203,7 +204,7 @@ $(function () {
         if ($(".PreviewSelected").val() == "Yes" && $(".PreviewSelected").is(':checked')) {
             $(".previewselected").toggleClass("PreviewsSlide").slideToggle();
         } else {
-			$(".previewselected").removeClass("PreviewsSlide").slideUp().find("input").prop("checked", false);
+            $(".previewselected").removeClass("PreviewsSlide").slideUp().find("input").prop("checked", false);
 
         }
     });
@@ -227,7 +228,7 @@ function billingSelection() {
 
     switch (selectedBilling.val()) {
         case "Split FA Blotter":
-            $(".spanSplitFaBlotterNumber").empty().append(' - Split FA number <input type="text" name="Number" class="Number textField requiredField form-control"/>');
+            $(".spanSplitFaBlotterNumber").empty().append(' - Split FA number <input type="text" name="Number" class="Number textField requiredField form-control" style="float:initial"/>');
             break;
         default:
             $(".spanSplitFaBlotterNumber").empty();
@@ -285,6 +286,32 @@ function addTeam(elem, e) {
 
 function validateForm(objFrm) {
 
+    //Address Validation for new, transitioning advisors
+    if ((type == "new" && group == "transitioning")) {
+
+        if ($("[name='mailingAddress1']").val() === "") {
+            alert("Please tell us what your address is.");
+            $("[name='mailingAddress1']").focus();
+            return false;
+        }
+        if ($("[name='city']").val() === "") {
+            alert("Please tell us what your City is.");
+            $("[name='city']").focus();
+            return false;
+        }
+        if ($("[name='state']").val() === "") {
+            alert("Please tell us what your State is."); 
+            $("[name='state']").focus();
+            return false;
+        }
+        if ($("[name='zip']").val() === "") {
+            alert("Please tell us what your Zipcode is."); 
+            $("[name='zip']").focus();
+            return false;
+        }
+
+    }
+
     if ($(".PreviewSelected").val() == "Yes" && $(".PreviewSelected").is(":checked")) {
         if (!validateCheckbox(".previewbox")) {
             return setFild("Please agree to the terms of receiving a preview of your site.", $(".previewbox"))
@@ -297,7 +324,7 @@ function validateForm(objFrm) {
 
     if ($(".Number").val() === "") {
         return setFild("Please tell us what split billing number to use.", $(".Number"));
-    } 
+    }
     //validates standalone radio button.
     if (!validateRadio("[name='needConsultant']"))
         return setFild("Please tell us if you would like to discuss your site with a marketing consultant.", $("[name='needConsultant']"));
@@ -335,7 +362,6 @@ function validateForm(objFrm) {
 
     if (!validateRadio("[name='supportPackage']"))
         return setFild("Please select a support package.", $("[name='supportPackage']"));
-
 
     if (!validateEmail(objFrm.email.value)) {
         return setFild("Please enter a valid email address in the\nformat: name@example.com", objFrm.email);
