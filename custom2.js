@@ -287,7 +287,7 @@ function addTeam(elem, e) {
 function validateForm(objFrm) {
 
     //Address Validation for new, transitioning advisors
-    if ((type == "new" && group == "transitioning")) {
+    if ((type == "new")) {
 
         if ($("[name='mailingAddress1']").val() === "") {
             alert("Please tell us what your address is.");
