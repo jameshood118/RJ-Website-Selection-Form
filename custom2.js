@@ -137,7 +137,6 @@ $(function () {
             $(".csfreebillto").html("Each RJFS branch is allotted one complimentary website under the Bronze support package. We require billing information for any charges incurred that exceed the limits of the Bronze support package.");
             $(".csfreebronze").empty().append('<input type="radio" name="supportPackage" value="Bronze - Complimentary" />&nbsp Bronze &ndash; Complimentary* for RJFS, regular price of $25/month<span style="font-weight:normal"> &ndash; Bronze covers secure website hosting, built-in automated content feeds, website compliance and self-editing.');
             $(".csfreesupportpackagetext").html("*Each RJFS branch is allotted one complimentary Bronze support package, any additional costs that exceed to limits of the support package are to be absorbed by the advisor or branch. If the Bronze support package does not meet your needs, you will be responsible for the entire cost of the Silver or Gold support package.");
-            $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option>");
             $(".theme").prepend("<option value='Nothing' selected>Select an image theme</option><option value='Use_Current'>Use My Current Theme</option>");
             break;
 
