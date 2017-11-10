@@ -32,7 +32,7 @@
     <!-- Begin Outer Div Block -->
     <div id="grand" class="container" ng-app="siteSwitcher" ng-controller="Switcher">
         <!-- Begin Main Layout Table MAIN -->
-        <div id="main">
+        <div id="main" class="row">
             <div id="contentCell">
                 <!-- Begin Content Cell Area -->
                 <h1></h1>
@@ -85,7 +85,7 @@
                 </div>
                 <form name="frmName" id="frmName" method="post" action="process2.asp" onsubmit="return validateForm(this);">
 
-                    <div class="transitioning current">
+                    <div class="transitioning current col-xs-12">
                         <!-- Start Marketing/Transitioning Consultant Information -->
                         <h2>Marketing/Transitioning Consultant:
                             <br/>
@@ -105,7 +105,7 @@
                         <!-- End Marketing/Transitioning Consultant Information -->
                     </div>
 
-                    <div class="transitioning current">
+                    <div class="transitioning current col-xs-12">
                         <!-- Start Transitioning Website Owner Information -->
                         <h2>Transitioning Website Owner Information:
                             <span class="required"></span>
@@ -172,7 +172,7 @@
                         <!-- End Transitioning Website Owner Information -->
                     </div>
 
-                    <div class="transitioning">
+                    <div class="transitioning col-xs-12">
                         <!-- Start Transitioning Website Information -->
                         <h2>Transitioning Website Information: </h2>
                         <div class="pad parentdivborder">
@@ -200,7 +200,7 @@
                         <!-- End Transitioning Website Owner Information -->
                     </div>
 
-                    <div class="current csfree cspaid premium sc7">
+                    <div class="current csfree cspaid premium sc7 col-xs-12">
                         <!-- Start Website Owner Information, current csfree cspaid premium -->
                         <h2>Website Owner Information:
                             <span class="required"></span>
@@ -237,7 +237,7 @@
                         <!-- End Website Owner Information, current csfree cspaid premium -->
                     </div>
 
-                    <div class="current csfree cspaid premium sc7">
+                    <div class="current csfree cspaid premium sc7 col-xs-12">
                         <!-- Start Site Information Section, current csfree cspaid premium -->
                         <h2>Site Information: </h2>
                         <div class="pad parentdivborder">
@@ -254,7 +254,7 @@
                         <!-- End Site Information Section, current csfree cspaid premium -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Team Member Section -->
                         <h2>Team Members:
                             <br/>
@@ -324,7 +324,7 @@
                         <!-- End Team Member Section -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Bill to Selection, transitioning -->
                         <h2>Bill to:
                             <span class="required"></span>
@@ -350,7 +350,7 @@
                         <!-- End Bill to Selection, transitioning -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Support Package Selection -->
                         <h2>Support Package:
                             <span class="required"></span>
@@ -387,7 +387,7 @@
                         <!-- Start Support Package Selection -->
                     </div>
 
-                    <div class="RequestedPreview sc7" style="display: none">
+                    <div class="RequestedPreview sc7 col-xs-12" style="display: none">
                         <!-- Start Requested Preview -->
                         <h2>Website Preview:
                             <span class="required"></span>
@@ -419,7 +419,7 @@
                         <!-- End Requested Preview -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Template and Color Selection -->
                         <h2>Template and Color:
                             <span class="required"></span>
@@ -524,7 +524,7 @@
                         <!-- End Template and Color Selection -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Image Theme -->
                         <h2>Image Theme:
                             <span class="required"></span>
@@ -592,7 +592,7 @@
                         <!-- Edd Image Theme -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Home Page Intro -->
                         <h2>Homepage Intro:
                             <span class="required"></span>
@@ -664,7 +664,7 @@
                         <!-- End Home Page Intro -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Home Page Quote -->
                         <h2>Home Page Quote:
                             <span class="required"></span>
@@ -778,7 +778,7 @@
                         <!-- End Home Page Quote -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Clients -->
                         <h2>Client Groups Served:
                             <span class="required"></span>
@@ -980,7 +980,7 @@
                         <!-- End Clients -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Services -->
                         <h2>Services Provided:
                             <span class="required"></span>
@@ -1128,7 +1128,7 @@
                         <!-- End Services -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start Our Approach -->
                         <h2>Our Approach:
                             <span class="required"></span>
@@ -1188,7 +1188,7 @@
                         <!-- End Our Approach -->
                     </div>
 
-                    <div class="all">
+                    <div class="all col-xs-12">
                         <!-- Start What Makes Us Different -->
                         <h2>What Makes Us Different:
                             <span class="required"></span>
@@ -1256,7 +1256,7 @@
                         <!-- End What Makes Us Different  -->
                     </div>
 
-                    <div class="all AboutRJ">
+                    <div class="all AboutRJ col-xs-12">
                         <!-- Start About Raymond James -->
                         <h2>About Raymond James:
                             <span class="required"></span>
@@ -1399,10 +1399,8 @@
 
     <script src="modals.js" type="text/javascript"></script>
     <!-- End Modal template and script include -->
+    <!-- Boostrap CDN Location -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
-
-<!-- Boostrap CDN Location -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
-
 </html>
